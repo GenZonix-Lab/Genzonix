@@ -1,0 +1,242 @@
+import React from 'react'
+import ConnectDiagram from './assert/proj_3/Connection_diagram.png'
+import img1 from './assert/proj_2/1.png'
+import img2 from './assert/proj_2/2.png'
+import img3 from './assert/proj_2/3.png'
+import img4 from './assert/proj_2/4.png'
+import img5 from './assert/proj_2/5.png'
+import img6 from './assert/proj_2/6.png'
+import img7 from './assert/proj_2/7.png'
+import img8 from './assert/proj_2/8.png'
+import img9 from './assert/proj_2/9.png'
+const Gzxp24003 = () => {
+  const codeString = `
+   #include <WiFi.h>
+    #include <ESP_Mail_Client.h>
+    //Ir_sensor_pin
+    const int Ir_pin = 15;    //define the IR_sensor Pin connect to the D5 pin
+    String data = "close";
+    #define WiFi_SSID WiFi_Name     //replace your wifi name
+    #define WiFi_pwd password    //replace your wifi password
+    #define sender_mail sender_mail    //replace your email address
+    #define sender_app_password "ekvm szfe ckfr lqew" //follow the Gmail_Auth_steps/paste the 16 digit code.
+    #define receiver_mail receiver_mail    //replace the receiver mail address to get notification.
+    SMTPSession smtp;
+    void setup() {
+        Serial.begin(115200);
+        pinMode(Ir_pin, INPUT);
+        WiFi.begin(WiFi_SSID, WiFi_pwd);
+        while (WiFi.status() != WL_CONNECTED) {
+            delay(500);
+            Serial.print(".");
+        }
+        Serial.println("\nConnected to WiFi!");
+        Serial.println("IP Address: " + WiFi.localIP().toString());
+    }
+    void loop() {
+        int sensor = digitalRead(Ir_pin);
+        if(sensor && data == "open"){
+        sendMail("⚠️Door is opened... \n⚠️Mysterious Activity placed here...");
+        Serial.println("⚠️Door is opened... \n⚠️Mysterious Activity placed here...");
+        delay(1000);
+        data = "close";
+        }
+        else if(!sensor && data == "close"){
+        sendMail("Door is closed");
+        Serial.println("Door is closed");
+        data="open";
+        }
+        Serial.flush();
+    }
+    void sendMail(String msg){
+        Session_Config config;
+        config.server.host_name = "smtp.gmail.com";
+        config.server.port = 587;
+        config.login.email = sender_mail;
+        config.login.password = sender_app_password;
+    
+    
+        SMTP_Message message;
+        // Set the message content
+        message.sender.name = "Email Smart Door Alert System";
+        message.sender.email = sender_mail;
+        message.subject = "Open Door Alert";
+        message.addRecipient("Receiver", receiver_mail);
+        message.text.content = msg;
+    
+    
+    // Set SMTP server settings
+        smtp.callback([](SMTP_Status status) {
+        Serial.println(status.info());
+        });
+        if (!smtp.connect(&config))
+        {
+        MailClient.printf("Connection error, Status Code: %d, Error Code: %d, Reason: %s\n", smtp.statusCode(), smtp.errorCode(), smtp.errorReason().c_str());
+        return;
+        }
+    
+    
+        if (!MailClient.sendMail(&smtp, &message)) {
+        Serial.println("Error sending email, try again later.");
+        } else {
+        Serial.println("Email sent successfully!");
+        }
+    }`
+
+  return (
+      <div className="container">
+         <h1>SMART SECURITY INDICATION AND EMAIL NOTIFICATION SYSTEM</h1>
+        <h2>Objective:</h2>
+            <p>The Smart Security Indication and Email Notification System is designed to enhance security by detecting motion and sending real-time email alerts when unauthorized activity is detected. This project uses an ESP32 microcontroller, an IR sensor, and basic components to create a simple yet effective security system that monitors an area for movement. When the IR sensor detects motion, the ESP32 triggers an email alert to notify a designated receiver of the potential security breach.</p>
+        <h2>Requirements:</h2>
+            <ul>
+                <li>ESP32 Microcontroller</li>
+                <li>IR Sensor</li>
+                <li>Power Supply Board</li>
+                <li>Jumper Wires</li>
+                <li>Email Sender & Receiver Accounts</li>
+            </ul>
+        <h2>Hardware Setup:</h2>
+            <h3>Connection procedure:</h3>
+                <h4>ESP32 Pin Connections:</h4>
+                    <ul>
+                        <li>GPIO 15: Connect to the OUT pin of the IR sensor.</li>
+                        <li>VCC: Connect to a 5V power source.</li>
+                        <li>GND: Connect to the ground (GND) of the power supply.</li>
+                    </ul>
+                <h4>Power:</h4>
+                    <ul>
+                        <li>The ESP32 and IR sensor should both be connected to a stable 5V power source using a power supply board.</li>
+                    </ul>
+            <h3>Connection setup:</h3>
+                    <img 
+                      src={ConnectDiagram} 
+                      className="img-fluid" 
+                      alt="Connection_diagram"  
+                      title="Connection_diagram" 
+                      style={{
+                        maxHeight: "400px"}}
+                    />
+        <h2>Software Setup:</h2>
+            <h3>Steps to Generate a Google App Password [sender gmail]:</h3>
+                <div>
+                    <img 
+                      src={img1} 
+                      className="img-fluid" 
+                      alt="Go to secutity on google Account"  
+                      title="Security"/>
+                </div>
+            <h3>Access Google Account Settings:</h3>
+                <p>Sign in to your Google account and navigate to the Security section.</p>
+            <h3>Enable 2-Step Verification:</h3>
+                <div>
+                    <img 
+                      src={img2} 
+                      className="img-fluid" 
+                      alt="2_step_verification"  
+                      title="Security"/>
+                </div>
+                <p>Locate the 2-Step Verification option and click on it.</p>
+                <div className="row">
+                    <img 
+                      src={img3} 
+                      className="img-fluid col-10 col-md-4 me-2" 
+                      alt="Turn_ON"  
+                      title="Security" 
+                      style={{
+                        margin: "0px 0px 0px 20px"}} />
+                    <img 
+                      src={img4} 
+                      className="img-fluid col-10 col-md-4 " 
+                      alt="Turn_ON"  
+                      title="Security" 
+                      style={{margin:"10px 0px 0px 20px"}}/>
+                </div>  
+                <p>Follow the on-screen instructions to turn on 2-Step Verification if it’s not already enabled.</p>          
+                <div>
+                    <img 
+                      src={img5} 
+                      className="img-fluid" 
+                      alt="Turn_ON_2_step_verification"  
+                      title="Security" />
+                </div>
+            <h3>Generate an App Password:</h3>
+                <div>
+                    <img 
+                      src={img6}
+                      className="img-fluid" 
+                      alt="search_bar"  
+                      title="Security"/>
+                </div>
+                <p>In the Security section, use the search bar at the top left corner and type "App Passwords".</p>
+                <div>
+                    <img 
+                      src={img7} 
+                      className="img-fluid" 
+                      alt="Search_app_password"  
+                      title="Security" />
+                </div>
+                <p>Select the App Passwords option from the search results.</p>
+                <div>
+                    <img 
+                      src={img8} 
+                      className="img-fluid" 
+                      alt="app_password"  
+                      title="Security" />
+                </div>
+                <p>Create a custom app name (e.g., ESP_mail) and click Create.</p>
+                <div>
+                    <img 
+                      src={img9} 
+                      className="img-fluid" 
+                      alt="Generate_app_password"  
+                      title="Security" />
+                </div>
+            <h3>Receive Your App Password:</h3>
+                <p>A 16-character app password will be generated. Copy this password for use in your project.</p>
+            <h3>Arduino IDE:</h3>
+                <ul>
+                    <li>Launch the Arduino IDE and create a new sketch.</li>
+                </ul>
+            <h3>Configure Board Manager:</h3>
+                <ul>
+                    <li>Navigate to File &gt; Preferences.</li>
+                    <li>In the Additional Board Manager URLs field, paste the following URL: <a href="https://dl.espressif.com/dl/package_esp32_index.json">https://dl.espressif.com/dl/package_esp32_index.json</a></li>
+                </ul>
+            <h3>Install ESP32 Board:</h3>
+            <ul>
+                <li>Open the Board Manager by going to Tools &gt; Board &gt; Board Manager.</li>
+                <li>Search for and install ESP32.</li>
+            </ul>
+            <h3>Select ESP32 Board:</h3>
+            <ul>
+                <li>Once installed, select DOIT ESP32 DEVKIT V1 from the Tools &gt; Board menu.</li>
+            </ul>
+            <h3>Select the COM Port:</h3>
+            <ul>
+                <li>Go to Tools &gt; Port, and choose the correct COM port for your device (e.g., COM5).</li>
+            </ul>
+            <h3>Code Implementation:</h3>
+            <pre>{codeString}</pre>
+            <h3>Uploading the Code:</h3>
+                <p>Connect your ESP32 to the computer via USB and upload the code to the board.</p>
+        <h2>Testing and operation:</h2>
+            <h3>Connect to Wi-Fi:</h3>
+                <ul>
+                    <li>Once the ESP32 is powered, it will automatically connect to the specified Wi-Fi network.</li>
+                </ul>
+            <h3>Detecting Motion:</h3>
+                <ul>
+                    <li>Place the IR sensor in the desired location to monitor for movement. When motion is detected, the ESP32 will trigger an email alert to the receiver email address.</li>
+                </ul>
+            <h3>Monitoring Notifications:</h3>
+                <ul>
+                    <li>Check the designated receiver email for notifications indicating motion detection and its cessation.</li>
+                </ul>
+        <h2>Conclusion:</h2>  
+        <p>The <em>Smart Security Indication and Email Notification System</em> is a simple, low-cost, and effective solution for monitoring security in homes, offices, and restricted areas. By using an IR sensor to detect motion and the ESP32 to send real-time email notifications, the system provides a practical and automated way to stay informed of any unauthorized movements. It's easy-to-implement design, combined with customizable email alerts, makes it a versatile choice for enhancing security in various environments.</p>  
+    </div>
+  )
+}
+
+export default Gzxp24003
