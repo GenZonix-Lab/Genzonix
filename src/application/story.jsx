@@ -21,8 +21,8 @@ const Story = () => {
                 />
             </div>
             <div className="story-data order-lg-1 order-2 col-lg-8 col-12">
-                <h2>{head2_data[0]}</h2>
-                <h2>{head2_data[1]}</h2>
+                <h3>{head2_data[0]}</h3>
+                <h3>{head2_data[1]}</h3>
             </div>
             </div>
             
