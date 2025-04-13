@@ -14,7 +14,7 @@ const NavigationHeader = () => {
             <NavLink to={"/"}>
             <img
                 src={logo}
-                className="img-fluid"
+                className="img"
                 alt="Logo"
                 title="Website_logo"
                                 
