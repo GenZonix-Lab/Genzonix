@@ -178,38 +178,46 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
 "included_libs": []
 }`
   return (
+    <>
     <div className="container">
-    <h1>VOICE COMMAND THROUGH HOME AUTOMATION SYSTEM</h1>
-    <h2>Objective:</h2>
+    <div className="docs text-center p-2 my-3"><h1>VOICE COMMAND THROUGH HOME AUTOMATION SYSTEM</h1></div><hr />
+    <div className="docs pb-2">
+        <h2>Objective:</h2>
         <p>This project demonstrates the creation of a voice-controlled home automation system using the ESP32 microcontroller and Arduino Cloud. The ESP32 is used to communicate with the cloud platform, which allows control of home appliances using voice commands via Amazon Alexa or Google Assistant. A 2-channel relay is connected to the ESP32, acting as a switch for turning appliances on or off.</p>
-    <h2>Requirements:</h2>
-        <ul>
-            <li>ESP32 Microcontroller</li>
-            <li>2-Channel Relay Module</li>
-            <li>Arduino Cloud Account</li>
-            <li>Power Supply Board</li>
-            <li>Jumper Wires</li>
-            <li>Amazon Alexa or Google Assistant (for voice control)</li>
-            <li>PC (for Arduino Cloud setup and testing)</li>
-        </ul>
-    <h2>Hardware Setup:</h2>
+    </div><hr />
+    <div className="docs pb-2">
+        <h2>Requirements:</h2>
+            <ul>
+                <li>ESP32 Microcontroller</li>
+                <li>2-Channel Relay Module</li>
+                <li>Arduino Cloud Account</li>
+                <li>Power Supply Board</li>
+                <li>Jumper Wires</li>
+                <li>Amazon Alexa or Google Assistant (for voice control)</li>
+                <li>PC (for Arduino Cloud setup and testing)</li>
+            </ul>
+    </div><hr />
+    <div className="docs pb-2">
+        <h2>Hardware Setup:</h2>
         <h3>Connection procedure:</h3>
-            <h4>ESP32 Pin Connections:</h4>
-                <p>The hardware setup consists of connecting the ESP32 board to a 2-channel relay, which is then connected to the appliances you wish to control. Here's the pin configuration:</p>
-                <ul>
-                    <li>ESP32 Pin 13 -&gt; Relay 1 (Control for Appliance 1)</li>
-                    <li>ESP32 Pin 12 -&gt; Relay 2 (Control for Appliance 2)</li>
-                    <li>VCC -&gt; 5V Power Supply</li>
-                    <li>GND -&gt; Ground</li>
-                </ul>
-                <p>Ensure that the relay is connected properly to the respective appliances for controlling their power state.</p>
+        <h4>ESP32 Pin Connections:</h4>
+        <p>The hardware setup consists of connecting the ESP32 board to a 2-channel relay, which is then connected to the appliances you wish to control. Here's the pin configuration:</p>
+        <ul>
+            <li>ESP32 Pin 13 -&gt; Relay 1 (Control for Appliance 1)</li>
+            <li>ESP32 Pin 12 -&gt; Relay 2 (Control for Appliance 2)</li>
+            <li>VCC -&gt; 5V Power Supply</li>
+            <li>GND -&gt; Ground</li>
+        </ul>
+        <p>Ensure that the relay is connected properly to the respective appliances for controlling their power state.</p>
         <h3>Connection setup:</h3>
-                <img 
-                  src={ConnectDiagram} 
-                  className="img-fluid" 
-                  alt="Connection_diagram"  
-                  title="Connection_diagram" 
-                  style={{maxHeight: "400px" }}/>
+            <img 
+            src={ConnectDiagram} 
+            className="img-fluid rounded" 
+            alt="Connection_diagram"  
+            title="Connection_diagram" 
+            style={{maxHeight: "400px" }}/>
+    </div><hr />
+    <div className="docs pb-2">
     <h2>Software Setup:</h2>
         <h3>Arduino Cloud and Voice Control Setup</h3>
             <h4>Create an Arduino Cloud Account:</h4>
@@ -217,84 +225,87 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
                     <li>Go to Arduino Cloud and sign up for an account.</li>
                     <li>Click the get started button.</li>
                 </ul>
-                <img src={img1} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="On Started"  title="voice-control" />
+                <img src={img1} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8" alt="On Started"  title="voice-control"  style={{maxWidth: "600px"}}/>
 
             <h4>Set up the ESP32 device in Arduino Cloud:</h4>
                 <ul>
                     <li>Add a new device in Arduino Cloud by selecting the Third party device &gt; ESP32.</li>
                 </ul>
-                    <img src={img2} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                    <img src={img3} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
+                    <img src={img2} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                    <img src={img3} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
                 <ul>
                     <li>Follow the instructions to register the device. The cloud will generate a Device ID and Secret Key. </li>
                 </ul>
-                <img src={img4} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                <img src={img5} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                <img src={img6} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
+                <img src={img4} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <img src={img5} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <img src={img6} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
 
             <h4>Goto things add new things.</h4>
-                <img src={img7} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                <img src={img8} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
+                <img src={img7} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <img src={img8} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
             <h4>Configure the setting.</h4>
-                <img src={img9} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                <img src={img10} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
+                <img src={img9} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <img src={img10} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
             <h4>Choose Alexa for Voice Access Control.</h4>
-                <img src={img11} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
+                <img src={img11} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
             <h4>Click the Add button to add two cloud variables.</h4>
-                <img src={img12} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                <img src={img13} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                <img src={img14} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
-                <img src={img15} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
+                <img src={img12} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <img src={img13} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <img src={img14} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <img src={img15} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
             <h4>Open sketch and paste the below code.</h4>
-                <img src={img16} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control" />
+                <img src={img16} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
 
         <h3>Code Implementation:</h3>
         <h4>Arduino code:</h4>
         <pre>{codeString}</pre>
-        <h2>Uploading the Code:</h2>
+    </div><hr />
+    <div className="docs pb-2">
+    <h2>Uploading the Code:</h2>
         <h3>Install the cloud Agent: </h3>
             <p>Click it: <a href="https://cloud.arduino.cc/download-agent/">Install the Arduino Cloud Agent.</a></p>
-            <img src={img17} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control"/>
-            <img src={img18} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control"/>
+            <img src={img17} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+            <img src={img18} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
             <ul>
                 <li>Open the Arduino cloud Agent.</li>
                 <li>if it is open the cross mark on connection has been removed.</li>
             </ul>
-            <img src={img19} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control"/>
+            <img src={img19} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
 
         
         
         <h3>Verify and upload:</h3>
-        <img src={img20} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control"/>
-        <img src={img21} className="img-fluid col-12 col-sm-12 col-lg-8 col-xl-8" alt="Device_setup"  title="voice-control"/>
-
+        <img src={img20} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+        <img src={img21} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+    </div><hr />
+    <div className="docs pb-2">
     <h2>Configure Voice Control:</h2>
         <ul>
             <li>Enable voice control by linking Arduino Cloud to Amazon Alexa or Google Assistant using the official Arduino IoT Cloud skill.</li>
             <li>Link your Alexa account to Arduino Cloud through the integration settings.</li>
         </ul>
         <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
-            <div className="col">
+            <div className="col text-center">
                 <h4>Install the Alexa App:</h4>
                 <p><b>Download the Alexa app from the App Store (iOS) or Google Play Store (Android), and sign in or create an Amazon account.</b></p>
-                <img src={img22} className="img-fluid col" alt="Device_setup"  title="voice-control"/>
+                <img src={img22} className="img-fluid rounded col" alt="Device_setup"  title="voice-control" style={{maxWidth: "300px"}}/>
             </div>
-            <div className="col">
+            <div className="col text-center">
                 <h4>Open Skills and Games:</h4>
                 <p><b> Tap on “More” at the bottom of the app, then select “Skills & Games.”</b></p>
-                <img src={img23} className="img-fluid rounded col" alt="template"  title="Automation"/>
+                <img src={img23} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
             </div>
         </div>
         <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
-            <div className="col">
+            <div className="col text-center">
                 <h4>Search for Arduino IoT Cloud Skill: </h4>
                 <p><b>In the search bar, type “Arduino IoT Cloud” and find the official Arduino skill. Tap on it.</b></p>
-                <img src={img24} className="img-fluid rounded col" alt="template"  title="Automation"/>
+                <img src={img24} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
             </div>
-            <div className="col">
+            <div className="col text-center">
                 <h4>Enable the Skill: </h4>
                 <p><b> Tap “Enable to Use.” </b></p>
-                <img src={img25} className="img-fluid rounded col" alt="template"  title="Automation"/>
+                <img src={img25} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
             </div>
 
         </div>
@@ -306,14 +317,14 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
             <li>Be sure this is the same account you use for your Arduino Cloud.</li>
         </ul>
             <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
-                <div className="col">                    
-                    <img src={img26} className="img-fluid rounded col" alt="template"  title="Automation"/>
+                <div className="col text-center p-2">                    
+                    <img src={img26} className="img-fluid rounded col text-center" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
                 </div>
-                <div className="col">
-                    <img src={img27} className="img-fluid rounded col" alt="template"  title="Automation"/>
+                <div className="col text-center p-2">
+                    <img src={img27} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
                 </div>
             </div>
-            <div className="">
+            <div>
                 <h4>Allow Device Discovery:</h4>
                 <p>Once connected, Alexa will automatically search for devices associated with your Arduino IoT Cloud account. The devices should appear in your Alexa app.</p>
                 <h4>Rename Devices (Optional):</h4>
@@ -325,6 +336,8 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
                     <li>“Alexa, turn off the fan.”</li>
                 </ul>
             </div>
+    </div><hr />
+    <div className="docs pb-2">
     <h2>Testing and operation:</h2>
         <h4>Upload the Code:</h4>
             <ul>
@@ -347,9 +360,13 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
             <ul>
                 <li>You can also monitor and control the appliances from the Arduino Cloud dashboard.</li>
             </ul>
-    <h2>Conclusion:</h2>  
+    </div><hr />
+    <div className="docs pb-2">
+        <h2>Conclusion:</h2>  
         <p>This project demonstrates a simple, yet effective, method for controlling home appliances using voice commands via ESP32 and Arduino Cloud. The system is easy to set up and provides a modern, user-friendly solution for home automation. By using cloud integration and IoT platforms, users can control appliances remotely and with voice commands, making it a practical solution for smart homes.	</p>
-</div>
+    </div>
+</div><hr />
+</>
   )
 }
 

@@ -12,7 +12,7 @@ import img9 from './assert/proj_2/9.png'
 
 const Gzxp24002 = () => {
   const codeString=`
-   #include <WiFi.h>
+        #include <WiFi.h>
         #include <ESP_Mail_Client.h>
         #include "credential.h"
         const int trigPin = 2;
@@ -131,12 +131,16 @@ const Gzxp24002 = () => {
             return distance;
         }`
   return (
-    <div>
+    <>
 
 <div className="container">
-        <h1>SMART PARKING EMAIL-NOTIFICATION SYSTEM</h1>
+    <div className="docs text-center my-3 p-2"><h1>SMART PARKING EMAIL-NOTIFICATION SYSTEM</h1></div><hr />
+    <div className="docs pb-2">
         <h2>Overview:</h2>
-            <p>The SMART PARKING EMAIL-NOTIFICATION SYSTEM is a project designed to monitor parking spaces and notify users via email when a spot becomes available or is occupied. This system utilizes an ESP32 microcontroller, an ultrasonic sensor, and other components to detect vehicle presence and send real-time alerts to a designated email address.</p>
+        <p>The SMART PARKING EMAIL-NOTIFICATION SYSTEM is a project designed to monitor parking spaces and notify users via email when a spot becomes available or is occupied. This system utilizes an ESP32 microcontroller, an ultrasonic sensor, and other components to detect vehicle presence and send real-time alerts to a designated email address.</p>
+    </div>
+    <hr />
+    <div className="docs pb-2">
         <h2>Requirements:</h2>
             <ul>
                 <li>ESP32 Microcontroller</li>
@@ -145,73 +149,82 @@ const Gzxp24002 = () => {
                 <li>Jumper Wires</li>
                 <li>Email Sender & Receiver Accounts</li>
             </ul>
+    </div>
+    <hr />
+    <div className="docs pb-2">
         <h2>Hardware Setup:</h2>
-            <h3>Connection procedure:</h3>
-                <h4>ESP32 Pin Connections:</h4>
-                    <ul>
-                        <li>Pin 15 (GPIO 15): Connect to the Echo pin of the ultrasonic sensor.</li>
-                        <li>Pin 2 (GPIO 2): Connect to the Trigger pin of the ultrasonic sensor.</li>
-                    </ul>
-                <h4>Power:</h4>
-                    <ul>
-                        <li>VCC: Connect the VCC pin of the ultrasonic sensor to a 5V power source.</li>
-                        <li>GND: Connect the GND pin of the ultrasonic sensor to the ground (GND) of the power supply</li>
-                    </ul>
-            <h3>Connection setup:</h3>
-                    <img 
-                      src={ConnectDiagram} 
-                      className="img-fluid" alt="Connection_diagram"  
-                      title="Connection_diagram" 
-                      style={
-                        {
-                          maxHeight: "400px"
-                        }
-                      } />
+        <h3>Connection procedure:</h3>
+        <h4>ESP32 Pin Connections:</h4>
+            <ul>
+                <li>Pin 15 (GPIO 15): Connect to the Echo pin of the ultrasonic sensor.</li>
+                <li>Pin 2 (GPIO 2): Connect to the Trigger pin of the ultrasonic sensor.</li>
+            </ul>
+        <h4>Power:</h4>
+            <ul>
+                <li>VCC: Connect the VCC pin of the ultrasonic sensor to a 5V power source.</li>
+                <li>GND: Connect the GND pin of the ultrasonic sensor to the ground (GND) of the power supply</li>
+            </ul>
+        <h3>Connection setup:</h3>
+            <img 
+                src={ConnectDiagram} 
+                className="img-fluid" 
+                alt="Connection_diagram"  
+                title="Connection_diagram" 
+                style={{maxHeight: "400px"}}
+            />
+    </div><hr />
+    <div className="docs pb-2">
         <h2>Software Setup:</h2>
             <h3>Steps to Generate a Google App Password [sender gmail]:</h3>
-                <div>
+                <div className="text-center text-lg-start">
                     <img 
                       src={img1} 
-                      className="img-fluid" 
+                      className="img-fluid rounded" 
                       alt="Go to secutity on google Account"  
-                      title="Security"/>
+                      title="Security"
+                      style={{maxWidth:'300'}}/>
                 </div>
             <h3>Access Google Account Settings:</h3>
                 <p>Sign in to your Google account and navigate to the Security section.</p>
             <h3>Enable 2-Step Verification:</h3>
-                <div>
+                <div className="text-center text-lg-start">
                     <img src={img2} 
-                    className="img-fluid" 
+                    className="img-fluid rounded" 
                     alt="2_step_verification"  
-                    title="Security"/>
+                    title="Security"
+                    style={{maxHeight:'300'}}/>
                 </div>
                 <p>Locate the 2-Step Verification option and click on it.</p>
-                <div className="row">
+                <div className="text-center text-lg-start">
+                    <div className="d-md-flex justify-content-center justify-content-lg-start">
                     <img 
                       src={img3} 
-                      className="img-fluid col-10 col-md-4 me-2" 
+                      className="img-fluid rounded mx-1 my-2" 
                       alt="Turn_ON"  
                       title="Security" 
-                      style={{
-                        margin: "0px 0px 0px 20px"
-                        }} />
+                      style={{maxWidth:'300px'}}
+                      />
                     <img 
                       src={img4} 
-                      className="img-fluid col-10 col-md-4 " 
-                      alt="Turn_ON"  
+                      className="img-fluid rounded mx-1 my-2" 
+                      alt="Turn_OFF"  
                       title="Security" 
-                      style={{margin: "10px 0px 0px 20px"}}/>
+                      style={{maxWidth:'300px'}}
+                      />
+                    </div>
                 </div>  
                 <p>Follow the on-screen instructions to turn on 2-Step Verification if it’s not already enabled.</p>          
-                <div>
+                <div className="text-center text-lg-start">
                     <img 
                       src={img5} 
                       className="img-fluid" 
                       alt="Turn_ON_2_step_verification"  
-                      title="Security"/>
+                      title="Security"
+                      style={{maxHeight:'300px'}}
+                      />
                 </div>
             <h3>Generate an App Password:</h3>
-                <div>
+                <div className="text-center text-lg-start">
                     <img 
                       src={img6} 
                       className="img-fluid" 
@@ -219,28 +232,33 @@ const Gzxp24002 = () => {
                       title="Security"/>
                 </div>
                 <p>In the Security section, use the search bar at the top left corner and type "App Passwords".</p>
-                <div>
+                <div className="text-center text-lg-start">
                     <img 
                       src={img7} 
                       className="img-fluid" 
                       alt="Search_app_password"  
-                      title="Security"/>
+                      title="Security"
+                      style={{maxHeight:'300px'}}
+                      />
                 </div>
                 <p>Select the App Passwords option from the search results.</p>
-                <div>
+                <div className="text-center text-lg-start">
                     <img 
                       src={img8}
                       className="img-fluid" 
                       alt="app_password"  
-                      title="Security"/>
+                      title="Security"
+                      style={{maxHeight:'300px'}}
+                      />
                 </div>
                 <p>Create a custom app name (e.g., ESP_mail) and click Create.</p>
-                <div>
+                <div className="text-center text-lg-start">
                     <img 
                       src={img9} 
                       className="img-fluid" 
                       alt="Generate_app_password"  
-                      title="Security"/>
+                      title="Security"
+                      style={{maxHeight:'300px'}}/>
                 </div>
             <h3>Receive Your App Password:</h3>
                 <p>A 16-character app password will be generated. Copy this password for use in your project.</p>
@@ -267,8 +285,11 @@ const Gzxp24002 = () => {
                 <li>Go to Tools &gt; Port, and choose the correct COM port for your device (e.g., COM5).</li>
             </ul>
             <h3>Code Implementation:</h3>
-            <pre>{codeString}</pre>
-            <h2>Testing and operation:</h2>
+            <pre className='pe-3'><code>{codeString}</code></pre>
+    </div>
+    <hr />
+    <div className="docs pb-2">
+        <h2>Testing and operation:</h2>
             <h3>Connect to Wi-Fi:</h3>
                 <ul>
                     <li>Once the ESP32 is powered, it will automatically connect to the specified Wi-Fi network.</li>
@@ -283,10 +304,15 @@ const Gzxp24002 = () => {
                 <ul>
                     <li>Check the designated receiver email for notifications indicating motion detection and its cessation.</li>
                 </ul>
+    </div>
+    <hr />
+    <div className="docs">
         <h2>Conclusion:</h2>    
             <p>The <em>SMART PARKING EMAIL-NOTIFICATION SYSTEM</em> offers a simple, cost-effective way to monitor parking spaces in real-time. By using an ESP32 and ultrasonic sensor, it detects vehicle presence and sends email alerts for availability or occupancy. This system improves parking efficiency, reduces search time, and is easy to implement, making it a practical solution for various parking environments.</p>    
     </div>
     </div>
+    <hr />
+    </>
   )
 }
 

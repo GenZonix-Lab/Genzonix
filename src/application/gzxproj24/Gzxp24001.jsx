@@ -94,10 +94,15 @@ const Gzxp24001 = () => {
 
   return (
     <>
-     <div className="container">
-        <h1>CHANGE LED COLOR AND ON/OFF LED THROUGH BLUETOOTH</h1>
+    <div className="container">
+    <div className="docs text-center my-3 p-2"><h1>CHANGE LED COLOR AND ON/OFF LED THROUGH BLUETOOTH</h1></div>
+    <hr />
+    <div className="docs pb-2">
         <h2>Overview:</h2>
-            <p>This project allows you to control a WS2812 RGB LED strip using Bluetooth via an ESP32 microcontroller. You can change the LED colors and toggle the LEDs on or off using the Serial Bluetooth Terminal app on your smartphone.</p>
+        <p>This project allows you to control a WS2812 RGB LED strip using Bluetooth via an ESP32 microcontroller. You can change the LED colors and toggle the LEDs on or off using the Serial Bluetooth Terminal app on your smartphone.</p>
+    </div>
+    <hr />
+    <div className="docs pb-2">
         <h2>Requirements:</h2>
             <ul>
                 <li>ESP32 Microcontroller</li>
@@ -107,6 +112,9 @@ const Gzxp24001 = () => {
                 <li>Power Supply Board</li>
                 <li>Adapter</li>
             </ul>
+    </div>
+    <hr />
+    <div className="docs pb-2">
         <h2>Hardware Setup:</h2>
             <h3>Connection procedure:</h3>
                 <h4>ESP32 to WS2812:</h4>
@@ -129,6 +137,9 @@ const Gzxp24001 = () => {
                             maxHeight:"400px"
                         }
                     } />
+    </div>
+    <hr />
+    <div className="docs pb-2">
         <h2>Software Setup:</h2>
             <h3>Arduino IDE:</h3>
                 <ul>
@@ -145,8 +156,7 @@ const Gzxp24001 = () => {
                     <li>Define commands to change colors and toggle ON/OFF.</li>
                 </ul>
             <h3>Code Implementation:</h3>
-            
-            <pre>{codeString}</pre>
+            <pre className='pe-3'><code>{codeString}</code></pre>
             
             <h3>App setup:</h3>
                 <div>                
@@ -157,6 +167,7 @@ const Gzxp24001 = () => {
                         style={
                             {
                                 maxHeight:"250px"
+                                
                             }
                         }
                     />
@@ -166,13 +177,13 @@ const Gzxp24001 = () => {
                     <ul>
                         <li>Ensure that the device is connected to Bluetooth before proceeding.</li>
                     </ul>
-                    <div className="row-1">   
+                    <div className="row-1 text-lg-start text-center">   
                         <img 
                             src={img2} 
                             alt="App_interface" 
-                            className="img-fluid rounded" 
+                            className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-4 my-2" 
                             style={{
-                                maxHeight:"400px"
+                                maxWidth:'250px'
                             }}/>
                     </div>
                 <h4>Launch the Serial Bluetooth Terminal App:</h4>
@@ -184,12 +195,12 @@ const Gzxp24001 = () => {
                         <li>Hold down the M1 button to open the customization page.</li>
                     </ul>
                 <h4>Button Customization:</h4>
-                    <div className="row-1 text-center">
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 me-2" src={img3} alt="OFF_setup" />
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 me-2" src={img4}  alt="ON_setup" />
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 me-2" src={img5}  alt="RED_setup" />
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 me-2" src={img6}  alt="GREEN" />
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 me-2" src={img7}  alt="BLUE_setup" />
+                    <div className="row-1 text-center text-lg-start">
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" src={img3} style={{maxWidth:'250px'}} alt="OFF_setup" />
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" src={img4} style={{maxWidth:'250px'}} alt="ON_setup" />
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" src={img5} style={{maxWidth:'250px'}} alt="RED_setup" />
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" src={img6} style={{maxWidth:'250px'}} alt="GREEN" />
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" src={img7} style={{maxWidth:'250px'}} alt="BLUE_setup" />
                     </div>
                     <p>Customize the buttons for LED control:</p>
                     <ul>
@@ -200,9 +211,9 @@ const Gzxp24001 = () => {
                         <li>M5: Set to BLUE.</li>
                     </ul>
                 <h4>Connect to the Bluetooth Device:</h4>
-                    <div className="row-1 text-center">
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 me-2" src={img8}  alt="Terminal_setup" />
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 me-2" src={img9}  alt="Selection_Bluetooth" />
+                    <div className="row-1 text-center text-lg-start">
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 mx-4 my-2" src={img8} style={{maxWidth:'250px'}} alt="Terminal_setup" />
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 mx-4 my-2" src={img9} style={{maxWidth:'250px'}} alt="Selection_Bluetooth" />
                     </div>
                     <ul>
                         <li>Tap the ≡ icon at the top left corner of the app screen.</li>
@@ -213,19 +224,27 @@ const Gzxp24001 = () => {
                     <ul>
                         <li>Use the customized commands to control the LED based on the button settings configured in Step 4. </li>
                     </ul>
-                    <div className="row-1 text-center">
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 me-2" src={img10}  alt="Bluetooth_connected" />
-                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 me-2" src={img11}  alt="test_image" />
+                    <div className="row-1 text-center text-lg-start">
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 mx-4 my-2" src={img10} style={{maxWidth:'250px'}} alt="Bluetooth_connected" />
+                        <img className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 mx-4 my-2" src={img11} style={{maxWidth:'250px'}} alt="test_image" />
                     </div>
+    </div>
+    <hr />
+    <div className="docs pb-2">
         <h2>Testing:</h2>
             <ul>
                 <li>Upload the code to the ESP32 using the Arduino IDE.</li>
                 <li>Pair your smartphone with the ESP32 using Bluetooth.</li>
                 <li>Open the Serial Bluetooth Terminal app, connect to the ESP32, and start sending commands to control the LED strip.</li>
             </ul>
-        <h2>Conclusion:</h2>    
+    </div>
+    <hr />
+    <div className="docs">
+            <h2>Conclusion:</h2>    
             <p>This project is a great introduction to using Bluetooth with the ESP32 and controlling RGB LEDs. You can expand the functionality by adding more features like preset colors or brightness control. Enjoy your LED lighting control!</p>
-    </div> 
+    </div>
+    </div>
+    <hr />
     </>
   )
 }

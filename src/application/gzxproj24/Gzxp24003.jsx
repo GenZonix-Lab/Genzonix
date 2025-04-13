@@ -84,143 +84,162 @@ const Gzxp24003 = () => {
     }`
 
   return (
-      <div className="container">
-         <h1>SMART SECURITY INDICATION AND EMAIL NOTIFICATION SYSTEM</h1>
+    <>
+    <div className="container">
+    <div className="docs text-center my-3 p-2"><h1>SMART SECURITY INDICATION AND EMAIL NOTIFICATION SYSTEM</h1></div><hr />
+    <div className="docs pb-2">
         <h2>Objective:</h2>
-            <p>The Smart Security Indication and Email Notification System is designed to enhance security by detecting motion and sending real-time email alerts when unauthorized activity is detected. This project uses an ESP32 microcontroller, an IR sensor, and basic components to create a simple yet effective security system that monitors an area for movement. When the IR sensor detects motion, the ESP32 triggers an email alert to notify a designated receiver of the potential security breach.</p>
+        <p>The Smart Security Indication and Email Notification System is designed to enhance security by detecting motion and sending real-time email alerts when unauthorized activity is detected. This project uses an ESP32 microcontroller, an IR sensor, and basic components to create a simple yet effective security system that monitors an area for movement. When the IR sensor detects motion, the ESP32 triggers an email alert to notify a designated receiver of the potential security breach.</p>
+    </div><hr />
+    <div className="docs pb-2">
         <h2>Requirements:</h2>
-            <ul>
-                <li>ESP32 Microcontroller</li>
-                <li>IR Sensor</li>
-                <li>Power Supply Board</li>
-                <li>Jumper Wires</li>
-                <li>Email Sender & Receiver Accounts</li>
-            </ul>
+        <ul>
+            <li>ESP32 Microcontroller</li>
+            <li>IR Sensor</li>
+            <li>Power Supply Board</li>
+            <li>Jumper Wires</li>
+            <li>Email Sender & Receiver Accounts</li>
+        </ul>
+    </div><hr />
+    <div className="docs pb-2">
         <h2>Hardware Setup:</h2>
-            <h3>Connection procedure:</h3>
-                <h4>ESP32 Pin Connections:</h4>
+        <h3>Connection procedure:</h3>
+        <h4>ESP32 Pin Connections:</h4>
+            <ul>
+                <li>GPIO 15: Connect to the OUT pin of the IR sensor.</li>
+                <li>VCC: Connect to a 5V power source.</li>
+                <li>GND: Connect to the ground (GND) of the power supply.</li>
+            </ul>
+        <h4>Power:</h4>
+            <ul>
+                <li>The ESP32 and IR sensor should both be connected to a stable 5V power source using a power supply board.</li>
+            </ul>
+        <h3>Connection setup:</h3>
+            <img 
+                src={ConnectDiagram} 
+                className="img-fluid" 
+                alt="Connection_diagram"  
+                title="Connection_diagram" 
+                style={{maxHeight: "400px"}}
+            />
+    </div><hr />
+    <div className="docs pb-2">
+    <h2>Software Setup:</h2>
+                <h3>Steps to Generate a Google App Password [sender gmail]:</h3>
+                    <div className="text-center text-lg-start">
+                        <img 
+                        src={img1} 
+                        className="img-fluid rounded" 
+                        alt="Go to secutity on google Account"  
+                        title="Security"
+                        style={{maxWidth:'300px'}}/>
+                    </div>
+                <h3>Access Google Account Settings:</h3>
+                    <p>Sign in to your Google account and navigate to the Security section.</p>
+                <h3>Enable 2-Step Verification:</h3>
+                    <div className="text-center text-lg-start">
+                        <img 
+                        src={img2} 
+                        className="img-fluid rounded" 
+                        alt="2_step_verification"  
+                        title="Security"
+                        style={{maxHeight:'300px'}}/>
+                    </div>
+                    <p>Locate the 2-Step Verification option and click on it.</p>
+                    <div className="text-center text-lg-start">
+                    <div className="d-md-flex justify-content-center justify-content-lg-start">
+                        <img 
+                            src={img3} 
+                            className="img-fluid rounded mx-1 my-2" 
+                            alt="Turn_ON"  
+                            title="Security" 
+                            style={{maxWidth:'300px'}}
+                            />
+                        <img 
+                            src={img4} 
+                            className="img-fluid rounded mx-1 my-2" 
+                            alt="Turn_OFF"  
+                            title="Security" 
+                            style={{maxWidth:'300px'}}
+                            />
+                    </div>    
+                    </div>  
+                    <p>Follow the on-screen instructions to turn on 2-Step Verification if it’s not already enabled.</p>          
+                    <div className="text-center text-lg-start">
+                        <img 
+                        src={img5} 
+                        className="img-fluid" 
+                        alt="Turn_ON_2_step_verification"  
+                        title="Security"
+                        style={{maxHeight:'300px'}} />
+                    </div>
+                <h3>Generate an App Password:</h3>
+                    <div className="text-center text-lg-start">
+                        <img 
+                        src={img6}
+                        className="img-fluid" 
+                        alt="search_bar"  
+                        title="Security"
+                        style={{maxHeight:'300px'}}/>
+                    </div>
+                    <p>In the Security section, use the search bar at the top left corner and type "App Passwords".</p>
+                    <div className="text-center text-lg-start">
+                        <img 
+                        src={img7} 
+                        className="img-fluid" 
+                        alt="Search_app_password"  
+                        title="Security" 
+                        style={{maxHeight:'300px'}}/>
+                    </div>
+                    <p>Select the App Passwords option from the search results.</p>
+                    <div className="text-center text-lg-start">
+                        <img 
+                        src={img8} 
+                        className="img-fluid" 
+                        alt="app_password"  
+                        title="Security" 
+                        style={{maxHeight:'300px'}}/>
+                    </div>
+                    <p>Create a custom app name (e.g., ESP_mail) and click Create.</p>
+                    <div className="text-center text-lg-start">
+                        <img 
+                        src={img9} 
+                        className="img-fluid" 
+                        alt="Generate_app_password"  
+                        title="Security" 
+                        style={{maxHeight:'300px'}}/> 
+                    </div>
+                <h3>Receive Your App Password:</h3>
+                    <p>A 16-character app password will be generated. Copy this password for use in your project.</p>
+                <h3>Arduino IDE:</h3>
                     <ul>
-                        <li>GPIO 15: Connect to the OUT pin of the IR sensor.</li>
-                        <li>VCC: Connect to a 5V power source.</li>
-                        <li>GND: Connect to the ground (GND) of the power supply.</li>
+                        <li>Launch the Arduino IDE and create a new sketch.</li>
                     </ul>
-                <h4>Power:</h4>
+                <h3>Configure Board Manager:</h3>
                     <ul>
-                        <li>The ESP32 and IR sensor should both be connected to a stable 5V power source using a power supply board.</li>
+                        <li>Navigate to File &gt; Preferences.</li>
+                        <li>In the Additional Board Manager URLs field, paste the following URL: <a href="https://dl.espressif.com/dl/package_esp32_index.json">https://dl.espressif.com/dl/package_esp32_index.json</a></li>
                     </ul>
-            <h3>Connection setup:</h3>
-                    <img 
-                      src={ConnectDiagram} 
-                      className="img-fluid" 
-                      alt="Connection_diagram"  
-                      title="Connection_diagram" 
-                      style={{
-                        maxHeight: "400px"}}
-                    />
-        <h2>Software Setup:</h2>
-            <h3>Steps to Generate a Google App Password [sender gmail]:</h3>
-                <div>
-                    <img 
-                      src={img1} 
-                      className="img-fluid" 
-                      alt="Go to secutity on google Account"  
-                      title="Security"/>
-                </div>
-            <h3>Access Google Account Settings:</h3>
-                <p>Sign in to your Google account and navigate to the Security section.</p>
-            <h3>Enable 2-Step Verification:</h3>
-                <div>
-                    <img 
-                      src={img2} 
-                      className="img-fluid" 
-                      alt="2_step_verification"  
-                      title="Security"/>
-                </div>
-                <p>Locate the 2-Step Verification option and click on it.</p>
-                <div className="row">
-                    <img 
-                      src={img3} 
-                      className="img-fluid col-10 col-md-4 me-2" 
-                      alt="Turn_ON"  
-                      title="Security" 
-                      style={{
-                        margin: "0px 0px 0px 20px"}} />
-                    <img 
-                      src={img4} 
-                      className="img-fluid col-10 col-md-4 " 
-                      alt="Turn_ON"  
-                      title="Security" 
-                      style={{margin:"10px 0px 0px 20px"}}/>
-                </div>  
-                <p>Follow the on-screen instructions to turn on 2-Step Verification if it’s not already enabled.</p>          
-                <div>
-                    <img 
-                      src={img5} 
-                      className="img-fluid" 
-                      alt="Turn_ON_2_step_verification"  
-                      title="Security" />
-                </div>
-            <h3>Generate an App Password:</h3>
-                <div>
-                    <img 
-                      src={img6}
-                      className="img-fluid" 
-                      alt="search_bar"  
-                      title="Security"/>
-                </div>
-                <p>In the Security section, use the search bar at the top left corner and type "App Passwords".</p>
-                <div>
-                    <img 
-                      src={img7} 
-                      className="img-fluid" 
-                      alt="Search_app_password"  
-                      title="Security" />
-                </div>
-                <p>Select the App Passwords option from the search results.</p>
-                <div>
-                    <img 
-                      src={img8} 
-                      className="img-fluid" 
-                      alt="app_password"  
-                      title="Security" />
-                </div>
-                <p>Create a custom app name (e.g., ESP_mail) and click Create.</p>
-                <div>
-                    <img 
-                      src={img9} 
-                      className="img-fluid" 
-                      alt="Generate_app_password"  
-                      title="Security" />
-                </div>
-            <h3>Receive Your App Password:</h3>
-                <p>A 16-character app password will be generated. Copy this password for use in your project.</p>
-            <h3>Arduino IDE:</h3>
+                <h3>Install ESP32 Board:</h3>
                 <ul>
-                    <li>Launch the Arduino IDE and create a new sketch.</li>
+                    <li>Open the Board Manager by going to Tools &gt; Board &gt; Board Manager.</li>
+                    <li>Search for and install ESP32.</li>
                 </ul>
-            <h3>Configure Board Manager:</h3>
+                <h3>Select ESP32 Board:</h3>
                 <ul>
-                    <li>Navigate to File &gt; Preferences.</li>
-                    <li>In the Additional Board Manager URLs field, paste the following URL: <a href="https://dl.espressif.com/dl/package_esp32_index.json">https://dl.espressif.com/dl/package_esp32_index.json</a></li>
+                    <li>Once installed, select DOIT ESP32 DEVKIT V1 from the Tools &gt; Board menu.</li>
                 </ul>
-            <h3>Install ESP32 Board:</h3>
-            <ul>
-                <li>Open the Board Manager by going to Tools &gt; Board &gt; Board Manager.</li>
-                <li>Search for and install ESP32.</li>
-            </ul>
-            <h3>Select ESP32 Board:</h3>
-            <ul>
-                <li>Once installed, select DOIT ESP32 DEVKIT V1 from the Tools &gt; Board menu.</li>
-            </ul>
-            <h3>Select the COM Port:</h3>
-            <ul>
-                <li>Go to Tools &gt; Port, and choose the correct COM port for your device (e.g., COM5).</li>
-            </ul>
-            <h3>Code Implementation:</h3>
-            <pre>{codeString}</pre>
-            <h3>Uploading the Code:</h3>
-                <p>Connect your ESP32 to the computer via USB and upload the code to the board.</p>
-        <h2>Testing and operation:</h2>
+                <h3>Select the COM Port:</h3>
+                <ul>
+                    <li>Go to Tools &gt; Port, and choose the correct COM port for your device (e.g., COM5).</li>
+                </ul>
+                <h3>Code Implementation:</h3>
+                <pre className='pe-3'><code>{codeString}</code></pre>
+                <h3>Uploading the Code:</h3>
+                    <p>Connect your ESP32 to the computer via USB and upload the code to the board.</p>
+    </div><hr />
+    <div className="docs pb-2">
+    <h2>Testing and operation:</h2>
             <h3>Connect to Wi-Fi:</h3>
                 <ul>
                     <li>Once the ESP32 is powered, it will automatically connect to the specified Wi-Fi network.</li>
@@ -233,9 +252,14 @@ const Gzxp24003 = () => {
                 <ul>
                     <li>Check the designated receiver email for notifications indicating motion detection and its cessation.</li>
                 </ul>
+    </div><hr />
+    <div className="docs pb-2">
         <h2>Conclusion:</h2>  
         <p>The <em>Smart Security Indication and Email Notification System</em> is a simple, low-cost, and effective solution for monitoring security in homes, offices, and restricted areas. By using an IR sensor to detect motion and the ESP32 to send real-time email notifications, the system provides a practical and automated way to stay informed of any unauthorized movements. It's easy-to-implement design, combined with customizable email alerts, makes it a versatile choice for enhancing security in various environments.</p>  
     </div>
+    </div>
+    <hr />
+    </>
   )
 }
 
