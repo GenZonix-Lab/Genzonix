@@ -24,10 +24,10 @@ const Community = () => {
                     alt="handsonLearning" 
                     title='handsonLearning'
                 />
-                <span>
+                <div>
                     <h2>{slide4_h1}</h2>
                     <p>{slide4_p1}</p>
-                </span>
+                </div>
             </div>
             <div className="box col-sm-12 col-lg-4 p-1">
                 <img 
@@ -36,10 +36,10 @@ const Community = () => {
                     alt="expert consulting" 
                     title='expert'
                 />
-                <span>
+                <div>
                     <h2 id="slide4_head2">{slide4_h2}</h2>
                     <p id="slide4_para2">{slide4_p2}</p>
-                </span>
+                </div>
             </div>
             <div className="box col-sm-12 col-lg-4 p-1">
                 <img 
@@ -48,10 +48,10 @@ const Community = () => {
                     alt="quality " 
                     title='kit_demo'
                 />
-                <span>
+                <div>
                     <h2 id="slide4_head3">{slide4_h3}</h2>
                     <p id="slide4_para3">{slide4_p3}</p>
-                </span>
+                </div>
             </div>
         </section>
     </div>

@@ -27,10 +27,10 @@ const InnovationKit = () => {
                     alt="IoT" 
                     title="IoT kit box" 
                 />
-                <span>
+                <div>
                     <h2>{slide3_h1}</h2>
                     <p>{slide3_p1}</p>
-                </span>
+                </div>
             </div>
             <div className="box col-sm-12 col-lg-4 p-1">
                 <img 
@@ -39,10 +39,10 @@ const InnovationKit = () => {
                     alt="AI" 
                     title="AI kit box" 
                 />
-                <span>
+                <div>
                     <h2>{slide3_h2}</h2>
                     <p>{slide3_p2}</p>
-                </span>
+                </div>
             </div>
             <div className="box col-sm-12 col-lg-4 p-1">
                 <img 
@@ -51,10 +51,10 @@ const InnovationKit = () => {
                     alt="Cloud" 
                     title="Cloud kit box" 
                 />
-                <span>
+                <div>
                     <h2>{slide3_h3}</h2>
                     <p>{slide3_p3}</p>
-                </span>
+                </div>
             </div>
         </section>
     </div>

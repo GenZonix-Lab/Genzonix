@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
     const [toggle,setToggle]=useState(false);
-    const state="open";
     const handletoggle= ()=>{
       setToggle(!toggle)
     }
@@ -23,39 +22,37 @@ const Sidebar = () => {
     <div className="collapse navbar-collapse" id="navbarCollapse">
       <ul className="navbar-nav mb-3 mb-xl-0">
         <li className="nav-item py-2 py-xl-0">
-        <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
           <NavLink to="/" className="nav-link">
-            <h4>Home</h4>
+          <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}><h4>Home</h4></button>
           </NavLink>
-          </button>
         </li>
         <li className="nav-item py-2 py-xl-0">
-          <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
           <NavLink to="/products" className="nav-link">
-            <h4>Products</h4>
+            <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
+              <h4>Products</h4>
+            </button>
           </NavLink>
-          </button>
         </li>
         <li className="nav-item py-2 py-xl-0">
-        <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
           <NavLink to="/projects" className="nav-link">
-            <h4>Project</h4>
+            <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
+              <h4>Project</h4>
+            </button>
           </NavLink>
-          </button>
         </li>
         <li className="nav-item py-2 py-xl-0">
-        <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
           <NavLink to="https://forms.gle/QEQCW7uBg242nzWv5" target='blank' className="nav-link">
-            <h4>Career</h4>
-          </NavLink>
-          </button>
+            <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
+              <h4>Career</h4>
+            </button>
+          </NavLink>    
         </li>
         <li className="nav-item py-2 py-xl-0">
-        <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
-          <NavLink to="/support" className="nav-link">
-            <h4>Support</h4>
+          <NavLink to="/support" className="nav-link" aria-current="page">
+            <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
+              <h4>Support</h4>
+            </button>
           </NavLink>
-          </button>
         </li>
       </ul>
       </div>

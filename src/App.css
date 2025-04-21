@@ -11,7 +11,13 @@ header{
   margin: 0px;
   z-index: 1;
  }
-
+.nav-link button h4{
+  color: #f0f8ffcf;
+}
+.nav-link:focus,.nav-link:active ,.nav-link button h4:hover  {
+  color: #f0f8ff;
+  text-shadow: 2px 3px 10px rgba(210, 49, 170, 0.965);
+}
 .story,.Exploration{
  padding-top: 30px;
  background-color: #f0f8ff;
@@ -68,12 +74,8 @@ button:hover{
 
 .nav-item{
   padding: 0px 20px;
-  
 }
-.nav-link:hover {
-  color: #f0f8ff;
-  text-shadow: 2px 3px 10px rgba(210, 49, 170, 0.564);
-}
+
 
 .nav-icon{
   font-size: calc(1.6*(2vh + 0.4vw));
@@ -164,14 +166,14 @@ button:hover{
   border: 0;
 }
 
-.box span h2{
+.box div h2{
   font-weight: bolder;
   margin: 5px 80px;
   padding-top: 10px;
   text-shadow: 0 0 0.3px;
 }
 
-.box span p{
+.box div p{
   font-weight: lighter;
   margin: 0px 50px;
 }
