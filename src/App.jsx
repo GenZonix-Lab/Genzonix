@@ -14,6 +14,7 @@ import Gzxp24004 from './application/gzxproj24/Gzxp24004.jsx';
 import Gzxp24005 from './application/gzxproj24/Gzxp24005.jsx';
 import Portfolio from './portfolio/Portfolio'
 import Auth from './application/Auth'
+import ProfileUpdate from './application/ProfileUpdate'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <Route path='/career' element={<Career/>}/>
       <Route path='/support' element={<Support/>}/>
       <Route path='/Auth' element={<Auth />}/>
+      <Route path='/profileUpdate' element={<ProfileUpdate />}/>
       <Route path='Gzxp24001' element={<Gzxp24001 />}/>
       <Route path='Gzxp24002' element={<Gzxp24002 />}/>
       <Route path='Gzxp24003' element={<Gzxp24003 />}/>

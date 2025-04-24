@@ -8,4 +8,74 @@ export const auth = defineAuth({
   loginWith: {
     email: true,
   },
+    
+  userAttributes: {
+    fullname: {
+      mutable: true,
+      required: true,
+    },
+    phoneNumber: {
+      mutable: true,
+      required: false,
+    },    
+    "custom:doorNo": {
+      dataType: "String",
+      mutable: true,
+      minLen: 1,
+      maxLen: 300,
+    },
+    address: {
+      mutable: true,
+      required: false,
+    },
+    "custom:addressLine2": {
+      dataType: "String",
+      mutable: true,
+      minLen: 1,
+      maxLen: 300,
+    },
+    "custom:addressLine3": {
+      dataType: "String",
+      mutable: true,
+      minLen: 1,
+      maxLen: 300,
+    },
+    "custom:districtCode": {
+      dataType: "String",
+      mutable: true,
+    },
+    "custom:district": {
+      dataType: "String",
+      mutable: true,
+      minLen: 1,
+      maxLen: 100,
+    },
+    "custom:stateCode": {
+      dataType: "String",
+      mutable: true,
+    },
+    "custom:states": {
+      dataType: "String",
+      mutable: true,
+      minLen: 1,
+      maxLen: 100,
+    },
+    "custom:countryCode": {
+      dataType: "String",
+      mutable: true,
+    },
+    "custom:country": {
+      dataType: "String",
+      mutable: true,
+      minLen: 1,
+      maxLen: 100,
+    },
+    "custom:pincode": {
+      dataType: "String",
+      mutable: true,
+      minLen: 5,
+      maxLen: 7,
+    },
+
+  }
 });

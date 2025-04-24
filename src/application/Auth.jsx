@@ -1,22 +1,20 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Authenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import outputs from '../../amplify_outputs.json';
 import '@aws-amplify/ui-react/styles.css';
+import UserDetails from './UserDetails';
+import ProfileUpdate from './ProfileUpdate';
 
 Amplify.configure(outputs);
+
+// Amplify.configure
 const Auth = () => {
   return (
     <>
-    <Authenticator className='my-5 pt-5'>
-      {({ signOut, user }) => (
-        <main>
-          <h1>Hello {user?.signInDetails.loginId}</h1>
-          <button onClick={signOut}>Sign out</button>
-        </main>
-      )}
+    <Authenticator signUpAttributes={['name', 'email', 'phone_number']}>
+    {({ signOut, user }) => <UserDetails user={user} signOut={signOut} />}
     </Authenticator>
-    
     </>
   )
 }
