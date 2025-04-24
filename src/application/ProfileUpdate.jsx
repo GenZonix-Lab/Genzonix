@@ -68,12 +68,15 @@ const ProfileUpdate = ({user}) => {
         'custom:pincode': formData?.['custom:pincode'],
       }
       for (const [key, value] of Object.entries(addressFields)) { 
-          await updateUserAttribute({
-            userAttribute: {
-              attributeKey: key,
-              value: value ? value.trim() : '',
-            },
-          });
+        const trimmedValue = value?.trim?.(); 
+          if(trimmedValue){
+            await updateUserAttribute({
+                userAttribute: {
+                  attributeKey: key,
+                  value: trimmedValue,
+                },
+              });
+          }
       }
 
 
