@@ -92,12 +92,17 @@ button:hover{
   font-weight: bolder;
 }
 .title h2{
-  font-size: calc(10% + 3vw + 3vh);
+  font-size: calc(10% + 2.5vw + 3vh);
   font-weight: bolder;
 }
 .title h3{
   font-size: calc(10% + 1vw + 2.5vh);
   font-weight: bolder;
+}
+
+.story-data h3{
+  font-size: calc(10% + 1.3vw + 1.5vh);
+  font-weight:100;
 }
 
 .docs h1{
@@ -262,3 +267,87 @@ p .btn:hover{
 
 }
 
+.address td h4{
+  width: 100%;
+  font-size: calc(2 + 100vw + 2vh);
+  font-weight: 100;
+  padding: 5px 10px;
+  box-shadow: 1px 2px 1px #cae8ff;
+  border-radius: 8px;
+
+}
+
+.address th h4 ,.address td h4{
+  margin: 20px 5px;
+}
+
+.address td input,.address td input:target{
+  background: transparent;
+  color: #f0f8ff;
+  border: 0px;
+  outline: none;
+}
+.address td h4 input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.address td select,.address td select:target{
+  background: transparent;
+  color: #f0f8ff;
+  border: 0px;
+  outline: none;
+  width: 100%;
+}
+.address select option{
+  background: #cae8ff;
+  color: #050a30;
+  border: 0px;
+  outline: none;
+  width: 100%;
+
+}
+.address select option:hover{
+  background: #549acf;
+}
+.address td h4 select:focus {
+  outline: none;
+  box-shadow: none;
+}
+.address td {
+  width: 300px;
+}
+
+@media screen and (max-width: 600px) {
+  .address td,
+  .address th {
+    display: block;
+    width: 90%;
+    box-sizing: border-box;
+  }
+}
+
+.address th {
+  padding: 4px 10px;
+  vertical-align: top;
+  display: table-cell;
+  
+}
+.address th label{
+  vertical-align: top;
+}
+.btn-default{
+  background-color: #f0f8ff;
+  color:#050a30;
+  font-weight: 300;
+  font-size: calc(1% + 0.1vw + 2vh);
+  border-radius: 10px;
+}
+.btn-default:hover{
+  color:#f0f8ff;
+  background-color: transparent;
+  font-weight: 300;
+  border: 0px;
+  box-shadow: 0px 0px 4px #cae8ff;;
+  transition:300ms all ease-in-out;
+}

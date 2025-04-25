@@ -8,7 +8,8 @@ const Footer = () => {
     const year = new Date();
   return (
     <>
-        <footer className='container mt-4 pt-4'>
+        <footer className='mt-4 pt-4'>
+            <div className="container">
             <section className="row mt-4">
                 <div className="col-12 col-sm-12 col-lg-4">
                     <ul >
@@ -54,6 +55,7 @@ const Footer = () => {
             </div>
             <div className='text-center'>
                 <p>Copyright &#xa9; {year.getFullYear()}, Genzonix. All Rights Reserved.</p>
+            </div>
             </div>
         </footer>
     </>

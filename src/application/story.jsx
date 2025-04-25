@@ -9,24 +9,25 @@ const Story = () => {
 
   return (
     <div className="story">
+        <div className="container">
         <div className="title text-center">
             <h2>Empowering Innovators: The Genzonix Story</h2>
         </div>
-            <div className="row">
-                <div className='child-img order-lg-2 order-1 col-lg-4 col-12 text-center p-3'>
+            <div className="row justify-content-center">
+                <div className='child-img order-lg-2 order-1 col col-lg-4 col-xl-3 col-10 text-center p-3'>
                 <img 
                     src={child_pic}
                     alt="child" 
                     title="child" 
                 />
             </div>
-            <div className="story-data order-lg-1 order-2 col-lg-8 col-12">
+            <div className="story-data order-lg-1 order-2 col col-lg-8 col-xl-9 col-12">
                 <h3>{head2_data[0]}</h3>
                 <h3>{head2_data[1]}</h3>
             </div>
-            </div>
-            
         </div>
+        </div>
+    </div>
 
 
   )

@@ -15,6 +15,7 @@ const Community = () => {
 
   return (    
     <div className="Exploration my-5">
+        <div className="container">
         <div className="title text-center"><h2>Why Genzonix?</h2></div>
         <section className="row text-center mt-2">
             <div className="box col-sm-12 col-lg-4 p-1">
@@ -54,6 +55,7 @@ const Community = () => {
                 </div>
             </div>
         </section>
+        </div>
     </div>
   )
 }

@@ -16,6 +16,7 @@ const InnovationKit = () => {
   return (
 
     <div className='kit my-5'>
+        <div className="container">
         <div className="title text-center mt-2">
             <h2>DIY INNOVATIVE</h2> 
         </div>
@@ -57,6 +58,8 @@ const InnovationKit = () => {
                 </div>
             </div>
         </section>
+
+        </div>
     </div>
   )
 }
