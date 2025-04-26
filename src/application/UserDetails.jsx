@@ -23,16 +23,17 @@ const UserDetails = ({ user, signOut }) => {
     }, [user]);
   return (
     <>
-    <main className="container text-center m-3 p-3">
+    <main className="text-center m-3 p-3">
     {loading ? (
         <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
       ) : (
-        <div className="userprofile">
+        <div className="d-flex justify-content-center">
+            <div className="userprofile p-4">
             <div className="d-grid justify-content-center align-items-center">
                 <h1>Hello, {user?.username}</h1>
                 <table className='text-center'>
                     <tbody className='text-start'>
-                        <tr className='address'>
+                        <tr className='address '>
                             <th><h4>Name</h4></th>
                             <th><h4>:</h4></th>
                             <td><h4>{attributes?.name || ''}</h4></td>
@@ -55,15 +56,16 @@ const UserDetails = ({ user, signOut }) => {
                         </tr>
                     </tbody>
                 </table>
+                <div className="d-flex justify-content-center align-items-center m-3 p-3">
+                    <NavLink to={"/profileUpdate"}><button className='px-3 p-2 me-3 btn-default'>Update</button></NavLink>
+                    <button className='p-2 px-3 btn-default' onClick={signOut}>Sign out</button>
+                </div>
             </div>
         </div>
+        </div>
       )}
-      <div className="d-flex justify-content-center align-items-center m-3 p-3">
-        <NavLink to={"/profileUpdate"}><button className='px-3 p-2 me-3 btn-default'>Update</button></NavLink>
-        <button className='p-2 px-3 btn-default' onClick={signOut}>Sign out</button>
-      </div>
+     
     </main>
-    <hr />
     </>
   )
 }

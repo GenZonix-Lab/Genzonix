@@ -722,7 +722,7 @@
   }
   .react-tel-input .form-control {
     position:relative;
-    font-size:14px;
+    font-size:calc(3 * ( 0.5vw + 0.3vh ));
     letter-spacing:.01rem;
     margin-top:0 !important;
     margin-bottom:0 !important;

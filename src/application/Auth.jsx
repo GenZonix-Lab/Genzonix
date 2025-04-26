@@ -12,9 +12,12 @@ Amplify.configure(outputs);
 const Auth = () => {
   return (
     <>
-    <Authenticator signUpAttributes={['name', 'email', 'phone_number']}>
-    {({ signOut, user }) => <UserDetails user={user} signOut={signOut} />}
-    </Authenticator>
+    <div className="container">
+      <Authenticator signUpAttributes={['name', 'email', 'phone_number']}>
+      {({ signOut, user }) => <UserDetails user={user} signOut={signOut} />}
+      </Authenticator>
+    </div>
+    <hr />
     </>
   )
 }

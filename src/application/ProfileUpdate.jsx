@@ -156,17 +156,16 @@ const ProfileUpdate = ({user}) => {
   }
   return (
     <>
-    <main className="app container text-center m-3 p-3">
+    <main className="text-center m-3 p-3">
       
       {loading ? (
         <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
       ) : (
-        <div>
-        <h1>User Details</h1>
+        <div className="d-flex justify-content-center">
         <div className="userprofile" id='updateprofile'>
-          <div className='d-flex justify-content-center align-items-center'>
-            
-            <table>
+          <div className='d-grid justify-content-center align-items-center'>
+            <h1>User Details</h1>
+            <table className='text-center'>
               <tbody className='text-start'>
                 <tr className='address'>
                   <th><label htmlFor="name" className='pe-3'><h4>Name</h4></label></th>
@@ -302,8 +301,9 @@ const ProfileUpdate = ({user}) => {
                 </tr>
               </tbody>
             </table>
-            </div>
             <button className='p-2 px-3 btn-default' onClick={handleUpdate}>Update All</button>
+
+            </div>
 
             {pendingVerification && (
               <div>
