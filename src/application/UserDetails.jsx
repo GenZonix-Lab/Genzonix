@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import { NavLink } from 'react-router-dom';
 import { fetchUserAttributes } from 'aws-amplify/auth';
 import { Atom } from 'react-loading-indicators';
 
@@ -36,9 +35,9 @@ const UserDetails = ({ user, signOut }) => {
             <div className="userprofile px-lg-5">
                 <div className='amplify-heading'><h2>Hello, {user?.username}</h2></div>
                 <fieldset className= 'amplify-flex text-start pb-3' style={{"flex-direction": "column"}}>
-                    <div className='amplify-flex p-1 px-xl-5' style={{"flex-direction": "column"}}>
+                    <div className='amplify-flex p-1 m-2 px-xl-5' style={{"flex-direction": "column"}}>
                         <div className='amplify-flex amplify-field amplify-textfield'>
-                            <label htmlFor="name" className='amplify-label pe-3'>Full name (First and Last name)</label>
+                            <label htmlFor="name" className='amplify-label pe-3'>Full Name</label>
                             <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
                                 <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
                                     <input
@@ -68,7 +67,7 @@ const UserDetails = ({ user, signOut }) => {
                         </div>
                         </div>
                         <div className='amplify-flex amplify-field amplify-textfield'>
-                        <label htmlFor="phone_number" className='amplify-label pe-3'>Email</label>
+                        <label htmlFor="phone_number" className='amplify-label pe-3'>Phone Number</label>
                         <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
                             <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
                             <input
@@ -83,16 +82,16 @@ const UserDetails = ({ user, signOut }) => {
                         </div>
                         </div>
                         <div className='amplify-flex amplify-field amplify-textfield'>
-                            <label htmlFor="address" className='amplify-label pe-3'>Street / Sector / Area</label>
+                            <label htmlFor="address" className='amplify-label pe-3'>Address</label>
                             <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
                                 <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
                                     <textarea
                                     rows={'4'}
-                                    type="week"
+                                    type="text"
                                     name="address"
                                     className='amplify-input amplify-field-group__control'
                                     value={`${attributes?.['custom:doorNo'] ? attributes?.['custom:doorNo'] : '' } ${attributes?.address ? ', '+attributes?.address : '' }${attributes?.['custom:addressLine2'] ? ', '+attributes?.['custom:addressLine2'] : '' } ${attributes?.['custom:district'] ? ', '+attributes?.['custom:district'] : ''}${attributes?.['custom:states'] ? ', '+attributes?.['custom:states'] : ''} ${attributes?.['custom:country'] ? ', '+attributes?.['custom:country'] : ''}${attributes?.['custom:pincode'] ? ' - '+attributes?.['custom:pincode'] : ''}`}
-                                    placeholder="Street / Sector / Area"
+                                    placeholder="Address"
                                     readOnly
                                     />
                                 </div>

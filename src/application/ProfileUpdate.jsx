@@ -167,7 +167,7 @@ const ProfileUpdate = ({user}) => {
           <div className='px-lg-5 userprofile'>
             <div className="amplify-heading"><h1>User Details</h1></div>
             <fieldset className='amplify-flex text-start pb-3' style={{"flex-direction": "column"}}>
-              <div className='amplify-flex p-1 px-xl-5' style={{"flex-direction": "column"}}>
+              <div className='amplify-flex p-1 m-2 px-xl-5' style={{"flex-direction": "column"}}>
                 <div className='amplify-flex amplify-field amplify-textfield'>
                   <label htmlFor="name" className='amplify-label pe-3'>Full name (First and Last name)</label>
                   <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
