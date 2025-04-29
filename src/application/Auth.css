@@ -1,0 +1,53 @@
+[data-amplify-authenticator] [data-amplify-router] {
+    background-color: transparent;
+    box-shadow: 0px 0px 10px #549acf;
+    border: 0px solid #549acf;
+    padding: 0px 25px;
+    border-radius: 30px;
+    color: #f0f8ff;
+}
+.amplify-tabs__item{
+    color: #f0f8ff;
+    border: 0;
+    background-color: transparent;
+    padding: 10px 20px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px 10px 0px 0px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: none;
+}
+.amplify-tabs__item:hover {
+    color: #549acf;
+    border-color: var(--amplify-components-tabs-item-active-border-color);
+}
+.amplify-select{
+    background-color: #cae8ff;
+}
+.amplify-tabs__item--active {
+    color: #f0f8ff;
+    border-color: var(--amplify-components-tabs-item-active-border-color);
+    box-shadow: 0px 2px 2px #549acf;
+    transition-property: none;
+    border-radius: 0px 0px 10px 10px;
+  }
+  .amplify-label {
+    color: #f0f8ff;
+  }
+  .amplify-input {
+    color: #f0f8ff;
+  }
+.amplify-button{
+    background-color: transparent;
+    color: #f0f8ff;
+}
+.amplify-button--primary{
+    background-color: #549acf;
+}
+.amplify-button--link{
+    color:#96bbd7;
+}
+.amplify-tabs__list {
+    border-color: transparent;
+}

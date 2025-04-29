@@ -5,6 +5,7 @@ import outputs from '../../amplify_outputs.json';
 import '@aws-amplify/ui-react/styles.css';
 import UserDetails from './UserDetails';
 import ProfileUpdate from './ProfileUpdate';
+import './Auth.css';
 
 Amplify.configure(outputs);
 
@@ -12,7 +13,7 @@ Amplify.configure(outputs);
 const Auth = () => {
   return (
     <>
-    <div className="container">
+    <div className="container p-4">
       <Authenticator signUpAttributes={['name', 'email', 'phone_number']}>
       {({ signOut, user }) => <UserDetails user={user} signOut={signOut} />}
       </Authenticator>

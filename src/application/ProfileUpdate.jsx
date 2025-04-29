@@ -280,7 +280,7 @@ const ProfileUpdate = ({user}) => {
                   </select></h4></td>
                 </tr>
                 <tr className='address'>
-                  <th><label htmlFor="City" className='pe-3'><h4>City</h4></label></th>
+                  <th><label htmlFor="City" className='pe-3'><h4>District</h4></label></th>
                   <th><h4>:</h4></th>
                   <td><h4><select onChange={handleCityChange} value={formData?.['custom:districtCode'] || ''}>
                       <option key={formData?.['custom:districtCode'] || ''} value={formData?.['custom:districtCode'] || ''}>{formData?.['custom:district'] || 'Select District'}</option>
