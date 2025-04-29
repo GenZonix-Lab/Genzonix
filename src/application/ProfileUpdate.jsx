@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Country, State, City }  from 'country-state-city';
 import PhoneInput from 'react-phone-input-2'
-import { Atom } from 'react-loading-indicators';
+import { Atom, ThreeDot } from 'react-loading-indicators';
 import './reactStyle.css'
 import {
   fetchUserAttributes,
@@ -48,6 +48,8 @@ const ProfileUpdate = ({user}) => {
 
   const handleUpdate = async () => {
     try {
+      setMessage('Loading');
+      
       const updatableFields = {
         name: formData.name,
         email: formData.email,
@@ -101,7 +103,6 @@ const ProfileUpdate = ({user}) => {
           setMessage('Verification code sent to phone number.');
         }
       }
-
       const updatedAttrs = await fetchUserAttributes();
       setAttributes(updatedAttrs);
       setFormData({
@@ -156,152 +157,170 @@ const ProfileUpdate = ({user}) => {
   }
   return (
     <>
-    <main className="text-center m-3 p-3">
+    <main className="text-center mx-md-5 p-md-5">
       
       {loading ? (
         <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
       ) : (
-        <div className="d-flex justify-content-center">
-        <div className="userprofile" id='updateprofile'>
-          <div className='d-grid justify-content-center align-items-center'>
-            <h1>User Details</h1>
-            <table className='text-center'>
-              <tbody className='text-start'>
-                <tr className='address'>
-                  <th><label htmlFor="name" className='pe-3'><h4>Name</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td>
-                    <h4>
+        <div className="d-flex justify-content-center px-xl-5">
+        <div className="px-md-5" id='updateprofile'>
+          <div className='px-lg-5 userprofile'>
+            <div className="amplify-heading"><h1>User Details</h1></div>
+            <fieldset className='amplify-flex text-start pb-3' style={{"flex-direction": "column"}}>
+              <div className='amplify-flex p-1 px-xl-5' style={{"flex-direction": "column"}}>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="name" className='amplify-label pe-3'>Full name (First and Last name)</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
                     <input
                     type="text"
                     name="name"
+                    className='amplify-input amplify-field-group__control'
                     value={formData.name || ''}
                     onChange={handleChange}
                     placeholder="Name"
                   />
-                    </h4>
-                  </td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="email" className='pe-3'><h4>Email</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td>
-                    <h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="email" className='amplify-label pe-3'>Email</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
                       <input
                         type="email"
                         name="email"
+                        className='amplify-input amplify-field-group__control'
                         value={formData.email || ''}
                         onChange={handleChange}
                         placeholder="Email"
                       />
-                    </h4>
-                  </td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="phone_number" className='pe-3'><h4>Phone Number</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td>
-                    <h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="phone_number" className='amplify-label pe-3'>Phone Number</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
                       <PhoneInput
                         country={'in'}
                         name="phone_number"
+                        className='amplify-input amplify-field-group__control'
                         placeholder="Phone Number"
                         value={formData.phone_number || ''}
                         onChange={handlephoneChange}
                       />
-                    </h4>
-                  </td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="doorNo" className='pe-3'><h4>Door No</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td>
-                    <h4>
+                    </div>
+                  </div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="doorNo" className='amplify-label pe-3'>Flat, House no., Building, Company, Apartment</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
                       <input
                         type="text"
                         name="custom:doorNo"
+                        className='amplify-input amplify-field-group__control'
                         value={formData?.['custom:doorNo'] || ''}
                         onChange={handleChange}
                         placeholder="eg. 17/a"
                       />
-                    </h4>
-                  </td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="address" className='pe-3'><h4>Address Line 1</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td><h4><input
+                    </div>
+                  </div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="address" className='amplify-label pe-3'>Street / Sector / Area</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                      <input
                       type="text"
                       name="address"
-                      className=''
+                      className='amplify-input amplify-field-group__control'
                       value={formData.address || ''}
                       onChange={handleChange}
-                      placeholder="Address line 1"
-                    /></h4></td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="address" className='pe-3'><h4>Address Line 2</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td><h4><input
+                      placeholder="Street / Sector / Area"
+                    /></div></div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="address" className='amplify-label pe-3'>Village / town / city</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                      <input
                       type="text"
                       name="custom:addressLine2"
+                      className='amplify-input amplify-field-group__control'
                       value={formData?.['custom:addressLine2'] || ''}
                       onChange={handleChange}
-                      placeholder="Address line 2"
-                    /></h4></td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="custom:addressLine3" className='pe-3'><h4>Address Line 3</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td><h4><input
+                      placeholder="Village / town / city"
+                    /></div></div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="custom:addressLine3" className='amplify-label pe-3'>Landmark</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                      <input
                       type="text"
                       name="custom:addressLine3"
+                      className='amplify-input amplify-field-group__control'
                       value={formData?.['custom:addressLine3'] ? formData?.['custom:addressLine3'] : ''}
                       onChange={handleChange}
-                      placeholder="Address line 3"
-                    /></h4></td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="Country" className='pe-3'><h4>Country</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td><h4><select onChange={handleCountryChange} value={formData?.['custom:countryCode'] || ''}>
-                      <option key={formData?.['custom:countryCode'] || ''} value={formData?.['custom:countryCode'] || ''}>{formData?.['custom:country'] || 'Select Country'}</option>
-                      {countries.map((country) => <option key={country.isoCode} value={country.isoCode}>{country.name} {country.flag}</option>)}
-                      <option value="none"></option>
-                  </select></h4></td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="State" className='pe-3'><h4>State</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td><h4><select onChange={handleStateChange} value={formData?.['custom:stateCode'] || ''}>
+                      placeholder="Landmark"
+                    /></div></div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="Country" className='amplify-label pe-3'>Country</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                      <select className='amplify-select amplify-field-group__control' onChange={handleCountryChange} value={formData?.['custom:countryCode'] || ''}>
+                        <option key={formData?.['custom:countryCode'] || ''} value={formData?.['custom:countryCode'] || ''}>{formData?.['custom:country'] || 'Select Country'}</option>
+                        {countries.map((country) => <option key={country.isoCode} value={country.isoCode}>{country.name} {country.flag}</option>)}
+                        <option value="none"></option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="State" className='amplify-label pe-3'>State</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                    <select className='amplify-select amplify-field-group__control' onChange={handleStateChange} value={formData?.['custom:stateCode'] || ''}>
                       <option key={formData?.['custom:stateCode'] || ''} value={formData?.['custom:stateCode'] || ''}>{formData?.['custom:states'] || 'Select State'}</option>
                       {states.map((state) => <option key={state.isoCode} value={state.isoCode}>{state.name}</option>)}
                       <option value="none"></option>
-                  </select></h4></td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="City" className='pe-3'><h4>District</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td><h4><select onChange={handleCityChange} value={formData?.['custom:districtCode'] || ''}>
+                  </select>
+                    </div>
+                  </div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="City" className='amplify-label pe-3'>District</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                    <select className='amplify-select amplify-field-group__control' onChange={handleCityChange} value={formData?.['custom:districtCode'] || ''}>
                       <option key={formData?.['custom:districtCode'] || ''} value={formData?.['custom:districtCode'] || ''}>{formData?.['custom:district'] || 'Select District'}</option>
                       {cities.map((city) => <option className='country-options' key={city.name} value={city.name}>{city.name}</option>)}
                       <option value="none"></option>
-                  </select></h4></td>
-                </tr>
-                <tr className='address'>
-                  <th><label htmlFor="pincode" className='pe-3'><h4>Pincode</h4></label></th>
-                  <th><h4>:</h4></th>
-                  <td><h4><input
+                  </select>
+                  </div>
+                  </div>
+                </div>
+                <div className='amplify-flex amplify-field amplify-textfield'>
+                  <label htmlFor="pincode" className='amplify-label pe-3'>Pincode</label>
+                  <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                    <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                    <input
                       type="text"
                       name="custom:pincode"
+                      className='amplify-input amplify-field-group__control'
                       value={formData?.['custom:pincode'] || ''}
                       onChange={handleChange}
                       placeholder="Pincode"
-                    /></h4></td>
-                </tr>
-              </tbody>
-            </table>
-            <button className='p-2 px-3 btn-default' onClick={handleUpdate}>Update All</button>
+                    />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <button className='amplify-button amplify-button--primary p-2 px-xl-4' onClick={handleUpdate}>Update All</button>
 
             </div>
 
@@ -317,7 +336,7 @@ const ProfileUpdate = ({user}) => {
               </div>
             )}
 
-            <p>{message}</p>
+            <p className='message-paragraph'>{message=="Loading"?<ThreeDot variant="bounce" color="#cae8ff" size="200px" text="please wait" textColor="#549acf" />:message}</p>
           </div>
         </div>
       )}

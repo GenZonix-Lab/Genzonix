@@ -21,44 +21,108 @@ const UserDetails = ({ user, signOut }) => {
         setAttributes(null);
         loadAttributes();
     }, [user]);
+
+    const ProfileUpdatepage=()=> {
+        window.location.href = "/profileUpdate";
+      }
   return (
     <>
-    <main className="text-center m-3 p-3">
+    <main className="text-center mx-md-5 mt-2 px-md-5">
     {loading ? (
         <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
       ) : (
-        <div className="d-flex justify-content-center">
-            <div className="userprofile p-4">
-            <div className="d-grid justify-content-center align-items-center">
-                <h1>Hello, {user?.username}</h1>
-                <table className='text-center'>
-                    <tbody className='text-start'>
-                        <tr className='address '>
-                            <th><h4>Name</h4></th>
-                            <th><h4>:</h4></th>
-                            <td><h4>{attributes?.name || ''}</h4></td>
-                        </tr>
-                        <tr className='address'>
-                            <th><h4>Email</h4></th>
-                            <th><h4>:</h4></th>
-                            <td><h4>{attributes?.email || ''}</h4></td>
-                        </tr>
-                        <tr className='address'>
-                            <th><h4>Phone</h4></th>
-                            <th><h4>:</h4></th>
-                            <td><h4>{attributes?.phone_number || ''}</h4></td>
-                        </tr>
-                        <tr className='address'>
-                            <th><h4>Address</h4></th>
-                            <th><h4>:</h4></th>
-                            <td style={{width:'18em'}}><h4>{`${attributes?.['custom:doorNo'] ? attributes?.['custom:doorNo'] : '' } ${attributes?.address ? ', '+attributes?.address : '' }${attributes?.['custom:addressLine2'] ? ', '+attributes?.['custom:addressLine2'] : '' } ${attributes?.['custom:addressLine3'] ? ', '+attributes?.['custom:addressLine3'] : '' } ${attributes?.['custom:district'] ? ', '+attributes?.['custom:district'] : ''}${attributes?.['custom:states'] ? ', '+attributes?.['custom:states'] : ''} ${attributes?.['custom:country'] ? ', '+attributes?.['custom:country'] : ''}${attributes?.['custom:pincode'] ? ' - '+attributes?.['custom:pincode'] : ''}`}</h4></td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
+        <div className="d-lg-flex justify-content-center px-xl-5">
+            <div className="px-md-5">
+            <div className="userprofile px-lg-5">
+                <div className='amplify-heading'><h2>Hello, {user?.username}</h2></div>
+                <fieldset className= 'amplify-flex text-start pb-3' style={{"flex-direction": "column"}}>
+                    <div className='amplify-flex p-1 px-xl-5' style={{"flex-direction": "column"}}>
+                        <div className='amplify-flex amplify-field amplify-textfield'>
+                            <label htmlFor="name" className='amplify-label pe-3'>Full name (First and Last name)</label>
+                            <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                                <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                                    <input
+                                    type="text"
+                                    name="name"
+                                    className='amplify-input amplify-field-group__control'
+                                    value={attributes?.name || ''}
+                                    placeholder="Name"
+                                    readOnly
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='amplify-flex amplify-field amplify-textfield'>
+                        <label htmlFor="email" className='amplify-label pe-3'>Email</label>
+                        <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                            <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                            <input
+                                type="email"
+                                name="email"
+                                className='amplify-input amplify-field-group__control'
+                                value={attributes?.email || ''}
+                                placeholder="Email"
+                                readOnly
+                            />
+                            </div>
+                        </div>
+                        </div>
+                        <div className='amplify-flex amplify-field amplify-textfield'>
+                        <label htmlFor="phone_number" className='amplify-label pe-3'>Email</label>
+                        <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                            <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                            <input
+                                type="tel"
+                                name="phone_number"
+                                className='amplify-input amplify-field-group__control'
+                                value={attributes?.phone_number || ''}
+                                placeholder="phone number"
+                                readOnly
+                            />
+                            </div>
+                        </div>
+                        </div>
+                        <div className='amplify-flex amplify-field amplify-textfield'>
+                            <label htmlFor="address" className='amplify-label pe-3'>Street / Sector / Area</label>
+                            <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                                <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                                    <textarea
+                                    rows={'4'}
+                                    type="week"
+                                    name="address"
+                                    className='amplify-input amplify-field-group__control'
+                                    value={`${attributes?.['custom:doorNo'] ? attributes?.['custom:doorNo'] : '' } ${attributes?.address ? ', '+attributes?.address : '' }${attributes?.['custom:addressLine2'] ? ', '+attributes?.['custom:addressLine2'] : '' } ${attributes?.['custom:district'] ? ', '+attributes?.['custom:district'] : ''}${attributes?.['custom:states'] ? ', '+attributes?.['custom:states'] : ''} ${attributes?.['custom:country'] ? ', '+attributes?.['custom:country'] : ''}${attributes?.['custom:pincode'] ? ' - '+attributes?.['custom:pincode'] : ''}`}
+                                    placeholder="Street / Sector / Area"
+                                    readOnly
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='amplify-flex amplify-field amplify-textfield'>
+                            <label htmlFor="custom:addressLine3" className='amplify-label pe-3'>Landmark</label>
+                            <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                                <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                                <input
+                                type="text"
+                                name="custom:addressLine3"
+                                className='amplify-input amplify-field-group__control'
+                                value={attributes?.['custom:addressLine3'] ? attributes?.['custom:addressLine3'] : '' }
+                                placeholder="Landmark"
+                                readOnly
+                                /></div>
+                            </div>
+                        </div>
+                        <div className='amplify-flex amplify-field amplify-textfield text-center'>
+                        <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
+                            <div className='amplify-field-group__field-wrapper amplify-field-group__field-wrapper--horizontal'>
+                            <button className='p-2 me-2 amplify-button amplify-button--primary' onClick={()=>ProfileUpdatepage()}>Update</button>
+                            <button className='p-2 amplify-button amplify-button--primary' onClick={signOut}>Sign out</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </fieldset>
                 <div className="d-flex justify-content-center align-items-center m-3 p-3">
-                    <NavLink to={"/profileUpdate"}><button className='px-3 p-2 me-3 btn-default'>Update</button></NavLink>
-                    <button className='p-2 px-3 btn-default' onClick={signOut}>Sign out</button>
                 </div>
             </div>
         </div>

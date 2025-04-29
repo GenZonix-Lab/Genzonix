@@ -722,7 +722,6 @@
   }
   .react-tel-input .form-control {
     position:relative;
-    font-size:calc(3 * ( 0.5vw + 0.3vh ));
     letter-spacing:.01rem;
     margin-top:0 !important;
     margin-bottom:0 !important;
@@ -752,13 +751,15 @@
   }
   .country-list .country-name {
     color: #050a30;
+    vertical-align:bottom ;
   }
 
   .react-tel-input .flag-dropdown {
     position:absolute;
     top:0;
+    left: 0;
     bottom:0;
-    padding:0;
+    padding:8px;
     background-color:#cae8ff;
     border:1px solid #549acf;
     border-radius:4px 0 0 4px
@@ -863,13 +864,10 @@
     top:0;
     padding:10px 0 6px 10px
   }
-  .react-tel-input .country-list .search-emoji {
-    font-size:15px
-  }
+
   .react-tel-input .country-list .search-box {
     border:1px solid #cacaca;
     border-radius:3px;
-    font-size:15px;
     line-height:15px;
     margin-left:6px;
     padding:3px 8px 5px;
@@ -882,7 +880,6 @@
   .react-tel-input .invalid-number-message {
     position:absolute;
     z-index:1;
-    font-size:13px;
     left:46px;
     top:-8px;
     background:#f0f8ff;
@@ -893,7 +890,6 @@
     display:none;
     position:absolute;
     z-index:1;
-    font-size:13px;
     left:46px;
     top:-8px;
     background:#f0f8ff;

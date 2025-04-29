@@ -38,6 +38,12 @@
   .amplify-input {
     color: #f0f8ff;
   }
+.amplify-heading {
+    color: #f0f8ff;
+  }
+.amplify-text {
+    color: #f0f8ff;
+  }
 .amplify-button{
     background-color: transparent;
     color: #f0f8ff;
@@ -45,9 +51,33 @@
 .amplify-button--primary{
     background-color: #549acf;
 }
+.amplify-button:hover{
+    padding: 10px 0px;
+    overflow: unset;
+    outline: unset;
+    outline-offset: unset;
+    border: 1px solid #549acf;
+
+}
 .amplify-button--link{
     color:#96bbd7;
 }
 .amplify-tabs__list {
     border-color: transparent;
 }
+
+@media (min-width: 768px) {
+  .userprofile{
+    box-shadow: 0px 10px 10px #549acf;
+    border: 0px solid #549acf;
+    padding: 20px;
+    border-radius: 30px;
+  }
+}
+
+
+
+
+  .message-paragraph{
+    padding-top: 14px;
+  }

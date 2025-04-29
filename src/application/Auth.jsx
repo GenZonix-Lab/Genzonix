@@ -13,7 +13,7 @@ Amplify.configure(outputs);
 const Auth = () => {
   return (
     <>
-    <div className="container p-4">
+    <div className=".container-sm p-sm-4">
       <Authenticator signUpAttributes={['name', 'email', 'phone_number']}>
       {({ signOut, user }) => <UserDetails user={user} signOut={signOut} />}
       </Authenticator>
