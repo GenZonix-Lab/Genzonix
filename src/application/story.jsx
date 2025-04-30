@@ -1,5 +1,5 @@
 import React from 'react'
-import child_pic from '../assets/child_pic.avif'
+import child_pic from '../assets/child_pic.webp'
 
 const Story = () => {
     const head2_data = [

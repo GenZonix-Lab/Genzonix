@@ -1,5 +1,5 @@
 import React from 'react';
-import boxCloud from '../assets/pic2.png';
+import boxCloud from '../assets/pic2.webp';
 import { NavLink } from 'react-router-dom';
 
 const Explore = () => {
@@ -18,6 +18,7 @@ const Explore = () => {
             id='box-img'
             alt="Cloud_box" 
             title="Cloud_box" 
+            loading='lazy'
           />
       </div>
     </div>

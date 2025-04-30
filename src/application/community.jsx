@@ -1,7 +1,7 @@
 import React from 'react'
 import handson from '../assets/handsonLearning.webp'
 import expert from '../assets/expert.webp'
-import quality from '../assets/kit_demo.jpg'
+import quality from '../assets/kit_demo.webp'
 
 const Community = () => {
 

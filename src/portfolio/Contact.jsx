@@ -19,7 +19,8 @@ const Contact = () => {
               <label htmlFor="message"><h4>Message</h4></label>
               <textarea name="message" className="form-control portfolio-contact-form" rows="5" required></textarea>
             </div>
-            <div className="text-center p-3"><button type="submit" className="send-btn">Send</button>
+            <div className="text-center">
+              <button type="submit" className="send-btn py-2 px-3">Send</button>
             </div>
           </form>
         </div>

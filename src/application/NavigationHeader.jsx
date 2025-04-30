@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/Genzonix.jpg';
+import logo from '../assets/Genzonix.webp';
 import { NavLink } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Authenticator from './Authenticator';

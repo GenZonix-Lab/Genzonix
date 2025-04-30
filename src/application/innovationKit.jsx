@@ -1,7 +1,7 @@
 import React from 'react'
-import ai from '../assets/AI_pic.jpg'
-import cloud from '../assets/cloud_pic.jpg'
-import iot from '../assets/Box components.png'
+import ai from '../assets/AI_pic.webp'
+import cloud from '../assets/cloud_pic.webp'
+import iot from '../assets/Box components.webp'
 
 const InnovationKit = () => {
 
@@ -27,6 +27,7 @@ const InnovationKit = () => {
                     className='p-1 m-3'
                     alt="IoT" 
                     title="IoT kit box" 
+                    loading="lazy"
                 />
                 <div>
                     <h2>{slide3_h1}</h2>
@@ -39,6 +40,7 @@ const InnovationKit = () => {
                     className='p-1 mt-3'
                     alt="AI" 
                     title="AI kit box" 
+                    loading='lazy'
                 />
                 <div>
                     <h2>{slide3_h2}</h2>
@@ -51,6 +53,7 @@ const InnovationKit = () => {
                     className='p-1  mt-3'
                     alt="Cloud" 
                     title="Cloud kit box" 
+                    loading="lazy"
                 />
                 <div>
                     <h2>{slide3_h3}</h2>

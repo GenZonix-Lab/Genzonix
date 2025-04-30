@@ -30,7 +30,7 @@ const UserDetails = ({ user, signOut }) => {
     {loading ? (
         <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
       ) : (
-        <div className="d-lg-flex justify-content-center px-xl-5">
+        <div className="d-md-block justify-content-center px-xl-5">
             <div className="px-md-5">
             <div className="userprofile px-lg-5">
                 <div className='amplify-heading'><h2>Hello, {user?.username}</h2></div>

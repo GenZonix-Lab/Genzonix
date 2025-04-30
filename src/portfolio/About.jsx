@@ -1,5 +1,5 @@
 import React from 'react'
-import DP from '../assets/1722709029739.jpg'
+import DP from '../assets/1722709029739.webp'
 const About = () => {
   return (
     <div id='About'>

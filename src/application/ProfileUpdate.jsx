@@ -163,8 +163,8 @@ const ProfileUpdate = ({user}) => {
         <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
       ) : (
         <div className="d-flex justify-content-center px-xl-5">
-        <div className="px-md-5" id='updateprofile'>
-          <div className='px-lg-5 userprofile'>
+        <div className="px-md-5 userprofile" id='updateprofile'>
+          <div className='px-lg-5'>
             <div className="amplify-heading"><h1>User Details</h1></div>
             <fieldset className='amplify-flex text-start pb-3' style={{"flex-direction": "column"}}>
               <div className='amplify-flex p-1 m-2 px-xl-5' style={{"flex-direction": "column"}}>

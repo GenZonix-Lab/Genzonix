@@ -1,10 +1,10 @@
 import React from 'react'
-import objid from '../assets/ObjectIdentification.png'
-import SelfBalancingRobot from '../assets/SelfBalancingRobot.png'
-import HomeAutomation from '../assets/Home Automation.png'
-import IndustrialAnalytics from '../assets/IndustrialAnalytics.png'
-import DroneAutomation from '../assets/DroneAutomation.png'
-import ChatBot from '../assets/ChatBot.png'
+import objid from '../assets/ObjectIdentification.webp'
+import SelfBalancingRobot from '../assets/SelfBalancingRobot.webp'
+import HomeAutomation from '../assets/Home Automation.webp'
+import IndustrialAnalytics from '../assets/IndustrialAnalytics.webp'
+import DroneAutomation from '../assets/DroneAutomation.webp'
+import ChatBot from '../assets/ChatBot.webp'
 
 
 const Project = () => {
