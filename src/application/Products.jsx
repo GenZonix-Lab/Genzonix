@@ -1,73 +1,45 @@
-import React from 'react'
-const Products = () => {
-  const singleComponents = [
-    {
-      id: 1,
-      name: "ESP32 Module with micro-USB cable",
-      description: "A powerful Wi-Fi and Bluetooth-enabled microcontroller.",
-      price: "₹399",
-      key:"GZXMCESP32",
-      image: "/images/ESP32_with_cable.png",
-      checked: false
-    },
-    {
-      id: 2,
-      name: "Relay Module",
-      description: "5V Dual Channel Relay Module with Optocoupler.",
-      price: "₹89",
-      key:"GZXMODRE",
-      image: "/images/5V Dual Channel Relay Module with Optocoupler.png",
-      checked: true
-    },
-    {
-      id: 3,
-      name: "LDR sensor",
-      description: "The Digital LDR Module is used to detect the presence of light.",
-      price: "₹49",
-      KEY:"GZXSLDR",
-      image: "/images/LDR Sensor.png",
-      checked: true
-    },
-    {
-      id: 4,
-      name: "IR Sensor Module",
-      description: "Infrared Obstacle Avoidance IR Sensor Module (Active Low) uses IR transmitter and receiver tubes to detect obstacles.",
-      price: "₹49",
-      key:"GZXSIR",
-      image: "/images/IR_Sensor.png",
-      checked: true
-    },
-    {
-      id: 5,
-      name: "HC-SR04-Ultrasonic Range Finder",
-      description: "The HC-SR04 Ultrasonic Range Finder is a popular sensor for distance measurement and object detection.",
-      price: "₹79",
-      key:"GZXSUS",
-      image: "/images/Ultrasonic Sensor.png",
-      checked: true
-    },
-    {
-      id: 6,
-      name: "Mini Breadboard",
-      description: "The SYB-170 Mini Solderless Breadboard is named for its 170 tie points.",
-      price: "₹25",
-      key:"GZXBBB",
-      image: "/images/Breadboard.png",
-      checked: true
-    },
-    {
-      id: 7,
-      name: "Battery Connector Cap",
-      description: "9v Battery Snap Connector + DC Jack",
-      price: "₹25",
-      key:"GZXBCC",
-      image: "/images/connector.png",
-      checked: true
-    }
-  ];
+import React, { useEffect, useState } from 'react';
+import { StorageImage } from '@aws-amplify/ui-react-storage';
 
-  
-  
+const Products = () => {
+  const [components, setComponents] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://ki4mm5ajnj.execute-api.ap-south-1.amazonaws.com/prod/add");
+        if (!response.ok) {
+            throw new Error('Network response was not ok in fetch data ' + response.statusText);
+        }
+        const data = await response.json();
+        setComponents(JSON.parse(data.body));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(components);
+/*   async function fetchdata() {
+          const response = await fetch("https://ki4mm5ajnj.execute-api.ap-south-1.amazonaws.com/prod/add");
+          if (!response.ok) {
+              throw new Error('Network response was not ok in fetch data ' + response.statusText);
+          }
+          const data = await response.json();
+          const products = JSON.parse(data.body); // Assuming the body contains a JSON string
+          const listOut=products.map(element => ({
+          id: element.productCode,
+          name: element.title,
+          description: element.description,
+          price: `₹${element.price}`,
+          key: element.sku,
+          image: element.meta.thumbnail,
+          checked: false // Default value, can be modified later
+        }));
+        components.push(...listOut);
+        console.log(components);
+      } */
+//fetchdata();
   const kits = [
     {
       id: 1,
@@ -97,12 +69,21 @@ const Products = () => {
     <div className="container text-center">
     <div className="title"><h2 className="mt-3 p-2"></h2></div>
     <div className="row justify-content-center justify-content-lg-start">
-      {singleComponents.map(product => (
-       <div key={product.id} checked={product.checked?'':''} className="col-10 col-md-4 col-lg-3 col-sm-6 mb-4">
+      {components.map(product => (
+       <div key={product.id} checked={product.shown?'':''} className="col-10 col-md-4 col-lg-3 col-sm-6 mb-4">
        <div className="card h-100 shadow-sm card-product d-flex flex-column">
-         <img src={product.image} className="card-img-top" alt={product.name} />
+        {product.meta && (
+          <StorageImage 
+            alt="Product" 
+            path={product.meta?.thumbnail || 'default/default-thumbnail.png'}
+            />
+        )}
+         {console.log(product.meta?.thumbnail)}
+
+
+         <img src={product.meta?.thumbnail || 'default/default-thumbnail.png'} className="card-img-top" alt={product.name} />
          <div className="card-body d-flex flex-column">
-           <h5 className="card-title">{product.name}</h5>
+           <h5 className="card-title">{product.title}</h5>
            <p className="card-text">{product.description}</p>
            <div className="mt-auto">
            <p className="fw-bold fs-4">{product.price}</p>

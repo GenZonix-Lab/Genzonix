@@ -301,3 +301,8 @@ p .btn:hover{
   color: #00e1ff;
   width: 100%;
   }
+#productTable tr td,th{
+  padding: 0rem 1.5rem;
+  text-align: left;
+  border: #5d6162 1px solid;
+}
