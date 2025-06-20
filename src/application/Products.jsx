@@ -78,10 +78,6 @@ const Products = () => {
             path={product.meta?.thumbnail || 'default/default-thumbnail.png'}
             />
         )}
-         {console.log(product.meta?.thumbnail)}
-
-
-         <img src={product.meta?.thumbnail || 'default/default-thumbnail.png'} className="card-img-top" alt={product.name} />
          <div className="card-body d-flex flex-column">
            <h5 className="card-title">{product.title}</h5>
            <p className="card-text">{product.description}</p>
