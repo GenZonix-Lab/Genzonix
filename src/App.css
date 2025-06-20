@@ -306,3 +306,20 @@ p .btn:hover{
   text-align: left;
   border: #5d6162 1px solid;
 }
+
+.truncate-description {
+  display: -webkit-box !important; /* Use flexbox for layout */
+  -webkit-line-clamp: 3;       /* Show only 3 lines */
+  line-clamp: 3;               /* Standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+
+.truncate-description:hover {
+  -webkit-line-clamp: unset;  /* Remove the line limit on hover */
+  line-clamp: unset;           /* Standard property for compatibility */
+  overflow: visible;           /* Allow overflow to show full text */
+  white-space: normal;         /* Allow text to wrap normally */
+}

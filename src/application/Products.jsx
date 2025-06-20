@@ -80,7 +80,7 @@ const Products = () => {
         )}
          <div className="card-body d-flex flex-column">
            <h5 className="card-title">{product.title}</h5>
-           <p className="card-text">{product.description}</p>
+           <p className="card-text truncate-description">{product.description}</p>
            <div className="mt-auto">
            <p className="fw-bold fs-4">{product.price}</p>
              <div className="d-flex justify-content-center align-items-end">
