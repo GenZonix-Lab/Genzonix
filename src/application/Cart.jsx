@@ -1,12 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { NavLink } from "react-router";
+import { getCurrentUser  } from 'aws-amplify/auth';
+
+const getCurrentUserId = async () => {
+  const { username, userId, signInDetails } = await getCurrentUser();
+  return userId
+};
 
 const Cart = () => {
-  const [cart, setCart] = useState([
-    { id: 1, name: "HC-SR04 Ultrasonic Sensor", price: 150, quantity: 1 },
-    { id: 2, name: "IR Obstacle Avoidance Sensor", price: 100, quantity: 2 },
-  ]);
+  const [cart, setCart] = useState([]);
+  const userid = getCurrentUserId();
 
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const res = await fetch(`https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/cart/${userId}`);
+        const data = await res.json();
+
+        // Assuming data = { products: [{ productCode, quantity }], ... }
+        // You may want to map it with real product details here
+        setCart(data.products.map(item => ({
+          id: item.productCode,
+          name: `Product ${item.productCode}`, // ideally fetch real names/prices via another API
+          price: 100, // temporary static price, replace with actual
+          quantity: item.quantity
+        })));
+      } catch (err) {
+        console.error("Error fetching cart:", err);
+      }
+    };
+
+    fetchCart();
+  }, [userId]);
   const removeItem = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
@@ -19,6 +44,7 @@ const Cart = () => {
     );
   };
 
+  
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (

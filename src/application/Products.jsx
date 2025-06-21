@@ -1,8 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
+import { getCurrentUser  } from 'aws-amplify/auth';
+
+const getCurrentUserId = async () => {
+  const { username, userId, signInDetails } = await getCurrentUser();
+  return userId
+};
+
 
 const Products = () => {
   const [components, setComponents] = useState([]);
+
+  const handleAddToCart = async (productCode) => {
+    const userid = await getCurrentUserId();
+    const res = await fetch("https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/cart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userid,
+        productCode,
+        quantity: 1
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert("Added to cart!");
+    } else {
+      alert("Failed to add.");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,27 +45,7 @@ const Products = () => {
     };
     fetchData();
   }, []);
-  console.log(components);
-/*   async function fetchdata() {
-          const response = await fetch("https://ki4mm5ajnj.execute-api.ap-south-1.amazonaws.com/prod/add");
-          if (!response.ok) {
-              throw new Error('Network response was not ok in fetch data ' + response.statusText);
-          }
-          const data = await response.json();
-          const products = JSON.parse(data.body); // Assuming the body contains a JSON string
-          const listOut=products.map(element => ({
-          id: element.productCode,
-          name: element.title,
-          description: element.description,
-          price: `₹${element.price}`,
-          key: element.sku,
-          image: element.meta.thumbnail,
-          checked: false // Default value, can be modified later
-        }));
-        components.push(...listOut);
-        console.log(components);
-      } */
-//fetchdata();
+
   const kits = [
     {
       id: 1,
@@ -69,8 +75,10 @@ const Products = () => {
     <div className="container text-center">
     <div className="title"><h2 className="mt-3 p-2"></h2></div>
     <div className="row justify-content-center justify-content-lg-start">
-      {components.map(product => (
-       <div key={product.id} checked={product.shown?'':''} className="col-10 col-md-4 col-lg-3 col-sm-6 mb-4">
+      {components
+      .filter(components => components.shown)
+      .map(product => (
+       <div key={product.productCode} className="col-10 col-md-4 col-lg-3 col-sm-6 mb-4">
        <div className="card h-100 shadow-sm card-product d-flex flex-column">
         {product.meta && (
           <StorageImage 
@@ -84,13 +92,14 @@ const Products = () => {
            <div className="mt-auto">
            <p className="fw-bold fs-4">{product.price}</p>
              <div className="d-flex justify-content-center align-items-end">
-               <button className="btn-default btn-product-btn me-2 p-1">Buy Now</button>
-               <button className="btn-default btn-product-btn p-1">Add Cart</button>
+               <button className="btn-default btn-product-btn me-2 p-1" onClick={()=>{getCurrentUserId()}}>Buy Now</button>
+               <button className="btn-default btn-product-btn p-1" onClick={()=>{handleAddToCart(product.productCode)}}>Add Cart</button>
              </div>
            </div>
             </div>
           </div>
         </div>
+        
       ))}
     </div>
     <hr />

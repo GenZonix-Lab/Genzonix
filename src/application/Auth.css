@@ -54,7 +54,6 @@
     background-color: #549acf;
 }
 .amplify-button:hover{
-    padding: 10px 0px;
     overflow: unset;
     outline: unset;
     outline-offset: unset;
