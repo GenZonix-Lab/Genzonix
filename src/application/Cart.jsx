@@ -13,7 +13,7 @@ const getToken = async () => {
       throw new Error("No idToken found in session");
     }
     return token;
-  }catch(error){
+  }catch(err){
     console.error("Error getting token:", err);
     window.alert("Please log in to continue.");
     window.location.href = "/Auth";
