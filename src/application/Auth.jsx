@@ -4,7 +4,6 @@ import { Amplify } from 'aws-amplify';
 import outputs from '../../amplify_outputs.json';
 import '@aws-amplify/ui-react/styles.css';
 import UserDetails from './UserDetails';
-import ProfileUpdate from './ProfileUpdate';
 import './Auth.css';
 
 Amplify.configure(outputs);

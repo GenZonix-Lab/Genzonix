@@ -1,0 +1,142 @@
+import React ,{useState,useEffect} from 'react'
+import { fetchAuthSession } from 'aws-amplify/auth';
+import { motion, AnimatePresence } from "framer-motion";
+import { CgDetailsMore } from "react-icons/cg";
+import { useNavigate } from "react-router";
+import { IoMdClose } from "react-icons/io";
+import OrderDetails from './OrderDetails'
+const orderApi = "https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/order"
+
+const getToken = async () => {
+  const session = await fetchAuthSession(); // await the session
+  const token = session.tokens.idToken.toString(); // now you have the JWT string
+  return token;
+};
+
+const Order = () => {
+    const [order, setOrder]=useState([]);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [cost,setCost] = useState(0);
+    const [delivery,setDelivery] = useState(null);
+    const [orderIdCheck, setOrderIdCheck] = useState('');
+    const navigate= useNavigate();
+    const handleViewDetails = (orderId,item,cost,delivery) => {
+        setSelectedOrder(item)
+        setCost(cost)
+        setDelivery(delivery)
+        setOrderIdCheck(orderId)
+    };
+    useEffect(()=>{
+        const fetchOrders=async()=>{
+           try{
+             const token=await getToken();
+            const response=await fetch(orderApi,{
+                method:'GET',
+                headers:{
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+            const data= await response.json();
+            setOrder(data.map((order) => (
+                {
+                    razorpay_order_id:order.razorpay_order_id,
+                    order_id: order.order_id,
+                    ordered_at: new Date(order.ordered_at).toLocaleDateString('en-IN', {
+                        day: '2-digit',
+                        month: 'short',
+                        year: 'numeric',
+                        }),
+                    cost: order.cost,
+                    delivery:order.delivery,
+                    payment_status: order.payment_status,
+                    products: order.products
+                }
+            )))
+           }catch(err){
+            console.error("Error fetching cart:", err);
+            if (err.message?.includes("session.tokens is undefined")) {
+              alert('Please login / Sign-Up'); 
+              navigate("/Auth")
+            } else {
+              console.error('error:', err);
+            }
+          } 
+        }
+        fetchOrders();
+    },[])
+  return (
+    <>
+        <div className="container">
+            <h4 className='text-center my-2 py-3 '>{order.length === 0 ?"Your Order is Empty":'Your Order Summary'}</h4>
+            <table className="table table-secondary table-striped" style={order.length===0?{display:'none'}:{display:''}}>
+                <thead>
+                    <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {order.map((item) => (
+  <React.Fragment key={item.razorpay_order_id}>
+    <tr>
+      <td>{item.order_id}</td>
+      <td>{new Date(item.ordered_at).toLocaleDateString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      })}</td>
+      <td>₹{parseFloat(item.cost).toFixed(2)}</td>
+      <td>{item.payment_status}</td>
+      <td>
+        <button
+          className="btn btn-info"
+          onClick={() =>{
+            orderIdCheck!==item.order_id
+            ?handleViewDetails(item.order_id, item.products, item.cost, item.delivery)
+            :setOrderIdCheck('')
+        }}
+          >
+          {orderIdCheck!==item.order_id?<CgDetailsMore />:<IoMdClose/>}
+        </button>
+      </td>
+    </tr>
+        
+    {/* Always render this row — animate the content inside */}
+    <tr>
+      <td colSpan={5} style={{ padding: 0, border: "none" }}>
+        <AnimatePresence>
+          {orderIdCheck === item.order_id && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              style={{ overflow: "hidden", backgroundColor: "#050a30",padding:'0px 0rem',margin:'0px'}}
+            >
+              <OrderDetails
+                cart={selectedOrder}
+                delivery={delivery}
+                cost={cost}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </td>
+    </tr>
+  </React.Fragment>
+))}
+
+
+                </tbody>
+            </table>
+            {}
+        </div>
+        <hr />
+    </>
+  )
+}
+
+export default Order

@@ -6,11 +6,34 @@ header{
   z-index: 5;
   background-color: #050a30;
 }
+.uniform-img {
+  width: 80%;
+  height: 80%;
+  object-fit:contain;
+  padding: auto;
+  margin: auto;
+
+}
 .explore{
   border-radius:0% 0% 40px 40px;
   margin: 0px;
   z-index: 1;
  }
+ .table-color{
+  color: #050a30;
+  background-color: #cae8ff;
+ }
+ .bg-app{
+  background-color: #050a30;
+ }
+ .table{
+  margin-bottom: 0rem;
+  border: 0px;
+  padding: 0px;
+ }
+ .table > :not(caption) > * > * {
+  color: #050a30;
+}
 .nav-link button h4{
   color: #f0f8ffcf;
 }
@@ -60,7 +83,6 @@ button:hover{
   background-color: transparent;
   border: none;
   text-decoration-color: transparent;
-  padding: 0px 20px;
 }
 .navbar-toggler{
   background-color: transparent;
@@ -124,6 +146,14 @@ button:hover{
   font-size: calc(60% + 0.15*5vw + 1vh);
   color: rgb(255, 244, 148);
 }
+
+th{
+  font-size: calc(10% + 0.1*5vw + 1vh);
+}
+td{
+  font-size: calc(5% + 0.1*5vw + 1vh);
+}
+
 .docs pre {
   color: rgb(255, 151, 208);
   background-color: #1b44427e;
@@ -248,9 +278,10 @@ button:hover{
   transform-origin: bottom left;
 }
 
-.card{
-  background-image: linear-gradient(to bottom , rgb(112, 39, 164), rgb(84, 65, 155),rgb(23, 9, 75));
+.card-app{
+  background-image: linear-gradient(to bottom , rgb(6, 18, 146), rgba(16, 48, 81, 0.666),rgb(23, 9, 75));
   color: #ffffff;
+  border-radius: .4rem ;
 }
 
 p .btn{
@@ -309,7 +340,7 @@ p .btn:hover{
 
 .truncate-description {
   display: -webkit-box !important; /* Use flexbox for layout */
-  -webkit-line-clamp: 3;       /* Show only 3 lines */
+  -webkit-line-clamp: 5;       /* Show only 3 lines */
   line-clamp: 3;               /* Standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;

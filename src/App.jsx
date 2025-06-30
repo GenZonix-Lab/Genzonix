@@ -11,6 +11,8 @@ import Auth from './application/Auth'
 import ProfileUpdate from './application/ProfileUpdate'
 
 import Cart from './application/Cart'
+import CheckoutPage from './application/CheckoutPage.jsx'
+import Order from './application/Order.jsx'
 
 import Gzxp24001 from './application/gzxproj24/Gzxp24001.jsx';
 import Gzxp24002 from './application/gzxproj24/Gzxp24002.jsx';
@@ -29,6 +31,8 @@ function App() {
       <Route path='/products' element={<Products/>}/>
       <Route path='/projects' element={<Projects/>}/>
       <Route path='/cart' element={<Cart/>}/>
+      <Route path='/checkout' element={<CheckoutPage/>}/>
+      <Route path='/order' element={<Order/>}/>
       <Route path='/career' element={<Career/>}/>
       <Route path='/support' element={<Support/>}/>
       <Route path='/Auth' element={<Auth />}/>

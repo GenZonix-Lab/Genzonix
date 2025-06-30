@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Country, State, City }  from 'country-state-city';
 import PhoneInput from 'react-phone-input-2'
 import { Atom, ThreeDot } from 'react-loading-indicators';
+import { useNavigate } from 'react-router-dom';
 import './reactStyle.css'
 import {
   fetchUserAttributes,
@@ -11,10 +12,11 @@ import {
 
 
 const ProfileUpdate = ({user}) => {
-    const [attributes, setAttributes] = useState(null);
+  const [attributes, setAttributes] = useState(null);
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
+  const navigate= useNavigate();
   const [pendingVerification, setPendingVerification] = useState(null);
   const [confirmationCode, setConfirmationCode] = useState('');
   useEffect(() => {
@@ -320,6 +322,7 @@ const ProfileUpdate = ({user}) => {
                 </div>
               </div>
             </fieldset>
+            <button className='amplify-button amplify-button--secondary p-2 px-xl-4 me-3' onClick={()=>navigate(-1)}>⬅ Back</button>
             <button className='amplify-button amplify-button--primary p-2 px-xl-4' onClick={handleUpdate}>Update All</button>
 
             </div>
