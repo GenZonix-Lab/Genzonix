@@ -8,9 +8,19 @@ import OrderDetails from './OrderDetails'
 const orderApi = "https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/order"
 
 const getToken = async () => {
-  const session = await fetchAuthSession(); // await the session
-  const token = session.tokens.idToken.toString(); // now you have the JWT string
-  return token;
+  try{
+    const session = await fetchAuthSession(); // await the session
+    const token = session.tokens.idToken.toString(); // now you have the JWT string
+    if (!token) {
+      console.warn("User session not found. Redirecting to auth...");
+      throw new Error("No idToken found in session");
+    }
+    return token;
+  }catch(err){
+    console.error("Error getting token:", err);
+    window.alert("Please log in to continue.");
+    window.location.href = "/Auth";
+  }
 };
 
 const Order = () => {

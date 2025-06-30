@@ -30,9 +30,6 @@ const Cart = () => {
     const fetchCart = async () => {
       try {
         const token =await getToken();
-          if (!token) {
-            throw new Error("session.tokens is undefined");
-          }
         const res = await fetch(cart_api,{
             method: "GET",
             headers: {Authorization: `Bearer ${token}`}
