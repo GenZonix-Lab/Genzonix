@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { fetchAuthSession,fetchUserAttributes } from 'aws-amplify/auth';
-import logo from '../../public/favicon.ico'
+import logo from '../assets/favicon.ico'
 import { useNavigate } from "react-router";
 const paymentApi=`https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/payment/`
 const getToken = async () => {

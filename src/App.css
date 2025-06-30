@@ -121,6 +121,10 @@ button:hover{
   font-size: calc(10% + 1vw + 2.5vh);
   font-weight: bolder;
 }
+.title h4{
+  font-size: calc(10% + 0.5vw + 2vh);
+  font-weight: bolder;
+}
 
 .story-data h3{
   font-size: calc(10% + 1.3vw + 1.5vh);
@@ -341,7 +345,7 @@ p .btn:hover{
 .truncate-description {
   display: -webkit-box !important; /* Use flexbox for layout */
   -webkit-line-clamp: 5;       /* Show only 3 lines */
-  line-clamp: 3;               /* Standard property for compatibility */
+  line-clamp: 5;               /* Standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

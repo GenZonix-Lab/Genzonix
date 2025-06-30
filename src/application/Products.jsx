@@ -100,7 +100,7 @@ const getToken = async () => {
         </div>
         <div className="row col-xl-9 col-lg-7 col-md-6 col-12 py-3">
           <div className='truncate-description'>
-            <div className="title text-start"><h3>{product.title}</h3></div>
+            <div className="title text-start"><h4>{product.title}</h4></div>
             <div className="text-start"><p>{product.description}</p></div>
           </div>
           <div className="row align-items-end mt-md-0 mt-3">
