@@ -91,7 +91,7 @@ const Order = () => {
                   color:'#050a30',
                   textAlign:'center',
                   padding:'50px',
-                  font:"900 46px italic"}:''}>{order.length === 0 ?"Your Order is Empty":'Your Order Summary'}</h4>
+                  font:"900 46px italic"}:{display:''}}>{order.length === 0 ?"Your Order is Empty":'Your Order Summary'}</h4>
             <table className="table table-secondary table-striped" style={order.length===0?{display:'none'}:{display:''}}>
                 <thead>
                     <tr>
