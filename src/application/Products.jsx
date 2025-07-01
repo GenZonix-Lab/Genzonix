@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
 import { fetchAuthSession  } from 'aws-amplify/auth';
+import ShowAlert from './ShowAlert.jsx'
 
 const Products = () => {
   const [components, setComponents] = useState([]);
-  const [popupMessage, setPopupMessage] = useState('');
-
-  const showPopup = (msg) => {
-  setPopupMessage(msg);
-  setTimeout(() => {
-    setPopupMessage('');
-  }, 800); // Disappear after 3 seconds
-};
-const getToken = async () => {
-  try{
-    const session = await fetchAuthSession(); // await the session
-    const token = session.tokens.idToken.toString(); // now you have the JWT string
-    if (!token) {
-      console.warn("User session not found. Redirecting to auth...");
-      throw new Error("No idToken found in session");
+  const [alertMsg,setAlertMsg] = useState('');
+  const [trig, setTrig] = useState(0);
+  const getToken = async () => {
+    try{
+      const session = await fetchAuthSession(); // await the session
+      const token = session.tokens.idToken.toString(); // now you have the JWT string
+      if (!token) {
+        console.warn("User session not found. Redirecting to auth...");
+        throw new Error("No idToken found in session");
+      }
+      return token;
+    }catch(err){
+      console.error("Error getting token:", err);
+      setAlertMsg("Please log in to continue.");
+      window.location.href = "/Auth";
     }
-    return token;
-  }catch(err){
-    console.error("Error getting token:", err);
-    window.alert("Please log in to continue.");
-    window.location.href = "/Auth";
-  }
-};
+  };
   const handleAddToCart = async (productCode,price,title,image,category) => {
     try{
     const token =await getToken();
@@ -46,21 +41,23 @@ const getToken = async () => {
       })
     });
     const data = await res.json();
+    setTrig(Date.now());
     if (data.success) {
-      showPopup("Added to cart!");
+      setAlertMsg("Added to cart!")
     } else {
       if(data.message=="Not enough stock"){
-        showPopup("Out of stock")
+      setAlertMsg("Out of stock")
+
       }
       
     }
   }
   catch (error){
     if (error.name === 'UserUnAuthenticatedException' || error.message?.includes('User needs to be authenticated') || error.message?.includes("tokens is undefined")) {
-      showPopup('Please login / Sign-Up'); 
+      setAlertMsg('Please login / Sign-Up')
     } else {
       console.error('Add to cart error:', error);
-      showPopup('Thanks for your patience');
+      setAlertMsg('We apologize for the inconvenience. Our support team is working to resolve the issue.')
     }
   }
   };
@@ -83,13 +80,18 @@ const getToken = async () => {
   return (
 <>
   <div className="container text-center">
+    <div className='d-flex '>
+      <ShowAlert
+        message={alertMsg}
+        triggerKey={trig}
+        type={alertMsg=="Out of stock"?"error":alertMsg=="Added to cart!"?"success":"info"}
+        duration={3000}
+        redirectText={alertMsg =="Out of stock" || alertMsg == "Added to cart!"?"Cart":''}
+        redirectPath={alertMsg =="Out of stock" || alertMsg == "Added to cart!"?"/cart":''}
+      />
+    </div>
     <div className="title"><h2 className="mt-3 p-2">COMPONENTS</h2></div>
-    <div className="row justify-content-center justify-content-lg-start">
-      {popupMessage && (
-        <div className="alert alert-success position-fixed top-0 start-50 translate-middle-x py-4" role="alert" style={{ zIndex: 9999,borderBottom : '4px solid' }}>
-          {popupMessage}
-        </div>
-      )}
+    <div className="row ">
       {components
       .filter(components => components.shown)
       .map(product => (

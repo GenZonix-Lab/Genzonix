@@ -3,6 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { PiPackageDuotone } from "react-icons/pi";
+import ScrollToTop from './ScrollToTop'
 
 const Authenticator = () => {
     const username = "demo-data"; // Replace with actual username logic
@@ -10,16 +11,19 @@ const Authenticator = () => {
     <>
         <div className="d-flex flex-row text-end navbar-nav">
             <div className="col-4 navbar-item">
+                <ScrollToTop />
                 <NavLink to="/order" className="nav-link nav-icon" title='order'>
                     <PiPackageDuotone/>
                 </NavLink>
             </div>
             <div className="col-4 navbar-item">
+                <ScrollToTop />
                 <NavLink to="/Cart" className="nav-link nav-icon" title='Cart'>
                     <FaShoppingCart/>
                 </NavLink>
             </div>
             <div className="col-4 navbar-item">
+                <ScrollToTop />
                 <NavLink to="/Auth" className="nav-link nav-icon" id='auth' title='Login/SignUp'>
                     <CgProfile/>
                 </NavLink>

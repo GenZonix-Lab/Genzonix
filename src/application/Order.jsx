@@ -5,31 +5,35 @@ import { CgDetailsMore } from "react-icons/cg";
 import { useNavigate } from "react-router";
 import { IoMdClose } from "react-icons/io";
 import OrderDetails from './OrderDetails'
+import ShowAlert from './ShowAlert';
 const orderApi = "https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/order"
-
-const getToken = async () => {
-  try{
-    const session = await fetchAuthSession(); // await the session
-    const token = session.tokens.idToken.toString(); // now you have the JWT string
-    if (!token) {
-      console.warn("User session not found. Redirecting to auth...");
-      throw new Error("No idToken found in session");
-    }
-    return token;
-  }catch(err){
-    console.error("Error getting token:", err);
-    window.alert("Please log in to continue.");
-    window.location.href = "/Auth";
-  }
-};
 
 const Order = () => {
     const [order, setOrder]=useState([]);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [cost,setCost] = useState(0);
     const [delivery,setDelivery] = useState(null);
+    const [alert,setAlert] =useState('');
+    const [trig,setTrig]=useState(0);
     const [orderIdCheck, setOrderIdCheck] = useState('');
     const navigate= useNavigate();
+
+    const getToken = async () => {
+      try{
+        const session = await fetchAuthSession(); // await the session
+        const token = session.tokens.idToken.toString(); // now you have the JWT string
+        if (!token) {
+          console.warn("User session not found. Redirecting to auth...");
+          throw new Error("No idToken found in session");
+        }
+        return token;
+      }catch(err){
+        console.error("Error getting token:", err);
+        setTrig(Date.now())
+        setAlert("Please log in to continue.");
+        window.location.href = "/Auth";
+      }
+    };
     const handleViewDetails = (orderId,item,cost,delivery) => {
         setSelectedOrder(item)
         setCost(cost)
@@ -64,20 +68,30 @@ const Order = () => {
             )))
            }catch(err){
             console.error("Error fetching cart:", err);
-            if (err.message?.includes("session.tokens is undefined")) {
-              alert('Please login / Sign-Up'); 
-              navigate("/Auth")
-            } else {
-              console.error('error:', err);
-            }
           } 
         }
         fetchOrders();
     },[])
   return (
     <>
-        <div className="container">
-            <h4 className='text-center my-2 py-3 '>{order.length === 0 ?"Your Order is Empty":'Your Order Summary'}</h4>
+        <div className="container py-4">
+          <ShowAlert
+            message={alert}
+            triggerKey={trig}
+            type="info"
+            duration={3000}
+            redirectText=''
+            redirectPath=''
+          />
+            <h4 
+            className='text-center mb-4 '
+            style={order.length === 0
+              ?{
+                  backgroundColor:'#f0f8ff',
+                  color:'#050a30',
+                  textAlign:'center',
+                  padding:'50px',
+                  font:"900 46px italic"}:''}>{order.length === 0 ?"Your Order is Empty":'Your Order Summary'}</h4>
             <table className="table table-secondary table-striped" style={order.length===0?{display:'none'}:{display:''}}>
                 <thead>
                     <tr>

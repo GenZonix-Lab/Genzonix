@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 import { fetchAuthSession,fetchUserAttributes } from 'aws-amplify/auth';
 import logo from '../assets/favicon.ico'
 import { useNavigate } from "react-router";
+import ShowAlert from './ShowAlert';
+
 const paymentApi=`https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/payment/`
 const getToken = async () => {
   const session = await fetchAuthSession(); // await the session
@@ -11,6 +13,8 @@ const getToken = async () => {
 const PaymentGateway = () => {
     const navigate = useNavigate();
     const [attributes, setAttributes] = useState(null);
+    const [alert,setAlert] = useState('');
+    const [trig,setTrig]= useState(0);
     useEffect(() => {
         const loadAttributes = async () => {
             try {
@@ -53,8 +57,9 @@ const PaymentGateway = () => {
         fetchapi();
         },[])
     const handleClick=()=>{
+        setTrig(Date.now())
         if (!isRazorpayLoaded) {
-            alert('Razorpay SDK not yet loaded. Please wait.');
+            setAlert('Razorpay SDK not yet loaded. Please wait.');
             return;
         }
         var options = {
@@ -83,13 +88,13 @@ const PaymentGateway = () => {
         };
         var rzp1 = new window.Razorpay(options);;
         rzp1.on('payment.failed', function (response){
-                alert(response.error.code);
-                alert(response.error.description);
-                alert(response.error.source);
-                alert(response.error.step);
-                alert(response.error.reason);
-                alert(response.error.metadata.order_id);
-                alert(response.error.metadata.payment_id);
+                setAlert(response.error.code);
+                setAlert(response.error.description);
+                setAlert(response.error.source);
+                setAlert(response.error.step);
+                setAlert(response.error.reason);
+                setAlert(response.error.metadata.order_id);
+                setAlert(response.error.metadata.payment_id);
         });
         rzp1.open();
     }
@@ -114,6 +119,14 @@ const PaymentGateway = () => {
   return (
     <>
     <div className='text-center'>
+        <ShowAlert
+            message={alert}
+            triggerKey={trig}
+            type="warning"
+            duration={2000}
+            redirectText=""
+            redirectPath=""
+        />
         <button id="rzp-button1" onClick={async()=>handleClick()} className='btn-default px-3 p-2 fs-5'>Pay with Razorpay</button>
     </div>
     </>

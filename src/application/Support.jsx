@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { FaFacebook,FaWhatsapp,FaInstagram,FaDiscord} from "react-icons/fa";
-import {FaThreads, FaLinkedin,FaGithub ,FaTelegram ,FaXTwitter ,FaYoutube } from "react-icons/fa6";
-
+import {FaInstagram} from "react-icons/fa";
+import {FaLinkedin } from "react-icons/fa6";
+import ScrollToTop from './ScrollToTop'
 const Support = () => {
   return (
     <>
@@ -20,27 +20,27 @@ const Support = () => {
       <div className="mt-4"><h2>Frequently Asked Questions (FAQs)</h2></div>
       <div className='p-3'>
         <p>Before reaching out, check our FAQ section for quick answers to common queries. We have compiled guides on product setup, troubleshooting steps, and best practices for using our DIY kits.</p>
-        <div className="text-center"><button className='Explore_btn p-3'><NavLink to={'/faq'}>Visit our FAQ Page</NavLink></button></div>
+        <div className="text-center"><button className='Explore_btn p-3'><ScrollToTop /><NavLink to={'/faq'}>Visit our FAQ Page</NavLink></button></div>
       </div>
       <div className="mt-4"><h2>Community Support</h2></div>
       <div className="p-3">
         <p>Join our growing community of makers and tech enthusiasts! Share your projects, ask for advice, and collaborate with like-minded individuals.</p>
-        <div className="text-center"><button className='Explore_btn p-3'><NavLink to={'/forum'}>Community Forum</NavLink></button></div>
+        <div className="text-center"><button className='Explore_btn p-3'><ScrollToTop /><NavLink to={'/forum'}>Community Forum</NavLink></button></div>
       </div>
       <div className='mt-2 p-3'>
-        <p>Follow us on<button className='btn btn-link pb-1'><NavLink to={"https://www.instagram.com/genzonixofficial/"}> <FaInstagram/> Instagram</NavLink></button>, and  <button className='btn btn-link pb-1'><NavLink to={"http://www.linkedin.com/in/genzonix"}> <FaLinkedin/> LinkedIn</NavLink></button> for updates and discussions.</p>
+        <p>Follow us on<button className='btn btn-link pb-1'><ScrollToTop /><NavLink to={"https://www.instagram.com/genzonixofficial/"}> <FaInstagram/> Instagram</NavLink></button>, and  <button className='btn btn-link pb-1'><NavLink to={"http://www.linkedin.com/in/genzonix"}> <FaLinkedin/> LinkedIn</NavLink></button> for updates and discussions.</p>
       </div>
   
       <div className="mt-4"><h2>Warranty & Returns</h2></div>
       <div className='mt-2 p-3'>      
         <p>We stand by the quality of our products. If you experience any issues with your kit, check our warranty and return policies.</p>
-        <p><button className='btn btn-link p-1'><NavLink to={"/policy"}> Read Warranty & Returns Policy</NavLink></button></p>
+        <p><button className='btn btn-link p-1'><ScrollToTop /><NavLink to={"/policy"}> Read Warranty & Returns Policy</NavLink></button></p>
       </div>
 
       <div className="mt-4"><h2>Technical Resources</h2></div>
       <div className='mt-2 p-3'>      
         <p>Explore our knowledge base, documentation, and tutorials to get the most out of your Genzonix DIY kits.</p>
-        <p><button className='btn btn-link p-1'><NavLink to={'/projects'}>Access Technical Resources</NavLink></button></p>
+        <p><button className='btn btn-link p-1'><ScrollToTop /><NavLink to={'/projects'}>Access Technical Resources</NavLink></button></p>
       </div>
       <div className="mt-4">
         <p className="mt-4">If you need further assistance, don’t hesitate to contact us. We’re here to support you at every step of your learning journey!</p>

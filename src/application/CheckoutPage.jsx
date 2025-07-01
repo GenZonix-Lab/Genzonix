@@ -39,7 +39,7 @@ const CheckoutPage = () => {
         } catch (err) {
           console.error("Error fetching cart:", err);
           if (err.message?.includes("session.tokens is undefined")) {
-            alert('Please login / Sign-Up'); 
+            console.error('Please login / Sign-Up'); 
           } else {
             console.error('error:', err);
             }

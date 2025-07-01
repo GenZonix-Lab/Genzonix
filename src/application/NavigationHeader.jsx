@@ -3,6 +3,7 @@ import logo from '../assets/Genzonix.webp';
 import { NavLink } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Authenticator from './Authenticator';
+import ScrollToTop from './ScrollToTop'
 
 const NavigationHeader = () => {
   return (
@@ -11,6 +12,7 @@ const NavigationHeader = () => {
     <nav className="navbar navbar-expand-xl navbar-dark main-bg">
       <div className="container-fluid row">
           <div className="col-3 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-center">
+            <ScrollToTop />
             <NavLink to={"/"}>
             <img
                 src={logo}

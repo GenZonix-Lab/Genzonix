@@ -1,6 +1,6 @@
 import './App.css'
 import AppLayout from './Layouts/AppLayout'
-
+import ScrollToTop from "./application/ScrollToTop";
 import Home from './application/Home' 
 import Products from './application/Products' 
 import Projects from './application/Projects'
@@ -26,6 +26,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 
 function App() {
    //define app routing
+   <ScrollToTop />
   const home = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<AppLayout />}>
       <Route index element={<Home />} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import boxCloud from '../assets/pic2.webp';
 import { NavLink } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop'
 const Explore = () => {
   
   return (
@@ -9,6 +10,7 @@ const Explore = () => {
         <h1>Innovative Kits for a Smarter Generation</h1>
 
       </div>
+      <ScrollToTop />
       <NavLink to={"/products"}>
         <button type="button" className='Explore_btn rounded p-3 m-1'>Explore</button>
       </NavLink>    
