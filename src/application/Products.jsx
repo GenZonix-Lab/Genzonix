@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
 import { fetchAuthSession  } from 'aws-amplify/auth';
 import ShowAlert from './ShowAlert.jsx'
+import { Atom } from 'react-loading-indicators';
 
 const Products = () => {
   const [components, setComponents] = useState([]);
   const [alertMsg,setAlertMsg] = useState('');
   const [trig, setTrig] = useState(0);
+  const [loading, setLoading] = useState(true);
+  
   const getToken = async () => {
     try{
       const session = await fetchAuthSession(); // await the session
@@ -64,6 +67,7 @@ const Products = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await fetch("https://ki4mm5ajnj.execute-api.ap-south-1.amazonaws.com/prod/add");
         if (!response.ok) {
             throw new Error('Network response was not ok in fetch data ' + response.statusText);
@@ -72,6 +76,8 @@ const Products = () => {
         setComponents(JSON.parse(data.body));
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -79,8 +85,10 @@ const Products = () => {
 
   return (
 <>
-  <div className="container text-center">
-    <div className='d-flex '>
+  <div className="container py-4 d-flex justify-content-center">
+    {loading ? (<Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />) : (
+    <div className="container-fluid">
+      <div className='d-flex '>
       <ShowAlert
         message={alertMsg}
         triggerKey={trig}
@@ -123,7 +131,9 @@ const Products = () => {
         </div>
       </div>
       ))}
-    </div>    
+    </div>   
+    </div>  
+    )} 
   </div>
   <hr />
 </>

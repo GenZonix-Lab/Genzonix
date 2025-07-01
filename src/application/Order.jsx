@@ -5,6 +5,7 @@ import { CgDetailsMore } from "react-icons/cg";
 import { useNavigate } from "react-router";
 import { IoMdClose } from "react-icons/io";
 import OrderDetails from './OrderDetails'
+import { Atom } from 'react-loading-indicators';
 import ShowAlert from './ShowAlert';
 const orderApi = "https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/order"
 
@@ -12,6 +13,7 @@ const Order = () => {
     const [order, setOrder]=useState([]);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [cost,setCost] = useState(0);
+    const [loading, setLoading] = useState(true);
     const [delivery,setDelivery] = useState(null);
     const [alert,setAlert] =useState('');
     const [trig,setTrig]=useState(0);
@@ -43,8 +45,9 @@ const Order = () => {
     useEffect(()=>{
         const fetchOrders=async()=>{
            try{
-             const token=await getToken();
-            const response=await fetch(orderApi,{
+              setLoading(true);
+              const token=await getToken();
+              const response=await fetch(orderApi,{
                 method:'GET',
                 headers:{
                     'Authorization': `Bearer ${token}`,
@@ -68,14 +71,20 @@ const Order = () => {
             )))
            }catch(err){
             console.error("Error fetching cart:", err);
-          } 
+          } finally{
+            setLoading(false);
+          }
         }
         fetchOrders();
     },[])
   return (
     <>
-        <div className="container py-4">
-          <ShowAlert
+      <div className="container py-4 d-flex justify-content-center">
+          {loading ? (
+                      <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
+                    ) : (
+    <div className='container-fluid'>
+      <ShowAlert
             message={alert}
             triggerKey={trig}
             type="info"
@@ -99,64 +108,64 @@ const Order = () => {
                         <th scope="col">Order Date</th>
                         <th scope="col">Total Amount</th>
                         <th scope="col">Payment Status</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Order Details</th>
                     </tr>
                 </thead>
                 <tbody>
                     {order.map((item) => (
-  <React.Fragment key={item.razorpay_order_id}>
-    <tr>
-      <td>{item.order_id}</td>
-      <td>{new Date(item.ordered_at).toLocaleDateString('en-IN', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric'
-      })}</td>
-      <td>₹{parseFloat(item.cost).toFixed(2)}</td>
-      <td>{item.payment_status}</td>
-      <td>
-        <button
-          className="btn btn-info"
-          onClick={() =>{
-            orderIdCheck!==item.order_id
-            ?handleViewDetails(item.order_id, item.products, item.cost, item.delivery)
-            :setOrderIdCheck('')
-        }}
-          >
-          {orderIdCheck!==item.order_id?<CgDetailsMore />:<IoMdClose/>}
-        </button>
-      </td>
-    </tr>
-        
-    {/* Always render this row — animate the content inside */}
-    <tr>
-      <td colSpan={5} style={{ padding: 0, border: "none" }}>
-        <AnimatePresence>
-          {orderIdCheck === item.order_id && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-              style={{ overflow: "hidden", backgroundColor: "#050a30",padding:'0px 0rem',margin:'0px'}}
-            >
-              <OrderDetails
-                cart={selectedOrder}
-                delivery={delivery}
-                cost={cost}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </td>
-    </tr>
-  </React.Fragment>
-))}
-
-
+                      <React.Fragment key={item.razorpay_order_id}>
+                        <tr>
+                          <td>{item.order_id}</td>
+                          <td>{new Date(item.ordered_at).toLocaleDateString('en-IN', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                          })}</td>
+                          <td>₹{parseFloat(item.cost).toFixed(2)}</td>
+                          <td>{item.payment_status}</td>
+                          <td>
+                            <button
+                              className="btn btn-info"
+                              onClick={() =>{
+                                orderIdCheck!==item.order_id
+                                ?handleViewDetails(item.order_id, item.products, item.cost, item.delivery)
+                                :setOrderIdCheck('')
+                            }}
+                              >
+                              {orderIdCheck!==item.order_id?<CgDetailsMore />:<IoMdClose/>}
+                            </button>
+                          </td>
+                        </tr>
+                            
+                        {/* Always render this row — animate the content inside */}
+                        <tr>
+                          <td colSpan={5} style={{ padding: 0, border: "none" }}>
+                            <AnimatePresence>
+                              {orderIdCheck === item.order_id && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                                  style={{ overflow: "hidden", backgroundColor: "#050a30",padding:'0px 0rem',margin:'0px'}}
+                                >
+                                  <OrderDetails
+                                    cart={selectedOrder}
+                                    delivery={delivery}
+                                    cost={cost}
+                                  />
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </td>
+                        </tr>
+                      </React.Fragment>
+                    ))}
                 </tbody>
-            </table>
-            {}
+              </table>
+              </div>
+              )}
+                        
         </div>
         <hr />
     </>

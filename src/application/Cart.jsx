@@ -138,7 +138,7 @@ const Cart = () => {
       {loading ? (
               <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
             ) : (
-      <div>
+      <div className="container-fluid">
       <ShowAlert
         message={alert}
         triggerKey={trig}
