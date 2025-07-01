@@ -9,8 +9,8 @@ const NavigationHeader = () => {
   <>
   <header>
     <nav className="navbar navbar-expand-xl navbar-dark main-bg">
-      <div className="container-fluid">
-          <div className="order-2 order-xl-1">
+      <div className="container-fluid row">
+          <div className="col-3 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-center">
             <NavLink to={"/"}>
             <img
                 src={logo}
@@ -21,10 +21,10 @@ const NavigationHeader = () => {
             />
           </NavLink>
           </div >
-         <div className="order-1 order-xl-2">
+         <div className="col-3 col-md-3 col-xl-8 order-1 order-xl-2">
             <Sidebar/> 
          </div>
-         <div className="order-3">
+         <div className="col-6 col-md-3 col-xl-2 order-3">
             <Authenticator/>
           </div>        
       </div>

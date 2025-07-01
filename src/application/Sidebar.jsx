@@ -20,7 +20,7 @@ const Sidebar = () => {
             {toggle ? <ImMenu3/> : <ImMenu4/>}
     </button>
     <div className="collapse navbar-collapse" id="navbarCollapse">
-      <ul className="navbar-nav mb-3 mb-xl-0">
+      <ul className="col navbar-nav mb-3 mb-xl-0 d-flex justify-content-center">
         <li className="nav-item py-2 py-xl-0">
           <NavLink to="/" className="nav-link">
           <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}><h4>Home</h4></button>

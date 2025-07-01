@@ -6,6 +6,7 @@ import Products from './application/Products'
 import Projects from './application/Projects'
 import Career from './application/Career'
 import Support from './application/Support'
+import Faq from './application/Faq.jsx'
 
 import Auth from './application/Auth'
 import ProfileUpdate from './application/ProfileUpdate'
@@ -35,6 +36,7 @@ function App() {
       <Route path='/order' element={<Order/>}/>
       <Route path='/career' element={<Career/>}/>
       <Route path='/support' element={<Support/>}/>
+      <Route path='/faq' element={<Faq/>}/>
       <Route path='/Auth' element={<Auth />}/>
       <Route path='/profileUpdate' element={<ProfileUpdate />}/>
       <Route path='Gzxp24001' element={<Gzxp24001 />}/>

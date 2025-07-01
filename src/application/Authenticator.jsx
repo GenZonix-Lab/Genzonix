@@ -8,23 +8,23 @@ const Authenticator = () => {
     const username = "demo-data"; // Replace with actual username logic
   return (
     <>
-        <ul className="navbar-nav ms-auto authenticator">
-            <li className="nav-item">
+        <div className="d-flex flex-row text-end navbar-nav">
+            <div className="col-4 navbar-item">
                 <NavLink to="/order" className="nav-link nav-icon" title='order'>
                     <PiPackageDuotone/>
                 </NavLink>
-            </li>
-            <li className="nav-item">
+            </div>
+            <div className="col-4 navbar-item">
                 <NavLink to="/Cart" className="nav-link nav-icon" title='Cart'>
                     <FaShoppingCart/>
                 </NavLink>
-            </li>
-            <li className="nav-item">
+            </div>
+            <div className="col-4 navbar-item">
                 <NavLink to="/Auth" className="nav-link nav-icon" id='auth' title='Login/SignUp'>
                     <CgProfile/>
                 </NavLink>
-            </li>
-        </ul>
+            </div>
+        </div>
     </>
   )
 }

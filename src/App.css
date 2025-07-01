@@ -46,6 +46,7 @@ header{
  background-color: #f0f8ff;
  color: #050a30;
  margin: 0px;
+ padding-bottom: 20px;
 }
 .kit{
   padding-top: 30px;
@@ -103,9 +104,7 @@ button:hover{
   font-size: calc(1.6*(2vh + 0.4vw));
   padding: 0px 30px;
 }
-.authenticator{
-  flex-direction: row !important;
-}
+
 #auth:hover{
   color: #f0f8ff;
 }
@@ -181,7 +180,9 @@ td{
 }
 
 #box-img{
-  max-width:calc(5*(2vh + 4vw));
+  max-width:calc(12*(1.2vh + 5vw));
+  padding-bottom: 100px;
+  object-fit: contain;
 }
 .story-data h2{
   font-size: calc(12% + 1vw + 3vh);
