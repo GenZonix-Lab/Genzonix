@@ -202,7 +202,7 @@ const Cart = () => {
           <div className="form-group text-start border-left py-3 px-5">
           <label htmlFor="shipping" className="form-label fs-3">Shipping: </label><br />
           <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 49 :0} onChange={handleChange}/><label className="form-check-label fs-4 align-middle">Delhivery: <b> ₹ {sub_cost < 400? 49 :0}</b></label><br />
-          <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 0 :0} onChange={handleChange}/><label className="form-check-label fs-4">Speed Post: <b> ₹ {sub_cost < 400? 59 :0}</b></label>
+          <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 59 :0} onChange={handleChange}/><label className="form-check-label fs-4">Speed Post: <b> ₹ {sub_cost < 400? 59 :0}</b></label>
         </div>
         </div>
         <div><h2>Total : ₹ {cost}</h2></div>

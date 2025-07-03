@@ -128,7 +128,7 @@ const PaymentGateway = () => {
             redirectPath=""
         />
         <button id="rzp-button1" onClick={async()=>handleClick()} className='btn-default px-3 p-2 fs-5'>
-            <img src="https://framerusercontent.com/images/CU1m0xFonUl76ZeaW0IdkQ0M.png" alt="" />
+            <img src="https://framerusercontent.com/images/CU1m0xFonUl76ZeaW0IdkQ0M.png" alt="" style={{height:'40px'}}/>
             Pay with Razorpay</button>
     </div>
     </>
