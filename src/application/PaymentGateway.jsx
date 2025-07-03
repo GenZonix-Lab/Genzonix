@@ -63,7 +63,7 @@ const PaymentGateway = () => {
             return;
         }
         var options = {
-            "key": "rzp_test_6n5QsvBQUThbf6", // Enter the Key ID generated from the Dashboard
+            "key": "rzp_live_DOfOZNUrGFkLMo", // Enter the Key ID generated from the Dashboard
             "amount": credentials.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": credentials.currency,
             "name": "GenZonix",
@@ -127,7 +127,9 @@ const PaymentGateway = () => {
             redirectText=""
             redirectPath=""
         />
-        <button id="rzp-button1" onClick={async()=>handleClick()} className='btn-default px-3 p-2 fs-5'>Pay with Razorpay</button>
+        <button id="rzp-button1" onClick={async()=>handleClick()} className='btn-default px-3 p-2 fs-5'>
+            <img src="https://framerusercontent.com/images/CU1m0xFonUl76ZeaW0IdkQ0M.png" alt="" />
+            Pay with Razorpay</button>
     </div>
     </>
   )
