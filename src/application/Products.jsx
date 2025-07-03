@@ -3,7 +3,7 @@ import { StorageImage } from '@aws-amplify/ui-react-storage';
 import { fetchAuthSession  } from 'aws-amplify/auth';
 import ShowAlert from './ShowAlert.jsx'
 import { Atom } from 'react-loading-indicators';
-
+import defImage from '../assets/AI_pic.webp'
 const Products = () => {
   const [components, setComponents] = useState([]);
   const [alertMsg,setAlertMsg] = useState('');
@@ -104,20 +104,25 @@ const Products = () => {
       .filter(components => components.shown)
       .map(product => (
       <div key={product.productCode} className='row mb-4 card-app'>
-        <div className="col-xl-3 col-lg-5 col-md-6 col-12 row py-2">
-          <div className="col-12 uniform-img">
-          {product.meta && (
-            <StorageImage 
-              alt="Product" 
-              className='rounded-top'
-              path={product.meta?.thumbnail || 'default/default-thumbnail.png'}
-              />
-          )}
+        <div className="col-xl-3  col-lg-5 col-md-6 col-12">
+          <div className='d-flex flex-column align-items-center p-3 h-100'>
+            <div className="uniform-img text-center">
+              {product.meta && (
+                <StorageImage 
+                   alt="Image was Loading"
+                   className='rounded-top'
+                   path={product.meta?.thumbnail || 'default/default-thumbnail.webp'}
+                 />
+              )}
+            </div>
+            <div className="my-2">
+              <button className="btn btn-default px-5 py-2 mt-3 mt-sm-1 mt-xl-0" onClick={()=>{handleAddToCart(product.productCode,product.price,product.title,product.meta?.thumbnail,product.category)}}>Add Cart</button>
+            </div>
+          </div>
         </div>
-        <div className="col-12 mt-sm-3 mt-2 mt-md-1">
-          <button className="btn btn-default px-5 py-2 mt-3 mt-sm-1 mt-xl-0" onClick={()=>{handleAddToCart(product.productCode,product.price,product.title,product.meta?.thumbnail,product.category)}}>Add Cart</button>
-        </div>
-        </div>
+
+
+
         <div className="row col-xl-9 col-lg-7 col-md-6 col-12 py-3">
           <div className='truncate-description'>
             <div className="title text-start"><h4>{product.title}</h4></div>
