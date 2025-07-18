@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
 import { fetchAuthSession  } from 'aws-amplify/auth';
-import ShowAlert from './ShowAlert.jsx'
+import ShowAlert from '../Components/ShowAlert.jsx'
 import { Atom } from 'react-loading-indicators';
 import defImage from '../assets/AI_pic.webp'
 const Products = () => {

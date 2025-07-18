@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { fetchAuthSession } from 'aws-amplify/auth';
 import { StorageImage } from "@aws-amplify/ui-react-storage";
 import { Atom } from 'react-loading-indicators';
-import ShowAlert from "./ShowAlert";
+import ShowAlert from "../../Components/ShowAlert";
 
 const cart_api=`https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/cart/`
 

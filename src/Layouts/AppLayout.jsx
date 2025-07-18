@@ -1,12 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router'
-import NavigationHeader from '../application/NavigationHeader'
-import Footer from '../application/Footer'
+import Header from '../application/main/Header'
+import Footer from '../application/main/Footer'
 
 const AppLayout = () => {
   return (
     <>
-        <NavigationHeader/>
+        <Header/>
         <Outlet />
         <Footer />
     </>

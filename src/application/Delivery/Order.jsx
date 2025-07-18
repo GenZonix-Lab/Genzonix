@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import { IoMdClose } from "react-icons/io";
 import OrderDetails from './OrderDetails'
 import { Atom } from 'react-loading-indicators';
-import ShowAlert from './ShowAlert';
+import ShowAlert from '../../Components/ShowAlert';
 const orderApi = "https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/order"
 
 const Order = () => {

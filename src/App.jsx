@@ -1,19 +1,18 @@
 import './App.css'
 import AppLayout from './Layouts/AppLayout'
-import ScrollToTop from "./application/ScrollToTop";
-import Home from './application/Home' 
+import ScrollToTop from "./Components/ScrollToTop.jsx";
+import Home from './application/main/Home.jsx' 
 import Products from './application/Products' 
 import Projects from './application/Projects'
-import Career from './application/Career'
-import Support from './application/Support'
-import Faq from './application/Faq.jsx'
+import Support from './application/main/Support.jsx'
+import Faq from './application/main/Faq.jsx'
+import Policy from './application/main/Policy.jsx'
+import Auth from './application/Authenticator/Auth.jsx'
+import ProfileUpdate from './application/Authenticator/ProfileUpdate.jsx'
 
-import Auth from './application/Auth'
-import ProfileUpdate from './application/ProfileUpdate'
-
-import Cart from './application/Cart'
-import CheckoutPage from './application/CheckoutPage.jsx'
-import Order from './application/Order.jsx'
+import Cart from './application/Delivery/Cart.jsx'
+import CheckoutPage from './application/Delivery/CheckoutPage.jsx'
+import Order from './application/Delivery/Order.jsx'
 
 import Gzxp24001 from './application/gzxproj24/Gzxp24001.jsx';
 import Gzxp24002 from './application/gzxproj24/Gzxp24002.jsx';
@@ -35,9 +34,9 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/checkout' element={<CheckoutPage/>}/>
       <Route path='/order' element={<Order/>}/>
-      <Route path='/career' element={<Career/>}/>
       <Route path='/support' element={<Support/>}/>
       <Route path='/faq' element={<Faq/>}/>
+      <Route path='/policy' element={<Policy/>}/>
       <Route path='/Auth' element={<Auth />}/>
       <Route path='/profileUpdate' element={<ProfileUpdate />}/>
       <Route path='Gzxp24001' element={<Gzxp24001 />}/>
