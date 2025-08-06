@@ -5,7 +5,7 @@ import { StorageImage } from "@aws-amplify/ui-react-storage";
 import { Atom } from 'react-loading-indicators';
 import ShowAlert from "../../Components/ShowAlert";
 
-const cart_api=`https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/cart/`
+const cart_api=`https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/cart/`
 
 
 const Cart = () => {
@@ -195,11 +195,11 @@ const Cart = () => {
             </div>
           </div>
         ))}
-        <div className="justify-content-end" style={cart.length=== 0?{display:'none'}:{display:'flex'}}><h4>Sub Total: <b>₹{sub_cost} </b></h4></div>
+        <div className="justify-content-end" style={cart.length=== 0 || sub_cost > 400?{display:'none'}:{display:'flex'}}><h4>Sub Total: <b>₹{sub_cost} </b></h4></div>
       </div>
       <div className="mt-4 text-end " style={cart.length=== 0?{display:'none'}:{display:''}}>
         <div className="d-flex justify-content-end">
-          <div className="form-group text-start border-left py-3 px-5">
+          <div className="form-group text-start border-left py-3 px-5" style={sub_cost > 400?{display:'none'}:{display:''}}>
           <label htmlFor="shipping" className="form-label fs-3">Shipping: </label><br />
           <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 49 :0} onChange={handleChange}/><label className="form-check-label fs-4 align-middle">Delhivery: <b> ₹ {sub_cost < 400? 49 :0}</b></label><br />
           <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 59 :0} onChange={handleChange}/><label className="form-check-label fs-4">Speed Post: <b> ₹ {sub_cost < 400? 59 :0}</b></label>

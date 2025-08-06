@@ -3,11 +3,11 @@ import { fetchAuthSession } from 'aws-amplify/auth';
 import { motion, AnimatePresence } from "framer-motion";
 import { CgDetailsMore } from "react-icons/cg";
 import { useNavigate } from "react-router";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoMdRefreshCircle } from "react-icons/io";
 import OrderDetails from './OrderDetails'
 import { Atom } from 'react-loading-indicators';
 import ShowAlert from '../../Components/ShowAlert';
-const orderApi = "https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/order"
+const orderApi = "https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/order"
 
 const Order = () => {
     const [order, setOrder]=useState([]);
@@ -100,7 +100,11 @@ const Order = () => {
                   color:'#050a30',
                   textAlign:'center',
                   padding:'50px',
-                  font:"900 46px italic"}:{display:''}}>{order.length === 0 ?"Your Order is Empty":'Your Order Summary'}</h4>
+                  font:"900 46px italic"}:{display:''}}>{order.length === 0 ?"Your Order is Empty":'Your Order Summary'}
+            </h4>
+            <div className='text-end'>
+              <button className="mb-3 btn btn-dark bg-transparent border-0" onClick={()=>{window.location.reload()}}><IoMdRefreshCircle size={25}/></button>
+            </div>
             <table className="table table-secondary table-striped" style={order.length===0?{display:'none'}:{display:''}}>
                 <thead>
                     <tr>

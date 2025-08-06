@@ -9,12 +9,12 @@ const Footer = () => {
     const year = new Date();
   return (
     <>
-        <footer className='mt-4 pt-4'>
+        <footer className='pt-md-4'>
             <div className="container">
-            <section className="row mt-4">
+            <section className="row mt-2">
                 <div className="col-12 col-sm-12 col-lg-4">
                     <ul >
-                        <div className="title ms-5"><b><h3>Contact</h3></b></div>
+                        <div className="title ms-lg-3"><b><h3>Contact</h3></b></div>
                         <li className="list-group-item"><ScrollToTop /><NavLink to={"tel:+91 9487048924"}><GrPhone className='me-2'/><em className="hover-underline-animation left">+91 9487048924</em></NavLink></li>
                         <li className="list-group-item"><ScrollToTop /><NavLink to={"mailto:info@genzonix.in"}><TbMailFilled className='me-2'/><em className="hover-underline-animation left">info@genzonix.in</em></NavLink></li>
                         <li className="list-group-item"><ScrollToTop /><NavLink to={"/"}><GrLocation className='me-2'/><em className="hover-underline-animation left">Mayiladuthurai</em></NavLink></li>
@@ -22,16 +22,16 @@ const Footer = () => {
                     </div>
                     <div className="col-12 col-sm-12 col-lg-4">
                         <ul>
-                            <div className="title ms-3"><b><h3>Services</h3></b></div>
+                            <div className="title ms-lg-3"><b><h3>Services</h3></b></div>
                             <li id="iot" className="list-group-item"><ScrollToTop /><NavLink to={"/products#iot"}><em className="hover-underline-animation left">IoT Kit</em></NavLink></li>
-                            <li id="cloud" className="list-group-item"><ScrollToTop /><NavLink to={"/products#cloud"}><em className="hover-underline-animation left">Cloud Kit</em></NavLink></li>
+                            <li id="cloud" className="list-group-item"><ScrollToTop /><NavLink to={"/sandbox"}><em className="hover-underline-animation left">Cloud Kit</em></NavLink></li>
                             <li id="robotics" className="list-group-item"><ScrollToTop /><NavLink to={"/products#robotics"}><em className="hover-underline-animation left">Robotics Kit</em></NavLink></li>
                             <li id="AI" className="list-group-item"><ScrollToTop /><NavLink to={"/products#ai"}><em className="hover-underline-animation left">AI Kit</em></NavLink></li>
                         </ul>
                     </div>
                     <div className="col-12 col-sm-12 col-lg-4">
                         <ul>
-                            <div className="title ms-3"><b><h3>Quick Links</h3></b></div>
+                            <div className="title ms-lg-3"><b><h3>Quick Links</h3></b></div>
                             <li id="About" className="list-group-item"><ScrollToTop /><NavLink to={"/"}><em className="hover-underline-animation left">About us</em></NavLink></li>
                             <li id="Projects" className="list-group-item"><ScrollToTop /><NavLink to={"/projects/"}><em className="hover-underline-animation left">Projects</em></NavLink></li>
                             <li id="FAQ" className="list-group-item"><ScrollToTop /><NavLink to={"/faq/"}><em className="hover-underline-animation left">Faqs</em></NavLink></li>

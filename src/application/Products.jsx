@@ -4,6 +4,9 @@ import { fetchAuthSession  } from 'aws-amplify/auth';
 import ShowAlert from '../Components/ShowAlert.jsx'
 import { Atom } from 'react-loading-indicators';
 import defImage from '../assets/AI_pic.webp'
+
+const productApi = "https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/products"
+const cartApi = `https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/cart`
 const Products = () => {
   const [components, setComponents] = useState([]);
   const [alertMsg,setAlertMsg] = useState('');
@@ -28,7 +31,7 @@ const Products = () => {
   const handleAddToCart = async (productCode,price,title,image,category) => {
     try{
     const token =await getToken();
-    const res = await fetch("https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/cart", {
+    const res = await fetch(cartApi, {
       method: "POST",
       headers: {
               'Authorization': `Bearer ${token}`, // Cognito JWT token
@@ -68,12 +71,12 @@ const Products = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch("https://ki4mm5ajnj.execute-api.ap-south-1.amazonaws.com/prod/add");
+        const response = await fetch(productApi);
         if (!response.ok) {
             throw new Error('Network response was not ok in fetch data ' + response.statusText);
         }
         const data = await response.json();
-        setComponents(JSON.parse(data.body));
+        setComponents(data)
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

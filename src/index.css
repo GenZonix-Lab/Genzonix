@@ -3,3 +3,11 @@ body{
   color: #f0f8ff;
   font-family :Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.f-graduate{
+  font-family: 'Graduate', cursive;
+}
+
+
+
+/* Removed invalid selector: $nav-link-hover-color::after */

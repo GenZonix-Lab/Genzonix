@@ -372,3 +372,34 @@ p .btn:hover{
   border-radius: 1rem;
   border-top: #00e1ff solid 2px;
 }
+.progress{
+  height: 3rem;
+}
+.progress-bar-striped{
+  background-size: 1.4rem 1.4rem;
+}
+.progress-bar{
+  background-color: #016370;
+}
+
+/* ------------------------------------------------------------------------------------ */
+.nav-link{
+  color:#cae8ff;
+}
+.nav-link:hover{
+  color: #f0f8ff;
+}
+.w-fit{
+  width: fit-content;
+}
+
+@media (min-width: 768px) {
+  .w-md-fit{
+    width: fit-content;
+  }
+  .border-md-left{
+    border-left: #cae8ff solid 2px;
+    border-radius: 1rem;
+    border-top: #00e1ff solid 2px;
+  }
+}

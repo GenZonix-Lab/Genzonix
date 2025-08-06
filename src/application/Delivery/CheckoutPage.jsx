@@ -1,9 +1,11 @@
 import { useState ,useEffect } from "react";
 import { fetchAuthSession,fetchUserAttributes } from 'aws-amplify/auth';
-import PaymentGateway from './PaymentGateway';
+import PaymentGateway from '../Payment/PaymentGateway'
 import OrderDetails from './OrderDetails';
 
-const cart_api=`https://x69g27a76e.execute-api.ap-south-1.amazonaws.com/prod/cart/`
+const cart_api=`https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/cart/`;
+const paymentApi=`https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/payment/`
+
 const getToken = async () => {
   const session = await fetchAuthSession(); // await the session
   const token = session.tokens.idToken.toString(); // now you have the JWT string
@@ -15,6 +17,7 @@ const CheckoutPage = () => {
   const [attributes, setAttributes] = useState({});
   const [delivery,setDelivery]=useState(0);
   const [token, setToken] = useState("");
+  const [credentials, setCredentials]=useState([]);
 
   useEffect(() => {
       const fetchCart = async () => {
@@ -49,6 +52,24 @@ const CheckoutPage = () => {
     const ProfileUpdatepage=()=> {
         window.location.href = "/profileUpdate";
       }
+  useEffect(()=>{
+    const fetchapi=async()=>{
+    try{
+        const token =await getToken();
+        const response = await fetch(paymentApi,{
+            method:'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Cognito JWT token
+            }
+        })
+        const data= await response.json();
+        setCredentials(data)
+    }catch (error){
+        console.error("Error fetching payment gateway credentials:",error);
+    }
+    };
+    fetchapi();
+  },[])
   return (
     <>
     <div className="container py-4">
@@ -95,7 +116,12 @@ Phone Number :${attributes?.['phone_number'] ? attributes?.['phone_number'] : 'p
       <div className="payment-detail mx-auto py-3" style={{maxWidth:'800px'}}>
         <hr />
         <h5>Proceed to Pay</h5>
-        <PaymentGateway />
+          <PaymentGateway 
+            order_id={credentials.id}
+            amount={credentials.amount/100} 
+            currency={credentials.currency} 
+            solution_kit="products"
+          />
       </div>
     </div>
     <hr />

@@ -17,18 +17,18 @@ const Header = () => {
   <header>
     <nav className="navbar navbar-expand-xl navbar-dark main-bg">
       <div className="container-fluid row">
-        <div className="col-3 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-center">
+        <div className="col-8 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-center">
             <ScrollToTop />
             <NavLink to={"/"}>
             <img
                 src={logo}
                 className="img"
                 alt="Logo"
-                title="Website_logo"           
+                title="Website_logo"   
             />
           </NavLink>
         </div >
-        <div className="col-3 col-md-3 col-xl-8 order-1 order-xl-2">
+        <div className="col-2 col-md-3 col-xl-8 order-1 order-xl-2">
           <button 
             type="button"  
             className="navbar-toggler"
@@ -43,6 +43,14 @@ const Header = () => {
                 <ScrollToTop />
                 <NavLink to="/" className="nav-link">
                 <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}><h4>Home</h4></button>
+                </NavLink>
+              </li>
+              <li className="nav-item py-2 py-xl-0">
+                <ScrollToTop />
+                <NavLink to="/sandbox" className="nav-link">
+                  <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
+                    <h4>Cloud</h4>
+                  </button>
                 </NavLink>
               </li>
               <li className="nav-item py-2 py-xl-0">
@@ -63,14 +71,6 @@ const Header = () => {
               </li>
               <li className="nav-item py-2 py-xl-0">
                 <ScrollToTop />
-                <NavLink to="https://forms.gle/QEQCW7uBg242nzWv5" target='blank' className="nav-link">
-                  <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
-                    <h4>Career</h4>
-                  </button>
-                </NavLink>    
-              </li>
-              <li className="nav-item py-2 py-xl-0">
-                <ScrollToTop />
                 <NavLink to="/support" className="nav-link" aria-current="page">
                   <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
                     <h4>Support</h4>
@@ -80,24 +80,12 @@ const Header = () => {
             </ul>
           </div>
         </div>
-         <div className="col-6 col-md-3 col-xl-2 order-3">
+         <div className="col-2 col-md-3 col-xl-2 order-3">
             <div className="d-flex flex-row text-end navbar-nav">
-              <div className="col-4 navbar-item">
+              <div className="col navbar-item">
                   <ScrollToTop />
-                  <NavLink to="/order" className="nav-link nav-icon" title='order'>
-                      <PiPackageDuotone/>
-                  </NavLink>
-              </div>
-              <div className="col-4 navbar-item">
-                  <ScrollToTop />
-                  <NavLink to="/Cart" className="nav-link nav-icon" title='Cart'>
-                      <FaShoppingCart/>
-                  </NavLink>
-              </div>
-              <div className="col-4 navbar-item">
-                  <ScrollToTop />
-                  <NavLink to="/Auth" className="nav-link nav-icon" id='auth' title='Login/SignUp'>
-                      <CgProfile/>
+                  <NavLink to="/profile" className="nav-link nav-icon" id='auth' title='profile info'>
+                      <CgProfile size={30}/>
                   </NavLink>
               </div>
             </div>
