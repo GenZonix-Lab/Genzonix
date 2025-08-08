@@ -6,7 +6,7 @@ import Footer from '../application/main/Footer'
 const AppLayout = () => {
   return (
     <>
-        <Header/>
+        <Header />
         <Outlet />
         <Footer />
     </>

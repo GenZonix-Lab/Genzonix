@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PaymentGateway from '../Payment/PaymentGateway';
 import Subscription from './Subscription';
+import Videos from './Videos';
 import { fetchAuthSession } from 'aws-amplify/auth';
 import ShowAlert from "../../Components/ShowAlert";
 import { ThreeDot } from 'react-loading-indicators';
@@ -151,6 +152,9 @@ const CloudSandbox = () => {
     <div className='container' style={{maxWidth:'1000px'}}>
         {loading ?
         <div>
+            <div>
+                <Videos />
+            </div>
         {subscriptionStatus === "active" ?(
             <div className="subscription">
                 <Subscription/>

@@ -403,3 +403,19 @@ p .btn:hover{
     border-top: #00e1ff solid 2px;
   }
 }
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.start-minus-30{
+  left:-3rem !important;
+}
+.end-minus-30{
+  right: -3rem !important;
+}
