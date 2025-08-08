@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-
+import { fetchAuthSession } from 'aws-amplify/auth';
+import { ThreeDot } from 'react-loading-indicators';
 const Projects = () => {
+    const [loading,setLoading] = useState(false);
+    useEffect(()=>{
+        const getToken = async () => {
+            try{
+                const session = await fetchAuthSession(); // await the session
+                console.log(session)
+                const token = session.tokens.idToken.toString(); // now you have the JWT string
+                if (!token) {
+                    console.warn("User session not found. Redirecting to auth...");
+                    throw new Error("No idToken found in session");
+                }
+                else{ setLoading(true)}
+                return token;
+            }catch(err){
+                console.error("Error getting token:", err);
+                window.location.href = "/Auth";
+            }
+        };
+        getToken();
+    },[])
     //IoT Project list
     const iot_array=()=>[
         {
@@ -33,15 +54,21 @@ const Projects = () => {
   return (
     <>
     <div className="container">
-        <div className="title text-center"><h2 className="p-3">IOT PROJECTs</h2></div>
-        <ul className="list-group">
-            {
-            iot_array().map((iot_project)=>{
-            return( 
-                <li className='list-group-item' key={iot_project.id}><NavLink to={iot_project.url}><h2>{iot_project.project}</h2></NavLink><hr /></li>
-            )})
-            }
-        </ul>
+        {loading ?
+        <div>
+            <div className="title text-center"><h2 className="p-3">IOT PROJECTs</h2></div>
+            <ul className="list-group">
+                {
+                iot_array().map((iot_project)=>{
+                return( 
+                    <li className='list-group-item' key={iot_project.id}><NavLink to={iot_project.url}><h2>{iot_project.project}</h2></NavLink><hr /></li>
+                )})
+                }
+            </ul>
+        </div>:
+        <div className='text-center m-5 p-5'>
+            <ThreeDot variant="bounce" color="#cae8ff" size="200px" text="please wait" textColor="#549acf" />
+        </div>}
     </div>
     <hr />
     </>

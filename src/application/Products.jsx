@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
 import { fetchAuthSession  } from 'aws-amplify/auth';
 import ShowAlert from '../Components/ShowAlert.jsx'
-import { Atom } from 'react-loading-indicators';
+import { ThreeDot } from 'react-loading-indicators';
 import defImage from '../assets/AI_pic.webp'
 
 const productApi = "https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/products"
@@ -89,7 +89,16 @@ const Products = () => {
   return (
 <>
   <div className="container py-4 d-flex justify-content-center">
-    {loading ? (<Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />) : (
+    {loading ? (
+      <div>
+        <ThreeDot 
+          variant="bounce" 
+          color="#cae8ff" 
+          size="200px" 
+          text="please wait..." 
+          textColor="#549acf" 
+        />
+      </div>) : (
     <div className="container-fluid">
       <div className='d-flex '>
       <ShowAlert

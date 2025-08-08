@@ -3,7 +3,7 @@ import PaymentGateway from '../Payment/PaymentGateway';
 import Subscription from './Subscription';
 import { fetchAuthSession } from 'aws-amplify/auth';
 import ShowAlert from "../../Components/ShowAlert";
-
+import { ThreeDot } from 'react-loading-indicators';
 const serviceApi='https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services'
 const awsApi='https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/aws'
 const subscriptionApi = `https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/subscription`
@@ -20,7 +20,7 @@ const CloudSandbox = () => {
     const [status, setStatus]=useState(false)
     const [serviceList, setServiceList] = useState([]);
     const [subscriptionStatus,setSubscriptionStatus] = useState('');
-
+    const [loading, setLoading] = useState(false);
     const getToken = async () => {
         try{
         const session = await fetchAuthSession(); // await the session
@@ -28,7 +28,7 @@ const CloudSandbox = () => {
         if (!token) {
             console.warn("User session not found. Redirecting to auth...");
             throw new Error("No idToken found in session");
-        }
+        }else{ setLoading(true)}
         return token;
         }catch(err){
         console.error("Error getting token:", err);
@@ -149,6 +149,8 @@ const CloudSandbox = () => {
             redirectPath=''
           />
     <div className='container' style={{maxWidth:'1000px'}}>
+        {loading ?
+        <div>
         {subscriptionStatus === "active" ?(
             <div className="subscription">
                 <Subscription/>
@@ -237,6 +239,10 @@ const CloudSandbox = () => {
             )
             }
         </div>
+        </div> :
+        <div className="text-center m-5 p-5">
+            <ThreeDot variant="bounce" color="#cae8ff" size="200px" text="please wait" textColor="#549acf" />
+        </div>}
     </div>
     <hr />
     </>

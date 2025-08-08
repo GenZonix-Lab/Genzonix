@@ -55,17 +55,17 @@ const Header = () => {
               </li>
               <li className="nav-item py-2 py-xl-0">
                 <ScrollToTop />
-                <NavLink to="/products" className="nav-link">
+                <NavLink to="/projects" className="nav-link">
                   <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
-                    <h4>Products</h4>
+                    <h4>Projects</h4>
                   </button>
                 </NavLink>
               </li>
               <li className="nav-item py-2 py-xl-0">
                 <ScrollToTop />
-                <NavLink to="/projects" className="nav-link">
+                <NavLink to="/products" className="nav-link">
                   <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
-                    <h4>Project</h4>
+                    <h4>Products</h4>
                   </button>
                 </NavLink>
               </li>
