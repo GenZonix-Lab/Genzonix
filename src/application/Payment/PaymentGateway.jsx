@@ -47,7 +47,7 @@ const PaymentGateway = ({amount, currency, order_id,solution_kit}) => {
             return;
         }
         var options = {
-            "key": "rzp_test_6n5QsvBQUThbf6", // Enter the Key ID generated from the Dashboard
+            "key": "rzp_live_DOfOZNUrGFkLMo", // Enter the Key ID generated from the Dashboard
             "amount": amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": currency || "INR",
             "name": "GenZonix",

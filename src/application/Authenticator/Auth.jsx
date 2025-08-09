@@ -10,12 +10,41 @@ Amplify.configure(outputs);
 
 // Amplify.configure
 const Auth = () => {
+  const dimension = 380;
+  const [user, setUser] = useState(null);
   return (
     <>
-    <div className=".container-sm p-sm-4">
-      <Authenticator signUpAttributes={['name', 'email', 'phone_number']}>
-      {({ signOut, user }) => <UserDetails user={user} signOut={signOut} />}
-      </Authenticator>
+    <div className="container-sm p-sm-4">
+      <div className="d-lg-flex justify-content-around">
+        <div>
+          <Authenticator signUpAttributes={['name', 'email', 'phone_number']}>
+            {({ signOut, user }) => {
+                setUser(user);
+                return user ? (
+                  <UserDetails user={user} signOut={signOut} />
+                ) : null;
+              }}
+          </Authenticator>
+        </div>
+        {!user && (
+        <div className='text-center d-lg-flex flex-column align-items-start'>
+          <hr />
+          <div className='title text-start'><h4>Demo Videos</h4></div>
+          <iframe 
+            height={dimension*0.5625} 
+            width={dimension} 
+            className='border rounded-3 pt-2'
+            src="https://www.youtube.com/embed/IVVWz61G0jk?si=amE_amrFynTJVEhd" 
+            title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            frameBorder="0"
+          ></iframe>
+          <h5>Watch the demo video to Login / signUp</h5>
+        </div>
+        )}
+      </div>
     </div>
     <hr />
     </>
