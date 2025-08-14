@@ -111,7 +111,7 @@ const Products = () => {
       />
     </div>
     <div className="title"><h2 className="mt-3 p-2">COMPONENTS</h2></div>
-    <div className="row ">
+    <div className="row justify-content-center">
       {components
       .filter(components => components.shown)
       .map(product => (

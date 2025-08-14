@@ -8,16 +8,13 @@ const Projects = () => {
         const getToken = async () => {
             try{
                 const session = await fetchAuthSession(); // await the session
-                console.log(session)
                 const token = session.tokens.idToken.toString(); // now you have the JWT string
                 if (!token) {
-                    console.warn("User session not found. Redirecting to auth...");
                     throw new Error("No idToken found in session");
                 }
                 else{ setLoading(true)}
                 return token;
             }catch(err){
-                console.error("Error getting token:", err);
                 window.location.href = "/Auth";
             }
         };

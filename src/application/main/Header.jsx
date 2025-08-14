@@ -4,9 +4,7 @@ import { NavLink } from 'react-router-dom';
 import ScrollToTop from '../../Components/ScrollToTop'
 import { ImMenu3,ImMenu4  } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
-import { FaShoppingCart } from "react-icons/fa";
-import { PiPackageDuotone } from "react-icons/pi";
-
+import { MdSupportAgent } from "react-icons/md";  //support icon
 const Header = () => {
   const [toggle,setToggle]=useState(false);
   const handletoggle= ()=>{
@@ -17,7 +15,7 @@ const Header = () => {
   <header>
     <nav className="navbar navbar-expand-xl navbar-dark main-bg">
       <div className="container-fluid row">
-        <div className="col-8 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-center">
+        <div className="col-10 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-md-center">
             <ScrollToTop />
             <NavLink to={"/"}>
             <img
@@ -28,7 +26,7 @@ const Header = () => {
             />
           </NavLink>
         </div >
-        <div className="col-2 col-md-3 col-xl-8 order-1 order-xl-2">
+        <div className="col-2 col-md-3 col-xl-8 order-1 order-xl-2 d-none d-md-block">
           <button 
             type="button"  
             className="navbar-toggler"
@@ -84,8 +82,11 @@ const Header = () => {
             <div className="d-flex flex-row text-end navbar-nav">
               <div className="col navbar-item">
                   <ScrollToTop />
-                  <NavLink to="/profile" className="nav-link nav-icon" id='auth' title='profile info'>
+                  <NavLink to="/profile" className="nav-link nav-icon d-none d-md-block" id='auth' title='profile info'>
                       <CgProfile size={30}/>
+                  </NavLink>
+                  <NavLink to="/support" className="nav-link nav-icon d-block d-md-none" id='auth' title='profile info'>
+                      <MdSupportAgent size={30}/>
                   </NavLink>
               </div>
             </div>

@@ -61,9 +61,6 @@ const Profile = () => {
                         <BsCloudPlus size={icon_size}/><div className='fs-5 ps-3'>Subscription</div>
                     </NavLink>
                 </div><hr />
-                <div className="text-end position-fixed end-0 bottom-0 mb-2">
-                    <button className='amplify-button amplify-button--secondary px-4 px-xl-4 me-3' onClick={()=>navigate(-1)}>⬅ </button>
-                </div>
             </div>:
             <div className="m-5 p-5 text-center">
                 <ThreeDot variant="bounce" color="#cae8ff" size="200px" text="please wait" textColor="#549acf" />
