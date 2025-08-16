@@ -75,7 +75,6 @@ const Policy = () => {
             <li>Keep the original packaging and share clear photos/videos of the damage.</li>
         </ul>
     </div>
-    <hr />
     </>
   )
 }

@@ -75,11 +75,9 @@ const Videos = () => {
 
       </div>
     ))}
-  </div>
-  </div>
-</div>
-
-<hr />
+      </div>
+      </div>
+    </div>
     </>
   )
 }

@@ -10,7 +10,6 @@ const SubscriptionDetails = () => {
         <Subscription/>
         <TerminatedSandbox/>
     </div>
-    <hr />
     </>
   )
 }

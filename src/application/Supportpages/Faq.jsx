@@ -27,7 +27,6 @@ const Faq = () => {
         </div>
       </div>
     </div>
-    <hr />
     </>
   )
 }

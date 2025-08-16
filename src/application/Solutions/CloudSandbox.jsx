@@ -248,7 +248,6 @@ const CloudSandbox = () => {
             <ThreeDot variant="bounce" color="#cae8ff" size="200px" text="please wait" textColor="#549acf" />
         </div>}
     </div>
-    <hr />
     </>
   )
 }

@@ -107,19 +107,19 @@ const PaymentGateway = ({amount, currency, order_id,solution_kit}) => {
     }
     return (
         <>
-        <div className='text-center'>
-            <ShowAlert
-                message={alert}
-                triggerKey={trig}
-                type="warning"
-                duration={2000}
-                redirectText=""
-                redirectPath=""
-            />
-            <button id="rzp-button1" onClick={async()=>handleClick()} className='btn-default px-3 p-2 fs-5'>
-                <img src="https://framerusercontent.com/images/CU1m0xFonUl76ZeaW0IdkQ0M.png" alt="" style={{height:'40px'}}/>
-                Pay with Razorpay</button>
-        </div>
+            <div className='text-center'>
+                <ShowAlert
+                    message={alert}
+                    triggerKey={trig}
+                    type="warning"
+                    duration={2000}
+                    redirectText=""
+                    redirectPath=""
+                />
+                <button id="rzp-button1" onClick={async()=>handleClick()} className='btn-default px-3 p-2 fs-5'>
+                    <img src="https://framerusercontent.com/images/CU1m0xFonUl76ZeaW0IdkQ0M.png" alt="" style={{height:'40px'}}/>
+                    Pay with Razorpay</button>
+            </div>
         </>
     )
 }

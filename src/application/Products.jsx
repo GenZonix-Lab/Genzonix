@@ -152,7 +152,6 @@ const Products = () => {
     </div>  
     )} 
   </div>
-  <hr />
 </>
   )
 }

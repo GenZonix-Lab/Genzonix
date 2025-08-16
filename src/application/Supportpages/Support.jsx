@@ -36,7 +36,6 @@ const Support = () => {
         <p className="mt-4">If you need further assistance, don’t hesitate to contact us. We’re here to support you at every step of your learning journey!</p>
       </div>
     </div>
-    <hr />
     </>
   )
 }
