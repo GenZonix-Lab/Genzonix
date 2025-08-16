@@ -311,7 +311,6 @@ const Gzxp24002 = () => {
             <p>The <em>SMART PARKING EMAIL-NOTIFICATION SYSTEM</em> offers a simple, cost-effective way to monitor parking spaces in real-time. By using an ESP32 and ultrasonic sensor, it detects vehicle presence and sends email alerts for availability or occupancy. This system improves parking efficiency, reduces search time, and is easy to implement, making it a practical solution for various parking environments.</p>    
     </div>
     </div>
-    <hr />
     </>
   )
 }

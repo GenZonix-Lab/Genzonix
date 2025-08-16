@@ -258,7 +258,6 @@ const Gzxp24003 = () => {
         <p>The <em>Smart Security Indication and Email Notification System</em> is a simple, low-cost, and effective solution for monitoring security in homes, offices, and restricted areas. By using an IR sensor to detect motion and the ESP32 to send real-time email notifications, the system provides a practical and automated way to stay informed of any unauthorized movements. It's easy-to-implement design, combined with customizable email alerts, makes it a versatile choice for enhancing security in various environments.</p>  
     </div>
     </div>
-    <hr />
     </>
   )
 }

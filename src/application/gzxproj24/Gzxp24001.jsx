@@ -244,7 +244,6 @@ const Gzxp24001 = () => {
             <p>This project is a great introduction to using Bluetooth with the ESP32 and controlling RGB LEDs. You can expand the functionality by adding more features like preset colors or brightness control. Enjoy your LED lighting control!</p>
     </div>
     </div>
-    <hr />
     </>
   )
 }

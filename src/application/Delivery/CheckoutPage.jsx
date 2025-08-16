@@ -124,7 +124,6 @@ Phone Number :${attributes?.['phone_number'] ? attributes?.['phone_number'] : 'p
           />
       </div>
     </div>
-    <hr />
     </>
   );
 };

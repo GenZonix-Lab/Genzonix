@@ -46,7 +46,6 @@ const Auth = () => {
         )}
       </div>
     </div>
-    <hr />
     </>
   )
 }

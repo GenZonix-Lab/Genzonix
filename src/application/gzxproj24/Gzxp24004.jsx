@@ -303,7 +303,7 @@ const Gzxp24004 = () => {
         <h2>Conclusion:</h2>  
         <p>This <em>Smart Home Automation System</em> enables users to control home appliances and lighting through a Wi-Fi-connected ESP32 and Sinric Pro platform. The system provides a user-friendly interface for controlling devices, making it ideal for smart home integration.</p>
 
-    </div><hr />
+    </div>
   </div>
 
   )

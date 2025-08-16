@@ -365,7 +365,7 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
         <h2>Conclusion:</h2>  
         <p>This project demonstrates a simple, yet effective, method for controlling home appliances using voice commands via ESP32 and Arduino Cloud. The system is easy to set up and provides a modern, user-friendly solution for home automation. By using cloud integration and IoT platforms, users can control appliances remotely and with voice commands, making it a practical solution for smart homes.	</p>
     </div>
-</div><hr />
+</div>
 </>
   )
 }
