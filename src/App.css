@@ -447,3 +447,6 @@ p .btn:hover{
 .bg-default{
   background-color: #050a30;
 }
+.dimin{
+  max-width: calc(3 * (24vh + 20vw));
+}

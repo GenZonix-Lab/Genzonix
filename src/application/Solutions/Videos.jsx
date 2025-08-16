@@ -2,19 +2,11 @@ import { vh } from 'framer-motion';
 import React from 'react'
 import { FaCaretLeft, FaCaretRight  } from "react-icons/fa";
 const Videos = () => {
-    const dimension = 400;
+    const dimension = 300;
     const DemoVideos=[
         {
             title: "Create a own server using AWS Lambda serverless function",
             url: "https://www.youtube-nocookie.com/embed/P4nEt09lzU8?si=EyCguiq-V66JzYcI"
-        },
-        {
-            title: "How to deploy a web application on AWS",
-            url: "https://www.youtube-nocookie.com/embed/xyz123"
-        },
-        {
-            title: "Understanding AWS S3 for storage solutions",
-            url: "https://www.youtube-nocookie.com/embed/abc456"
         }
     ];
     
@@ -70,9 +62,9 @@ const Videos = () => {
           frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           referrerpolicy="strict-origin-when-cross-origin" 
-          allowFullScreen></iframe>
+          allowFullScreen>
+        </iframe>        
         <h5>{element.title}</h5>    
-
       </div>
     ))}
       </div>
