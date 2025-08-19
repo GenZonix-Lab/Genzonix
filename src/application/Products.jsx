@@ -90,7 +90,7 @@ const Products = () => {
 <>
   <div className="container py-4 d-flex justify-content-center">
     {loading ? (
-      <div>
+      <div className="m-5 p-5">
         <ThreeDot 
           variant="bounce" 
           color="#cae8ff" 
