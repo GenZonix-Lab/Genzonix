@@ -5,7 +5,6 @@ import ScrollToTop from '../../Components/ScrollToTop'
 import { ImMenu3,ImMenu4  } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
 import { MdSupportAgent } from "react-icons/md";  //support icon
-import Shiva from '../Shiva';
 const Header = () => {
   const [toggle,setToggle]=useState(false);
   const handletoggle= ()=>{
@@ -95,13 +94,6 @@ const Header = () => {
       </div>
     </nav>
   </header>
-  <div>
-    <Shiva />
-  </div>
-
-
-
-
   </>
 )};
 
