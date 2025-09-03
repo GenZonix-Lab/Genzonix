@@ -8,10 +8,9 @@ export const auth = defineAuth({
     email: true,
     externalProviders: {
       callbackUrls: [
-        'http://localhost:5173/profile',
         'https://genzonix.in/profile'
       ],
-      logoutUrls: ['http://localhost:5173/', 'https://genzonix.in'],
+      logoutUrls: ['https://genzonix.in'],
     }
   },
     

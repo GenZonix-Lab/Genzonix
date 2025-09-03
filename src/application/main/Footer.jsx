@@ -24,21 +24,18 @@ const Footer = () => {
                         </div>
                         <div className="col-12 col-sm-12 col-lg-4">
                             <ul>
-                                <div className="title ms-lg-3"><b><h3>Services</h3></b></div>
-                                <li id="iot" className="list-group-item"><ScrollToTop /><NavLink to={"/products#iot"}><em className="hover-underline-animation left">IoT Kit</em></NavLink></li>
-                                <li id="cloud" className="list-group-item"><ScrollToTop /><NavLink to={"/sandbox"}><em className="hover-underline-animation left">Cloud Kit</em></NavLink></li>
-                                <li id="robotics" className="list-group-item"><ScrollToTop /><NavLink to={"/products#robotics"}><em className="hover-underline-animation left">Robotics Kit</em></NavLink></li>
-                                <li id="AI" className="list-group-item"><ScrollToTop /><NavLink to={"/products#ai"}><em className="hover-underline-animation left">AI Kit</em></NavLink></li>
+                                <div className="title ms-lg-3"><b><h3>Policies</h3></b></div>
+                                <li id="privacy-policy" className="list-group-item"><ScrollToTop /><NavLink to={"/privacy-policy"}><em className="hover-underline-animation left">Privacy Policy</em></NavLink></li>
+                                <li id="warrenty&return" className="list-group-item"><ScrollToTop /><NavLink to={"/policy"}><em className="hover-underline-animation left">Warranty & Return Policy</em></NavLink></li>
+                                <li id="terms&condition" className="list-group-item"><ScrollToTop /><NavLink to={"/terms&Conditions"}><em className="hover-underline-animation left">Terms & Conditions</em></NavLink></li>
                             </ul>
                         </div>
                         <div className="col-12 col-sm-12 col-lg-4">
                             <ul>
                                 <div className="title ms-lg-3"><b><h3>Quick Links</h3></b></div>
                                 <li id="About" className="list-group-item"><ScrollToTop /><NavLink to={"/"}><em className="hover-underline-animation left">About us</em></NavLink></li>
-                                <li id="Projects" className="list-group-item"><ScrollToTop /><NavLink to={"/projects/"}><em className="hover-underline-animation left">Projects</em></NavLink></li>
                                 <li id="FAQ" className="list-group-item"><ScrollToTop /><NavLink to={"/faq/"}><em className="hover-underline-animation left">Faqs</em></NavLink></li>
                                 <li id="Career" className="list-group-item"><ScrollToTop /><NavLink to={"https://forms.gle/QEQCW7uBg242nzWv5"} target='blank'><em className="hover-underline-animation left">Career</em></NavLink></li>
-                                <li id="Shop" className="list-group-item"><ScrollToTop /><NavLink to={"/products/"} ><em className="hover-underline-animation left">shop</em></NavLink></li>
                             </ul>
                         </div>
                     </section>

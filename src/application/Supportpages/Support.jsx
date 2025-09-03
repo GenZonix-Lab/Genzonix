@@ -1,5 +1,6 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink ,Link} from 'react-router-dom';
+
 import {FaInstagram} from "react-icons/fa";
 import {FaLinkedin } from "react-icons/fa6";
 import ScrollToTop from '../../Components/ScrollToTop'
@@ -29,8 +30,14 @@ const Support = () => {
 
       <div className="mt-4 f-graduate"><h2>Warranty & Returns</h2></div>
       <div className='mt-2 p-3'>      
-        <p>We stand by the quality of our products. If you experience any issues with your kit, check our warranty and return policies.</p>
+        <p>We stand by the quality of our products. If you experience any issues with your kit, please refer to our Warranty and Return Policy for assistance.</p>
         <p><button className='btn btn-link p-1'><ScrollToTop /><NavLink to={"/policy"}> Read Warranty & Returns Policy</NavLink></button></p>
+      </div>
+      <div className="mt-4 f-graduate"><h2>Legal Policies</h2></div>
+      <div className='mt-2 p-3'>
+        <p>For information on how we handle your data and the terms of using our services, please review our legal policies:</p>
+        <p>Privacy Policy: <Link to={'/privacy-policy'} className='btn btn-link p-1'>Read our Privacy policy</Link></p>
+        <p>Terms of Service: <Link to={"/terms&Conditions"} className='btn btn-link p-1'><em>Read our terms and conditions.</em></Link></p>
       </div>
       <div className="mt-4">
         <p className="mt-4">If you need further assistance, don’t hesitate to contact us. We’re here to support you at every step of your learning journey!</p>
