@@ -21,14 +21,11 @@ const ProductKit = ({kit, id, setAlertMsg, setTrig,setCartTrig}) => {
       }
       const res = await fetch(cartApi, postData);
       const result = await res.json();
-      console.log("data received",result)
       setTrig(Date.now())
       if (result.success) {
-        console.log("Add to cart")
         setCartTrig((trig)=>(trig+1))
         setAlertMsg("Added to cart!")
       } else if(result.message=="Not enough stock") {
-        console.log("Out of stock")
         setAlertMsg("Out of stock")
       }
     }
