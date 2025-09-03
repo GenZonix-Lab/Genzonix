@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
-import { NavLink } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ScrollToTop from '../../Components/ScrollToTop'
 
 import boxCloud from '../../assets/pic2.webp';
 import child_pic from '../../assets/child_pic.webp'
 import ai from '../../assets/AI_pic.webp'
 import cloud from '../../assets/cloud_pic.webp'
-import iot from '../../assets/Box components.webp'
+import iot from '../../assets/iotKit.webp'
+import robotics from '../../assets/roboticsKit.webp'
 import handson from '../../assets/handsonLearning.webp'
 import expert from '../../assets/expert.webp'
 import quality from '../../assets/kit_demo.webp'
+
 
 // Animation variants
 const fadeInUp = {
@@ -17,145 +19,174 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 const Home = () => {
+  const navigate = useNavigate()
+  // Content data
+  const contents = [
+    {
+      id:'Explore',
+      title:'Innovative Kits for a Smarter Generation',
+      button:'Explore',
+      image:boxCloud,
+      state:true
+    },
+    {
+      id:"story",
+      title:"Empowering Innovators:The Genzonix Story",
+      image:child_pic,
+      description: [
+        "At Genzonix, we empower the next generation of innovators through hands-on STEM learning.",
+        "Our DIY kits and solutions in robotics, AI, Cloud, and IoT bridge the gap between theory and practice, making advanced technology accessible to students, educators, and hobbyists." ,
+        "We focus on fostering creativity and problem-solving through experiential learning, equipping users with the tools to bring their ideas to life.",
+        "Genzonix is dedicated to shaping future thinkers by promoting education, innovation, and exploration in a technology-driven world."
+      ],
+      state:false
+    },
+    {
+      id:'innovation',
+      title:'DIY INNOVATIVE KITS',
+      specification:[
+        {
+          id:"iot",
+          title:"Smart Maker Lab",
+          description:"Build smart, connected devices using sensors, microcontrollers, and wireless communication to explore Internet of Things innovations practically.",
+          image:iot
+        },
+        {
+          id:"ai",
+          title:"VisionAIX",
+          description:"Learn artificial intelligence techniques to teach computers recognizing, analyzing, and interpreting visual data for automation, security, and smart applications",
+          image:ai
+        },
+        {
+          id:"robotics",
+          title:"RoboQuest",
+          description:"Design, program, and control intelligent robots integrating sensors, motors, and algorithms to solve problems, automate tasks, and inspire creativity.",
+          image:robotics
+        },
+        {
+          id:"cloud",
+          title:"SkyCompute",
+          description:"Explore scalable cloud computing technologies for deploying applications, managing data, and learning services like AWS, Azure, and Google Cloud.",
+          image:cloud
+        }
+      ],
+      state:true
+    },
+    {
+      id:'exploration',
+      title:'Why Genzonix?',
+      specification:[
+        {
+          id:"handsonLearning",
+          title:"Innovative, Hands-On Learning Kits",
+          description:"Genzonix offers high-quality STEM and IoT DIY kits designed to engage learners through hands-on activities. Each kit fosters creativity, problem-solving, and technical skills, making learning practical and fun for all ages.",
+          image:handson
+        },
+        {
+          id:"expertConsulting",
+          title:"Expert Support & Resources",
+          description:"Genzonix provides easy-to-follow guides, tutorials, and customer support, ensuring even beginners can dive into STEM projects confidently. We aim to make tech learning accessible and enjoyable, regardless of experience level.",
+          image:expert
+        },
+        {
+          id:"quality",
+          title:"Affordable & Curated for Value",
+          description:"Our kits are competitively priced, balancing affordability with quality. We thoughtfully curate each kit to include essential components, giving customers a comprehensive, high-value experience without breaking the bank.",
+          image:quality
+        }
+      ],
+      state:false
+    }
+  ]
+
+  const handleKit=(data)=>{
+    if(data==="iot" || data ==="robotics" || data ==="ai"){
+      navigate("/products")
+    }else if(data === "cloud"){
+      navigate("/sandbox")
+    }
+  }
   return (
     <>
-    <div className="container-fluid">
-      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className='explore text-center' title='explore'>
-          <div className="title mt-5 py-3"><h1>Innovative Kits for a Smarter Generation</h1></div>
-          <ScrollToTop />
-          <NavLink to={"/sandbox"}><button type="button" className='Explore_btn rounded p-3 m-1'>Explore Sandbox</button></NavLink>    
-          <div className="my-3 py-4 ">
-              <img 
-                src={boxCloud}
-                className='rounded'
-                id='box-img'
-                alt="Cloud_box" 
-                title="Cloud_box" 
-                loading='lazy'
-              />
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-        <div className="story" title='story' id='#story'>
-          <div className="container">
-            <div className="title text-center"><h2>Empowering Innovators: The Genzonix Story</h2></div>
-            <div className="row justify-content-center">
-              <div className='child-img order-lg-2 order-1 col col-lg-4 col-xl-3 col-10 text-center p-3'>
-                <img 
-                    src={child_pic}
-                    alt="child" 
-                    title="child" 
-                    loading="lazy"
-                />
-              </div>
-              <div className="story-data order-lg-1 order-2 col col-lg-8 col-xl-9 col-12">
-                <h3>At Genzonix, we empower the next generation of innovators through hands-on STEM learning. Our DIY kits and solutions in robotics, AI, Cloud, and IoT bridge the gap between theory and practice, making advanced technology accessible to students, educators, and hobbyists.</h3><br />
-                <h3>We focus on fostering creativity and problem-solving through experiential learning, equipping users with the tools to bring their ideas to life. Genzonix is dedicated to shaping future thinkers by promoting education, innovation, and exploration in a technology-driven world.</h3>
-              </div>
-            </div>
-          </div>
-      </div>
-      </motion.div>
-
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-        <div className='kit my-5' title='innovation' id='#innovation'>
-          <div className="container">
-          <div className="title text-center mt-2"><h2>DIY INNOVATIVE</h2> </div>
-          <div className="row text-center">
-              <div className="box col-sm-12 col-lg-4 p-1">
-                  <img src={iot} 
-                      className='p-1 m-3'
-                      alt="IoT" 
-                      title="IoT kit box" 
-                      loading="lazy"
-                  />
-                  <div>
-                      <h2>DIY IoT</h2>
-                      <p>Create smart, connected devices with easy-to-build projects that teach the fundamentals of wireless control and sensor integration, ideal for smart home and automation applications.</p>
+    {contents.map((element)=>(
+        <motion.div 
+          key={element.id}
+          id={element.id}
+          initial={element.id==="Explore"?{ opacity: 0, y: 40 }:"hidden"} 
+          animate={element.id==="Explore"?{ opacity: 1, y: 0 }:null} 
+          transition={element.id==="Explore"?{ duration: 0.8 }:null}
+          whileInView={element.id==="Explore" ? null : "visible"}
+          viewport={element.id==="Explore" ? null : { once: true }}
+          variants={element.id==="Explore" ? null : {fadeInUp}}
+        >
+          <div className={`text-center ${element.state ?'bg-default color-default' :'bg-negative color-negative'}`} title={element.title} aria-label={element.title} id={`#${element.id}`}>
+            <div className="container-lg py-3">
+              <div className="title mt-5 py-3">{element.id==="Explore" ? <h1>{element?.title}</h1> : <h2>{element?.title}</h2> }</div>
+              <button 
+                type="button" 
+                className={element.button?'Explore_btn rounded p-3 m-1':'d-none'}
+                onClick={() => document.getElementById('innovation')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                {element?.button}
+              </button>
+              <div className={element.id==="Explore"?"my-3 py-4 ":element.id === "story"?"row justify-content-center":"d-none"}>
+                  <div className={element.id === "story"?'order-md-2 order-1 col col-md-3 col-lg-5 col-xl-4 col-xxl-3 col-10 text-center p-3':null}>
+                    <img 
+                        src={element.image}
+                        className={element.id==="Explore"?'box-img rounded':'w-100 rounded'}
+                        id={element.id}
+                        alt={element.title} 
+                        title={element.title}
+                        loading='lazy'
+                    />
                   </div>
-              </div>
-              <div className="box col-sm-12 col-lg-4 p-1">
-                  <img 
-                      src={ai} 
-                      className='p-1 mt-3'
-                      alt="AI" 
-                      title="AI kit box" 
-                      loading='lazy'
-                  />
-                  <div>
-                      <h2>AI Computer Vision</h2>
-                      <p>Dive into image and video analysis with beginner-friendly Python projects that bring real-world AI applications, like object detection and facial recognition, within reach.</p>
+                  <div className={element.id === "story"?"text-start story-data order-md-1 order-2 col col-md-9 col-lg-7 col-xl-8 col-xxl-9 col-12":"d-none"}>
+                      {element?.description &&
+                      <ul className="list-group d-flex align-items-lg-end py-md-4 py-lg-2 py-xl-0">
+                      {element.description.map((data, idx) => (
+                        <li key={idx} className="list-group-item color-negative fs-lg-3 fs-6 ">{data}</li>
+                      ))}
+                    </ul>}
                   </div>
+                  
               </div>
-              <div className="box col-sm-12 col-lg-4 p-1">
-                  <img 
-                      src={cloud} 
-                      className='p-1  mt-3'
-                      alt="Cloud" 
-                      title="Cloud kit box" 
-                      loading="lazy"
-                  />
-                  <div>
-                      <h2>Cloud Projects</h2>
-                      <p>Gain hands-on experience with essential cloud tools, learning how to store, process, and deploy data seamlessly using popular cloud platforms.</p>
+              {element?.specification &&
+                <div className="row">
+                {element?.specification.map((data)=>(
+                  <div 
+                  className={`box py-3 m-0 ${
+                    element.id==="innovation"?'box col-12 col-sm-6 col-lg-3':'col-12 col-md-4'
+                    }`} 
+                  key={data.id}
+                  title={data.title}
+                  aria-label={data.title}
+                  id={data.id}
+                  onClick={()=>handleKit(data.id)}>
+                    <div className="">
+                      <div className="">
+                        <img 
+                            src={data.image}
+                            className='p-1 m-3'
+                            alt={data.id} 
+                            title={data.id}
+                            loading="lazy"
+                        />
+                      </div>
+                      <div className="m-0 p-0">
+                          <h2 className="m-1 p-1">{data.title}</h2>
+                          <p className="m-4 p-0">{data.description}</p>
+                      </div>
+                    </div>
                   </div>
-              </div>
+                ))}
+              </div>}
+            </div>
           </div>
-          </div>
-        </div>
-      </motion.div>
+        </motion.div>
+    ))}
 
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-        <div className="Exploration my-5">
-        <div className="container">
-        <div className="title text-center"><h2>Why Genzonix?</h2></div>
-        <section className="row text-center mt-2">
-            <div className="box col-sm-12 col-lg-4 p-1">
-                <img 
-                    src={handson}
-                    className='p-1 m-3'
-                    alt="handsonLearning" 
-                    title='handsonLearning'
-                    loading="lazy"
-                />
-                <div>
-                    <h2>Innovative, Hands-On Learning Kits</h2>
-                    <p>Genzonix offers high-quality STEM and IoT DIY kits designed to engage learners through hands-on activities. Each kit fosters creativity, problem-solving, and technical skills, making learning practical and fun for all ages.</p>
-                </div>
-            </div>
-            <div className="box col-sm-12 col-lg-4 p-1">
-                <img 
-                    src={expert}
-                    className='p-1 m-3'
-                    alt="expert consulting" 
-                    title='expert'
-                    loading="lazy"
-                />
-                <div>
-                    <h2 id="slide4_head2">Expert Support & Resources</h2>
-                    <p id="slide4_para2">Genzonix provides easy-to-follow guides, tutorials, and customer support, ensuring even beginners can dive into STEM projects confidently. We aim to make tech learning accessible and enjoyable, regardless of experience level.</p>
-                </div>
-            </div>
-            <div className="box col-sm-12 col-lg-4 p-1">
-                <img 
-                    src={quality}
-                    className='p-1 m-3'
-                    alt="quality " 
-                    title='kit_demo'
-                />
-                <div>
-                    <h2 id="slide4_head3">Affordable & Curated for Value</h2>
-                    <p id="slide4_para3">Our kits are competitively priced, balancing affordability with quality. We thoughtfully curate each kit to include essential components, giving customers a comprehensive, high-value experience without breaking the bank.</p>
-                </div>
-            </div>
-        </section>
-        </div>
-        </div>
-      </motion.div>
-    </div>
+
+    
     </>
   )
 }

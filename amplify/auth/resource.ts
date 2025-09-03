@@ -1,5 +1,4 @@
-import { defineAuth } from '@aws-amplify/backend';
-
+import { defineAuth, secret } from '@aws-amplify/backend';
 /**
  * Define and configure your auth resource
  * @see https://docs.amplify.aws/gen2/build-a-backend/auth
@@ -7,6 +6,13 @@ import { defineAuth } from '@aws-amplify/backend';
 export const auth = defineAuth({
   loginWith: {
     email: true,
+    externalProviders: {
+      callbackUrls: [
+        'http://localhost:5173/profile',
+        'https://genzonix.in/profile'
+      ],
+      logoutUrls: ['http://localhost:5173/', 'https://genzonix.in'],
+    }
   },
     
   userAttributes: {

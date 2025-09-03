@@ -19,7 +19,7 @@ const OrderDetails = ({cart ,delivery, cost}) => {
                   <td className="text-end">{Number(item.price).toFixed(2)}</td>
                 </tr>
           ))}
-                <tr className="text-end" style={delivery_charge == null ?{display:'none'}:{display:''}}>
+                <tr className={delivery_charge == null || delivery_charge == 0 ?"d-none":"text-end"}>
                   <td colSpan={2} className="text-end px-5">
                     Delivery charge
                   </td>

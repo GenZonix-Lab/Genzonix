@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { fetchAuthSession } from 'aws-amplify/auth';
 import { StorageImage } from "@aws-amplify/ui-react-storage";
-import { Atom } from 'react-loading-indicators';
 import ShowAlert from "../../Components/ShowAlert";
-
+import AtomLoading from "../../Components/AtomLoading";
+import "./delivery.css"
 const cart_api=`https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/cart/`
-
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -42,7 +41,8 @@ const Cart = () => {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`}
           });
-        const data = await res.json();
+        const data_render = await res.json();
+        const data = data_render.cartItems
         setCart(data.products.map(item => ({
           productCode: item.productCode,
           title: item.title, // ideally fetch real names/prices via another API
@@ -135,81 +135,72 @@ const Cart = () => {
   return (
     <>
     <div className="container py-4 d-flex justify-content-center">
-      {loading ? (
-              <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
-            ) : (
+      {loading ? <AtomLoading/> :
       <div className="container-fluid">
-      <ShowAlert
-        message={alert}
-        triggerKey={trig}
-        type="info"
-        duration={3000}
-        redirectText=''
-        redirectPath=''
-      />
-        <h2 
-        className="mb-4" 
-        style={cart.length === 0
-          ?{
-              backgroundColor:'#f0f8ff',
-              color:'#050a30',
-              textAlign:'center',
-              padding:'50px',
-              font:"900 50px italic"
-              }:{}}>{cart.length === 0 ?'Your Cart is Empty':'Shopping Cart'}</h2>
-      <div className="row gap-3">
-        {cart.map((item) => (
-          <div key={item.productCode} className="p-2 d-flex flex-row align-items-center justify-content-left border rounded">
-            <div className="">
-              <tbody>
-                <tr>
-                  <td>
-                    <button className="btn px-md-3 px-1" style={{'color':'whitesmoke','border':'none'}} onClick={() => removeItem(item.productCode)}>
-                      &#x2716;
-                    </button>
-                  </td>
-                  <td>
-                    <div className="cart-img">
-                      <StorageImage 
-                        alt="Product" 
-                        path={item.image || 'default/default-thumbnail.png'}
-                        width={100}
-                        />
+        <ShowAlert
+          message={alert}
+          triggerKey={trig}
+          type="info"
+          duration={3000}
+          redirectText=''
+          redirectPath=''
+        />
+        <h2 className={`mb-4 ${cart.length === 0?'text-center big-shown':''}`}>{cart.length === 0 ?'Your Cart is Empty':'Shopping Cart'}</h2>
+        <div className="row gap-3">
+          {cart.map((item) => (
+            <div key={item.productCode} className="p-2 d-flex flex-row align-items-center justify-content-left border rounded">
+              <div>
+                <table>
+                  <tbody>
+                  <tr>
+                    <td>
+                      <button className="btn px-md-3 px-1" style={{'color':'whitesmoke','border':'none'}} onClick={() => removeItem(item.productCode)}>
+                        &#x2716;
+                      </button>
+                    </td>
+                    <td>
+                      <div className="cart-img">
+                        <StorageImage 
+                          alt="Product" 
+                          path={item.image || 'default/default-thumbnail.png'}
+                          width={100}
+                          />
+                      </div>
+                    </td>
+                    <td>
+                      <div className="px-lg-5 px-1 title">
+                      <h5>{item.title}</h5>
+                      <p className="text-muted">Price: ₹{item.price}</p>
+                      <div className="d-flex align-items-center">
+                        <button className="btn btn-secondary btn-sm" onClick={() => updateItem(item.productCode, parseInt(item.quantity) - 1,item.title,item.price,item.image,item.category)}>-</button>
+                        <span className="mx-2">{item.quantity}</span>
+                        <button className="btn btn-secondary btn-sm" onClick={() => updateItem(item.productCode, parseInt(item.quantity) + 1,item.title,item.price,item.image,item.category)}>+</button>
+                        <span className="mx-4 text-warning">{errorMessages[item.productCode] ? errorMessages[item.productCode] : ''}</span>
+                      </div>
                     </div>
-                  </td>
-                  <td>
-                    <div className="px-lg-5 px-1 title">
-                    <h5>{item.title}</h5>
-                    <p className="text-muted">Price: ₹{item.price}</p>
-                    <div className="d-flex align-items-center">
-                      <button className="btn btn-secondary btn-sm" onClick={() => updateItem(item.productCode, parseInt(item.quantity) - 1,item.title,item.price,item.image,item.category)}>-</button>
-                      <span className="mx-2">{item.quantity}</span>
-                      <button className="btn btn-secondary btn-sm" onClick={() => updateItem(item.productCode, parseInt(item.quantity) + 1,item.title,item.price,item.image,item.category)}>+</button>
-                      <span className="mx-4 text-warning">{errorMessages[item.productCode] ? errorMessages[item.productCode] : ''}</span>
-                    </div>
-                  </div>
 
-                  </td>
-                </tr>
-              </tbody>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
             </div>
+          ))}
+          <div className="justify-content-end" style={cart.length=== 0 || sub_cost > 400?{display:'none'}:{display:'flex'}}><h4>Sub Total: <b>₹{sub_cost} </b></h4></div>
+        </div>
+        <div className={cart.length=== 0?'d-none':"mt-4 text-end "} style={cart.length=== 0?{display:'none'}:{display:''}}>
+          <div className="d-flex justify-content-end">
+            <div className="form-group text-start border-left py-3 px-5" style={sub_cost > 400?{display:'none'}:{display:''}}>
+            <label htmlFor="shipping" className="form-label fs-3">Shipping: </label><br />
+            <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 49 :0} onChange={handleChange}/><label className="form-check-label fs-4 align-middle">Delhivery: <b> ₹ {sub_cost < 400? 49 :0}</b></label><br />
+            <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 59 :0} onChange={handleChange}/><label className="form-check-label fs-4">Speed Post: <b> ₹ {sub_cost < 400? 59 :0}</b></label>
           </div>
-        ))}
-        <div className="justify-content-end" style={cart.length=== 0 || sub_cost > 400?{display:'none'}:{display:'flex'}}><h4>Sub Total: <b>₹{sub_cost} </b></h4></div>
-      </div>
-      <div className="mt-4 text-end " style={cart.length=== 0?{display:'none'}:{display:''}}>
-        <div className="d-flex justify-content-end">
-          <div className="form-group text-start border-left py-3 px-5" style={sub_cost > 400?{display:'none'}:{display:''}}>
-          <label htmlFor="shipping" className="form-label fs-3">Shipping: </label><br />
-          <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 49 :0} onChange={handleChange}/><label className="form-check-label fs-4 align-middle">Delhivery: <b> ₹ {sub_cost < 400? 49 :0}</b></label><br />
-          <input type="radio" className="form-check-input fs-5 me-2" name="delivery" id="delivery" value={sub_cost < 400? 59 :0} onChange={handleChange}/><label className="form-check-label fs-4">Speed Post: <b> ₹ {sub_cost < 400? 59 :0}</b></label>
+          </div>
+          <div><h2>Total : ₹ {cost}</h2></div>
+          <button className="btn btn-primary mt-2 w-100" onClick={()=>checkoutItem(cost,delivery)}>Proceed to Checkout</button>
         </div>
-        </div>
-        <div><h2>Total : ₹ {cost}</h2></div>
-        <button className="btn btn-primary mt-2 w-100" onClick={()=>checkoutItem(cost,delivery)}>Proceed to Checkout</button>
       </div>
-      </div>
-      )}
+      }
     </div>
     </>
   );

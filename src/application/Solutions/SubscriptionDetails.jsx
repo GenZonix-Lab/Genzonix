@@ -7,7 +7,7 @@ const SubscriptionDetails = () => {
     <>
     <div className='container' style={{maxWidth:'1000px'}}>
         <h2>Subscription Details</h2>
-        <Subscription/>
+        <Subscription/><hr />
         <TerminatedSandbox/>
     </div>
     </>

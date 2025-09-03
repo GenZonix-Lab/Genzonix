@@ -47,11 +47,11 @@ header{
   text-shadow: 2px 3px 10px rgba(210, 49, 170, 0.965);
 }
 .story,.Exploration{
- padding-top: 30px;
  background-color: #f0f8ff;
  color: #050a30;
- margin: 0px;
- padding-bottom: 20px;
+ margin: 20px;
+ border-radius: 2rem;
+ padding: 1rem;
 }
 .kit{
   padding-top: 30px;
@@ -187,7 +187,7 @@ td{
 
 }
 
-#box-img{
+.box-img{
   max-width:calc(12*(1.2vh + 5vw));
   padding-bottom: 100px;
   object-fit: contain;
@@ -366,7 +366,16 @@ p .btn:hover{
 
 .truncate-description {
   display: -webkit-box !important; /* Use flexbox for layout */
-  -webkit-line-clamp: 5;       /* Show only 3 lines */
+  -webkit-line-clamp: 2;       /* Show only 3 lines */
+  line-clamp: 5;               /* Standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+.truncate-title {
+  display: -webkit-box !important; /* Use flexbox for layout */
+  -webkit-line-clamp: 1;       /* Show only 3 lines */
   line-clamp: 5;               /* Standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -374,7 +383,7 @@ p .btn:hover{
   transition: all 0.3s ease;
 }
 
-.truncate-description:hover {
+.truncate-title:hover {
   -webkit-line-clamp: unset;  /* Remove the line limit on hover */
   line-clamp: unset;           /* Standard property for compatibility */
   overflow: visible;           /* Allow overflow to show full text */
@@ -447,6 +456,19 @@ p .btn:hover{
 .bg-default{
   background-color: #050a30;
 }
+
+.bg-negative{
+  background-color: #f0f8ff;
+}
+
 .dimin{
   max-width: calc(3 * (24vh + 20vw));
+}
+
+.color-default{
+  color: #f0f8ff;
+}
+
+.color-negative{
+  color: #050a30;
 }

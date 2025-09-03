@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 const paymentApi = 'https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/payment/'
 
-const PaymentGateway = ({amount, currency, order_id,solution_kit}) => {
+const PaymentGateway = ({amount, checkout, currency, order_id,solution_kit}) => {
     const navigate = useNavigate();
     const getToken = async () => {
       const session = await fetchAuthSession(); // await the session
@@ -52,7 +52,7 @@ const PaymentGateway = ({amount, currency, order_id,solution_kit}) => {
             "currency": currency || "INR",
             "name": "GenZonix",
             "description": `Genzonix uses Razorpay to offer secure, fast, and reliable payments via UPI, cards, net banking, and wallets.`,
-            "image": "https://www.genzonix.in/assets/favicon-DB_nvQ7f.png",
+            "image": "./favicon.png",
             "order_id": order_id, //Order Id Generated from item list.
             "handler": function (response){
                 post_payment(response);
@@ -97,6 +97,7 @@ const PaymentGateway = ({amount, currency, order_id,solution_kit}) => {
             },
             body:JSON.stringify({
                 "solution_kit":solution_kit,
+                "type":checkout,
                 "razorpay_order_id":response.razorpay_order_id,
                 "razorpay_payment_id":response.razorpay_payment_id,
                 "razorpay_signature":response.razorpay_signature,

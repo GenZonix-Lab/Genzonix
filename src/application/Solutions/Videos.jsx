@@ -2,7 +2,7 @@ import { vh } from 'framer-motion';
 import React from 'react'
 import { FaCaretLeft, FaCaretRight  } from "react-icons/fa";
 const Videos = () => {
-    const dimension = 300;
+    const dimension = 312;
     const DemoVideos=[
         {
             title: "Create a own server using AWS Lambda serverless function",
@@ -61,7 +61,7 @@ const Videos = () => {
           title={element.title} 
           frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" 
+          referrerPolicy="strict-origin-when-cross-origin" 
           allowFullScreen>
         </iframe>        
         <h5>{element.title}</h5>    

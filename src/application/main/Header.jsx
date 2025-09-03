@@ -1,21 +1,82 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../../assets/Genzonix.webp';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ScrollToTop from '../../Components/ScrollToTop'
 import { ImMenu3,ImMenu4  } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
+import { FaShoppingCart } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 import { MdSupportAgent } from "react-icons/md";  //support icon
-const Header = () => {
+import { fetchAuthSession } from 'aws-amplify/auth';
+
+const cartApi = `https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/cart`
+
+const Header = ({cartTrig, userLoading}) => {
   const [toggle,setToggle]=useState(false);
+  const location = useLocation();
+  const [count ,setCount] = useState(0);
+  const navigate = useNavigate();
+
   const handletoggle= ()=>{
     setToggle(!toggle)
   }
+  const getToken = async () => {
+        try {
+          const session = await fetchAuthSession();
+          const idToken = session?.tokens?.idToken?.toString();
+          if (!idToken) throw new Error("No idToken found in session");
+          return idToken;
+        } catch (err) {
+          console.error("Error getting token:", err);
+          if(location.pathname!='/') navigate("/Auth");
+        }
+      };
+    useEffect(() => {
+    const fetchcart = async () => {
+      try{
+        if (userLoading) return
+        if (location.pathname !=='/products') return;
+        const token = await getToken()
+        const response = await fetch(cartApi, {
+          method: "GET",
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        });
+        if (!response.ok) throw Error("Data Not Received properly, Please Reload. ")
+        const data = await response.json();
+        if (data?.message) {
+          if (data.message === "Unauthorized") {
+            console.log("Unauthorized, skipping fetch");
+            return; // ✅ stop here
+          }
+        }else{
+          const datarender=data.cartItems
+          const products = datarender?.products || []; // safe fallback
+          if (products.length !== 0) {
+            setCount(products.length);
+          } else {
+            setCount(0)
+          }
+        }
+      } catch (err){
+        if(err == "TypeError: Cannot read properties of undefined (reading 'length')"){
+          console.log("Loading error")
+        }else{
+          console.log(err)
+        }
+      }
+    };
+    fetchcart();
+  }, [location.pathname,cartTrig]);
+
   return (
   <>
   <header>
     <nav className="navbar navbar-expand-xl navbar-dark main-bg">
       <div className="container-fluid row">
-        <div className="col-10 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-md-center">
+        {(location.pathname === "/products" || location.pathname === "/profile")?
+        <div className={`col-10 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-md-center`}>
             <ScrollToTop />
             <NavLink to={"/"}>
             <img
@@ -25,7 +86,18 @@ const Header = () => {
                 title="Website_logo"   
             />
           </NavLink>
-        </div >
+        </div >:
+        <div className={`col-12 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-center`}>
+            <ScrollToTop />
+            <NavLink to={"/"}>
+            <img
+                src={logo}
+                className="img"
+                alt="Logo"
+                title="Website_logo"   
+            />
+          </NavLink>
+        </div >}
         <div className="col-2 col-md-3 col-xl-8 order-1 order-xl-2 d-none d-md-block">
           <button 
             type="button"  
@@ -82,12 +154,24 @@ const Header = () => {
             <div className="d-flex flex-row text-end navbar-nav">
               <div className="col navbar-item">
                   <ScrollToTop />
-                  <NavLink to="/profile" className="nav-link nav-icon d-none d-md-block" id='auth' title='profile info'>
+                   {location.pathname === "/products" && (
+                  <>
+                    <NavLink to="/Cart" className="nav-link nav-icon d-md-inline me-md-4 gap-3 position-relative" title='Cart'>
+                      <FaShoppingCart size={30}/>
+                      {count!==0 && 
+                        <span className={`position-absolute top-50 start-100 translate-middle badge ps-4 ps-lg-2 pt-3  fs-6 color-default`}>
+                          {`${count}`}
+                        </span>
+                      }
+                    </NavLink>                 
+                  </>)}
+                  <NavLink to="/profile" className="nav-link nav-icon d-none d-md-inline" id='auth' title='profile info'>
                       <CgProfile size={30}/>
                   </NavLink>
+                  {location.pathname === "/profile" && (
                   <NavLink to="/support" className="nav-link nav-icon d-block d-md-none" id='auth' title='profile info'>
                       <MdSupportAgent size={30}/>
-                  </NavLink>
+                  </NavLink>)}
               </div>
             </div>
           </div>        

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Country, State, City }  from 'country-state-city';
 import PhoneInput from 'react-phone-input-2'
-import { Atom, ThreeDot } from 'react-loading-indicators';
 import { useNavigate } from 'react-router-dom';
 import './reactStyle.css'
 import {
@@ -9,6 +8,8 @@ import {
   updateUserAttribute,
   confirmUserAttribute,
 } from 'aws-amplify/auth';
+import AtomLoading from '../../Components/AtomLoading';
+import Loading from '../../Components/Loading';
 
 
 const ProfileUpdate = ({user}) => {
@@ -19,6 +20,7 @@ const ProfileUpdate = ({user}) => {
   const navigate= useNavigate();
   const [pendingVerification, setPendingVerification] = useState(null);
   const [confirmationCode, setConfirmationCode] = useState('');
+
   useEffect(() => {
     const loadAttributes = async () => {
       try {
@@ -38,6 +40,7 @@ const ProfileUpdate = ({user}) => {
     setAttributes(null);
     loadAttributes();
   }, [user]);
+
   const handlephoneChange = (value,data) =>{
     setFormData((prev)=> ({ ...prev, country_code : data.dialCode}))
     setFormData((prev)=> ({ ...prev, phone_number : '+' + value}))
@@ -162,14 +165,14 @@ const ProfileUpdate = ({user}) => {
     <main className="text-center mx-md-5 p-md-5">
       
       {loading ? (
-        <Atom color="#8488df" size="large" text="Please wait..." textColor="#ff00df" />
+        <AtomLoading/>
       ) : (
-        <div className="d-flex justify-content-center px-xl-5">
+        <div className="px-xl-5">
         <div className="px-md-5 userprofile" id='updateprofile'>
           <div className='px-lg-5'>
             <div className="amplify-heading"><h1>User Details</h1></div>
-            <fieldset className='amplify-flex text-start pb-3' style={{"flex-direction": "column"}}>
-              <div className='amplify-flex p-1 m-2 px-xl-5' style={{"flex-direction": "column"}}>
+            <fieldset className='amplify-flex text-start pb-3' style={{flexDirection: "column"}}>
+              <div className='amplify-flex p-1 m-2 px-xl-5' style={{flexDirection: "column"}}>
                 <div className='amplify-flex amplify-field amplify-textfield'>
                   <label htmlFor="name" className='amplify-label pe-3'>Full name (First and Last name)</label>
                   <div className='amplify-flex amplify-field-group amplify-field-group--horizontal'>
@@ -181,6 +184,7 @@ const ProfileUpdate = ({user}) => {
                     value={formData.name || ''}
                     onChange={handleChange}
                     placeholder="Name"
+                    autoComplete='on'
                   />
                     </div>
                   </div>
@@ -196,6 +200,7 @@ const ProfileUpdate = ({user}) => {
                         value={formData.email || ''}
                         onChange={handleChange}
                         placeholder="Email"
+                        autoComplete='on'
                       />
                     </div>
                   </div>
@@ -226,6 +231,7 @@ const ProfileUpdate = ({user}) => {
                         value={formData?.['custom:doorNo'] || ''}
                         onChange={handleChange}
                         placeholder="eg. 17/a"
+                        autoComplete='on'
                       />
                     </div>
                   </div>
@@ -241,6 +247,7 @@ const ProfileUpdate = ({user}) => {
                       value={formData.address || ''}
                       onChange={handleChange}
                       placeholder="Street / Sector / Area"
+                      autoComplete='on'
                     /></div></div>
                 </div>
                 <div className='amplify-flex amplify-field amplify-textfield'>
@@ -254,6 +261,7 @@ const ProfileUpdate = ({user}) => {
                       value={formData?.['custom:addressLine2'] || ''}
                       onChange={handleChange}
                       placeholder="Village / town / city"
+                      autoComplete='on'
                     /></div></div>
                 </div>
                 <div className='amplify-flex amplify-field amplify-textfield'>
@@ -267,6 +275,7 @@ const ProfileUpdate = ({user}) => {
                       value={formData?.['custom:addressLine3'] ? formData?.['custom:addressLine3'] : ''}
                       onChange={handleChange}
                       placeholder="Landmark"
+                      autoComplete='on'
                     /></div></div>
                 </div>
                 <div className='amplify-flex amplify-field amplify-textfield'>
@@ -339,7 +348,7 @@ const ProfileUpdate = ({user}) => {
               </div>
             )}
 
-            <p className='message-paragraph'>{message=="Loading"?<ThreeDot variant="bounce" color="#cae8ff" size="200px" text="please wait" textColor="#549acf" />:message}</p>
+            <div className='message-paragraph'>{message=="Loading"?<Loading/>:message}</div>
           </div>
         </div>
       )}

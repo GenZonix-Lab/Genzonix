@@ -20,7 +20,9 @@ const Faq = () => {
       <div className="display">
         <div className="question d-flex justify-content-between">
           <div><h5>What is IOT?</h5></div>
-          <div className="questioner text-end" key={userid}>- {questioner_name}</div>  
+          <div className="questioner text-muted" key={userid}>
+            – {questioner_name}
+          </div>  
         </div>
         <div className="answer">
           <li className='list-group-item'>Iot stands for Internet Of Things. When a device has a internet to analyze the device performance is known as IoT.</li>

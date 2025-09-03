@@ -1,33 +1,44 @@
 import React, {useEffect, useState} from 'react'
 import { fetchAuthSession } from 'aws-amplify/auth';
+import { useNavigate } from 'react-router-dom';
 const subscriptionApi = `https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/subscription`
 const TerminatedSandbox = () => {
-    const [services, setServices] = useState([]);
+    const navigate = useNavigate();
+    //get Token
     const getToken = async () => {
             try{
-            const session = await fetchAuthSession(); // await the session
-            const token = session.tokens.idToken.toString(); // now you have the JWT string
-            if (!token) {
-                console.warn("User session not found. Redirecting to auth...");
-                throw new Error("No idToken found in session");
-            }
-            return token;
+                const session = await fetchAuthSession(); // await the session
+                const token = session.tokens.idToken.toString(); // now you have the JWT string
+                if (!token) {
+                    console.warn("User session not found. Redirecting to auth...");
+                    throw new Error("No idToken found in session");
+                }
+                return token;
             }catch(err){
             console.error("Error getting token:", err);
-            window.location.href = "/Auth";
+            navigate("/Auth")
             }
         };
+    //get termination data
+    const [services, setServices] = useState([]);
     useEffect(() => {
         const fetchSubscription = async () => {
-            const token=await getToken();
-            const response = await fetch(subscriptionApi,{
-                method:"GET",
-                headers:{
-                    'Authorization': `Bearer ${token}`,
-                }
-            })
-            const data = await response.json()
-            setServices(data)
+            try{
+                const token=await getToken();
+                const response = await fetch(subscriptionApi,{
+                    method:"GET",
+                    headers:{
+                        'Authorization': `Bearer ${token}`,
+                    }
+                })
+                if(!response.ok) throw Error("data not received properly, Please reload again")
+                const data = await response.json()
+                setServices(data)
+            }
+            catch (err){
+                console.error("Error fetching subscription data:", err);
+                return;
+            }
         }
         fetchSubscription()
     },[])

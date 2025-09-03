@@ -78,3 +78,15 @@
   .message-paragraph{
     padding-top: 14px;
   }
+
+.blurred {
+  filter: blur(25px);
+  transition: filter 0.3s ease;
+  cursor: pointer;
+}
+
+.video-box {
+  width: 80%;
+  max-width: 700px;
+  z-index: 1050; /* stay above blurred background */
+}

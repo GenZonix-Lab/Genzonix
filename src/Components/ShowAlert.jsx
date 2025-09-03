@@ -44,7 +44,7 @@ const ShowAlert = ({
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.4 }}
         >
-          <div>{message}</div>
+          {message && <p>{message}</p>} 
 
           {redirectText && redirectPath && (
             <div
