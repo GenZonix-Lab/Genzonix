@@ -6,23 +6,6 @@ import { defineAuth, secret } from '@aws-amplify/backend';
 export const auth = defineAuth({
   loginWith: {
     email: true,
-    externalProviders:{
-      google: {
-        clientId: secret("gid"),
-        clientSecret: secret('gst'),
-        scopes:["openid", "profile", "email"],
-        attributeMapping:{
-          email:"email",
-          fullname:"name",
-        }
-      },
-      logoutUrls:[
-        "https://genzonix.in"
-      ],
-      callbackUrls:[
-        "https://genzonix.in/profile"
-      ],
-    }
   },
 
 
