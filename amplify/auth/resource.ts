@@ -18,10 +18,12 @@ export const auth = defineAuth({
         }
       },
       logoutUrls:[
-        "https://genzonix.in"
+        "https://genzonix.in",
+        "http://localhost:5173"
       ],
       callbackUrls:[
-        "https://genzonix.in/profile"
+        "https://genzonix.in/profile",
+        "http://localhost:5173/profile"
       ],
     }
   },
