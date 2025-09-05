@@ -27,7 +27,6 @@ const Auth = () => {
       <div className={videoShown?'blurred':''} onClick={handleBackgroundClick}>
         <div>
           <Authenticator 
-            socialProviders={['google']}
             signUpAttributes={['name']} 
             loginMechanisms={['email']}
           >
