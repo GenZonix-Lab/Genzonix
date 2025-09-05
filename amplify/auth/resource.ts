@@ -6,6 +6,24 @@ import { defineAuth, secret } from '@aws-amplify/backend';
 export const auth = defineAuth({
   loginWith: {
     email: true,
+    externalProviders:{
+      google: {
+        clientId: secret("gid"),
+        clientSecret: secret('gst'),
+        scopes:["openid", "profile", "email"],
+        attributeMapping:{
+          email:"email",
+          emailVerified:"emailVerified",
+          fullname:"name",
+        }
+      },
+      logoutUrls:[
+        "https://genzonix.in"
+      ],
+      callbackUrls:[
+        "https://genzonix.in/profile"
+      ],
+    }
   },
 
 
@@ -25,5 +43,3 @@ export const auth = defineAuth({
     "custom:pincode": {dataType: "String",mutable: true,minLen: 5,maxLen: 7,},
   }
 });
-
-console.log("Auth configuration:", auth);
