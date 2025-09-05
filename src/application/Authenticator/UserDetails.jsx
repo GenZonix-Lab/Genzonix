@@ -23,7 +23,6 @@ const UserDetails = ({ user, signOut, setUser }) => {
         setAttributes(null);
         loadAttributes();
     }, [user]);
-    console.log("User attributes:", attributes);
   return (
     <>
     <main className="text-center mx-md-5 mt-2 px-md-5">
