@@ -1,16 +1,19 @@
-import React from 'react'
-import ConnectDiagram from './assets/Connection_diagram.png'
-import img1 from './assets/1.png'
-import img2 from './assets/2.png'
-import img3 from './assets/3.png'
-import img4 from './assets/4.png'
-import img5 from './assets/5.png'
-import img6 from './assets/6.png'
-import img7 from './assets/7.png'
-import img8 from './assets/8.png'
-import img9 from './assets/9.png'
-import img10 from './assets/10.png'
+import { StorageImage } from '@aws-amplify/ui-react-storage';
 const Gzxp24004 = () => {
+    const defaultImage='/images/defaultImage.webp'
+    const images =[
+        `public/Projects/iot/gzxp24004/assets/Connection_diagram.webp`,
+        `public/Projects/iot/gzxp24004/assets/1.webp`,
+        `public/Projects/iot/gzxp24004/assets/2.webp`,
+        `public/Projects/iot/gzxp24004/assets/3.webp`,
+        `public/Projects/iot/gzxp24004/assets/4.webp`,
+        `public/Projects/iot/gzxp24004/assets/5.webp`,
+        `public/Projects/iot/gzxp24004/assets/6.webp`,
+        `public/Projects/iot/gzxp24004/assets/7.webp`,
+        `public/Projects/iot/gzxp24004/assets/8.webp`,
+        `public/Projects/iot/gzxp24004/assets/9.webp`,
+        `public/Projects/iot/gzxp24004/assets/10.webp`
+    ]
     const codeString = `
         #include <WiFi.h>
         #include "SinricPro.h"
@@ -195,12 +198,14 @@ const Gzxp24004 = () => {
             <li>Provide a stable 5V power supply to power the ESP32 and other components.</li>
         </ul>
     <h3>Connection setup:</h3>
-        <img 
-            src={ConnectDiagram} 
+        <StorageImage
             className="img-fluid rounded" 
             alt="Connection_diagram"  
             title="Connection_diagram" 
-            style={{maxHeight: "400px"}}
+            maxHeight={400}
+            path={images[0]}
+            fallbackSrc={defaultImage}
+            loading='lazy'
         />
     </div><hr />
     <div className="docs pb-2">
@@ -208,52 +213,114 @@ const Gzxp24004 = () => {
     <h3>Set Up Sinric Pro Account:</h3>
         <p>Go to the Sinric Pro website and create an account.</p>
         <div className="text-center text-lg-start">
-            <img 
-                src={img1} 
+            <StorageImage
                 className="img-fluid rounded" 
                 alt="Login/create a sinric pro"  
-                title="Automation"
-                style={{maxHeight:'400px'}}
+                title="Automation" 
+                maxHeight={400}
+                path={images[1]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
             />
         </div>
         <p>Navigate to the "Devices" section and create three devices in your Sinric Pro account: one light device for the WS2812 LED, and two switch devices for the relays controlling appliances.</p>
         <div className="text-center text-lg-start">
-            <img 
-                src={img2} 
+            <StorageImage
                 className="img-fluid rounded" 
                 alt="Dashboard"  
-                title="Automation"
-                style={{maxHeight:'300px'}}
-                
+                title="Automation" 
+                maxHeight={300}
+                path={images[2]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
             />
         </div>
     <h3>Example for Add a new device:</h3>
         <div>
-            <img src={img3} className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5 me-2" alt="setup"  title="Automation" style={{maxHeight:'300px'}}/>
-            <img src={img4} className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5" alt="setup"  title="Automation" style={{maxHeight:'300px'}}/>
-            <img src={img5} className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5 me-2" alt="setup"  title="Automation" style={{maxHeight:'300px'}}/>
-            <img src={img6} className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5 " alt="setup"  title="Automation" style={{maxHeight:'300px'}}/>
+            <StorageImage
+                className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5 me-2" 
+                alt="setup"  
+                title="Automation" 
+                maxHeight={300}
+                path={images[3]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
+            />
+            <StorageImage
+                className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5 me-2" 
+                alt="setup"  
+                title="Automation" 
+                maxHeight={300}
+                path={images[4]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
+            />
+            <StorageImage
+                className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5 me-2" 
+                alt="setup"  
+                title="Automation" 
+                maxHeight={300}
+                path={images[5]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
+            />
+            <StorageImage
+                className="img-fluid  col-12 col-sm-12 col-lg-5 col-md-12 col-xl-5 me-2" 
+                alt="setup"  
+                title="Automation" 
+                maxHeight={300}
+                path={images[6]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
+            />
         </div>
         <p>Take note of the App Key and App Secret from the "Credentials" section, as well as the Light Device ID and the two Switch Device IDs from the "Devices" section.</p>
-        <img 
-            src={img7} 
+        <StorageImage
             className="img-fluid rounded" 
             alt="Device created"  
-            title="Automation"
-            style={{maxHeight:'300px'}}/>
+            title="Automation" 
+            maxHeight={300}
+            path={images[7]}
+            fallbackSrc={defaultImage}
+            loading='lazy'
+        />
         <p>Go to the "Device Template" section and add a new device template. </p>
         <div className="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
             <div className="col">
                 <p><b>Fill in the basic information.</b></p>
-                <img src={img8} className="img-fluid rounded" alt="template"  title="Automation" style={{maxHeight:'300px'}}/>
+                <StorageImage
+                    className="img-fluid rounded" 
+                    alt="template"  
+                    title="Automation" 
+                    maxHeight={300}
+                    path={images[8]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'  
+                />
             </div>
             <div className="col">
                 <p><b>Add the relevant capabilities to each device.</b></p>
-                <img src={img9} className="img-fluid rounded" alt="template"  title="Automation" style={{maxHeight:'300px'}}/>
+                <StorageImage
+                    className="img-fluid rounded" 
+                    alt="template"  
+                    title="Automation" 
+                    maxHeight={300}
+                    path={images[9]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             </div>
         </div>
         <p>The Sinric Pro setup is now complete</p>
-        <img src={img10} className="img-fluid rounded me-2" alt="setup completed"  title="Automation" style={{maxHeight:'300px'}}/>
+        <StorageImage
+            className="img-fluid rounded me-2" 
+            alt="setup completed"  
+            title="Automation" 
+            maxHeight={300}
+            path={images[10]}
+            fallbackSrc={defaultImage}
+            loading='lazy'
+        />
     <h3>Arduino IDE:</h3>
         <ul>
             <li>Launch the Arduino IDE and create a new sketch.</li>

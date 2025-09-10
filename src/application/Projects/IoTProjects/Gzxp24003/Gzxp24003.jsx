@@ -1,87 +1,90 @@
-import React from 'react'
-import ConnectDiagram from './assets/Connection_diagram.png'
-import img1 from './assets/1.png'
-import img2 from './assets/2.png'
-import img3 from './assets/3.png'
-import img4 from './assets/4.png'
-import img5 from './assets/5.png'
-import img6 from './assets/6.png'
-import img7 from './assets/7.png'
-import img8 from './assets/8.png'
-import img9 from './assets/9.png'
+import { StorageImage } from '@aws-amplify/ui-react-storage';
 const Gzxp24003 = () => {
-  const codeString = `
-   #include <WiFi.h>
-    #include <ESP_Mail_Client.h>
-    //Ir_sensor_pin
-    const int Ir_pin = 15;    //define the IR_sensor Pin connect to the D5 pin
-    String data = "close";
-    #define WiFi_SSID WiFi_Name     //replace your wifi name
-    #define WiFi_pwd password    //replace your wifi password
-    #define sender_mail sender_mail    //replace your email address
-    #define sender_app_password "ekvm szfe ckfr lqew" //follow the Gmail_Auth_steps/paste the 16 digit code.
-    #define receiver_mail receiver_mail    //replace the receiver mail address to get notification.
-    SMTPSession smtp;
-    void setup() {
-        Serial.begin(115200);
-        pinMode(Ir_pin, INPUT);
-        WiFi.begin(WiFi_SSID, WiFi_pwd);
-        while (WiFi.status() != WL_CONNECTED) {
-            delay(500);
-            Serial.print(".");
+    const defaultImage='/images/defaultImage.webp'
+    const images =[
+        `public/Projects/iot/gzxp24003/assets/Connection_diagram.webp`,
+        `public/Projects/iot/gzxp24003/assets/1.webp`,
+        `public/Projects/iot/gzxp24003/assets/2.webp`,
+        `public/Projects/iot/gzxp24003/assets/3.webp`,
+        `public/Projects/iot/gzxp24003/assets/4.webp`,
+        `public/Projects/iot/gzxp24003/assets/5.webp`,
+        `public/Projects/iot/gzxp24003/assets/6.webp`,
+        `public/Projects/iot/gzxp24003/assets/7.webp`,
+        `public/Projects/iot/gzxp24003/assets/8.webp`,
+        `public/Projects/iot/gzxp24003/assets/9.webp`,
+    ]
+    const codeString = `
+    #include <WiFi.h>
+        #include <ESP_Mail_Client.h>
+        //Ir_sensor_pin
+        const int Ir_pin = 15;    //define the IR_sensor Pin connect to the D5 pin
+        String data = "close";
+        #define WiFi_SSID WiFi_Name     //replace your wifi name
+        #define WiFi_pwd password    //replace your wifi password
+        #define sender_mail sender_mail    //replace your email address
+        #define sender_app_password "ekvm szfe ckfr lqew" //follow the Gmail_Auth_steps/paste the 16 digit code.
+        #define receiver_mail receiver_mail    //replace the receiver mail address to get notification.
+        SMTPSession smtp;
+        void setup() {
+            Serial.begin(115200);
+            pinMode(Ir_pin, INPUT);
+            WiFi.begin(WiFi_SSID, WiFi_pwd);
+            while (WiFi.status() != WL_CONNECTED) {
+                delay(500);
+                Serial.print(".");
+            }
+            Serial.println("\nConnected to WiFi!");
+            Serial.println("IP Address: " + WiFi.localIP().toString());
         }
-        Serial.println("\nConnected to WiFi!");
-        Serial.println("IP Address: " + WiFi.localIP().toString());
-    }
-    void loop() {
-        int sensor = digitalRead(Ir_pin);
-        if(sensor && data == "open"){
-        sendMail("⚠️Door is opened... \n⚠️Mysterious Activity placed here...");
-        Serial.println("⚠️Door is opened... \n⚠️Mysterious Activity placed here...");
-        delay(1000);
-        data = "close";
+        void loop() {
+            int sensor = digitalRead(Ir_pin);
+            if(sensor && data == "open"){
+            sendMail("⚠️Door is opened... \n⚠️Mysterious Activity placed here...");
+            Serial.println("⚠️Door is opened... \n⚠️Mysterious Activity placed here...");
+            delay(1000);
+            data = "close";
+            }
+            else if(!sensor && data == "close"){
+            sendMail("Door is closed");
+            Serial.println("Door is closed");
+            data="open";
+            }
+            Serial.flush();
         }
-        else if(!sensor && data == "close"){
-        sendMail("Door is closed");
-        Serial.println("Door is closed");
-        data="open";
-        }
-        Serial.flush();
-    }
-    void sendMail(String msg){
-        Session_Config config;
-        config.server.host_name = "smtp.gmail.com";
-        config.server.port = 587;
-        config.login.email = sender_mail;
-        config.login.password = sender_app_password;
-    
-    
-        SMTP_Message message;
-        // Set the message content
-        message.sender.name = "Email Smart Door Alert System";
-        message.sender.email = sender_mail;
-        message.subject = "Open Door Alert";
-        message.addRecipient("Receiver", receiver_mail);
-        message.text.content = msg;
-    
-    
-    // Set SMTP server settings
-        smtp.callback([](SMTP_Status status) {
-        Serial.println(status.info());
-        });
-        if (!smtp.connect(&config))
-        {
-        MailClient.printf("Connection error, Status Code: %d, Error Code: %d, Reason: %s\n", smtp.statusCode(), smtp.errorCode(), smtp.errorReason().c_str());
-        return;
-        }
-    
-    
-        if (!MailClient.sendMail(&smtp, &message)) {
-        Serial.println("Error sending email, try again later.");
-        } else {
-        Serial.println("Email sent successfully!");
-        }
-    }`
+        void sendMail(String msg){
+            Session_Config config;
+            config.server.host_name = "smtp.gmail.com";
+            config.server.port = 587;
+            config.login.email = sender_mail;
+            config.login.password = sender_app_password;
+        
+        
+            SMTP_Message message;
+            // Set the message content
+            message.sender.name = "Email Smart Door Alert System";
+            message.sender.email = sender_mail;
+            message.subject = "Open Door Alert";
+            message.addRecipient("Receiver", receiver_mail);
+            message.text.content = msg;
+        
+        
+        // Set SMTP server settings
+            smtp.callback([](SMTP_Status status) {
+            Serial.println(status.info());
+            });
+            if (!smtp.connect(&config))
+            {
+            MailClient.printf("Connection error, Status Code: %d, Error Code: %d, Reason: %s\n", smtp.statusCode(), smtp.errorCode(), smtp.errorReason().c_str());
+            return;
+            }
+        
+        
+            if (!MailClient.sendMail(&smtp, &message)) {
+            Serial.println("Error sending email, try again later.");
+            } else {
+            Serial.println("Email sent successfully!");
+            }
+        }`
 
   return (
     <>
@@ -115,99 +118,126 @@ const Gzxp24003 = () => {
                 <li>The ESP32 and IR sensor should both be connected to a stable 5V power source using a power supply board.</li>
             </ul>
         <h3>Connection setup:</h3>
-            <img 
-                src={ConnectDiagram} 
-                className="img-fluid" 
+            <StorageImage
+                className="img-fluid " 
                 alt="Connection_diagram"  
                 title="Connection_diagram" 
-                style={{maxHeight: "400px"}}
+                maxHeight={400}
+                path={images[0]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
             />
     </div><hr />
     <div className="docs pb-2">
     <h2>Software Setup:</h2>
                 <h3>Steps to Generate a Google App Password [sender gmail]:</h3>
                     <div className="text-center text-lg-start">
-                        <img 
-                        src={img1} 
-                        className="img-fluid rounded" 
-                        alt="Go to secutity on google Account"  
-                        title="Security"
-                        style={{maxWidth:'300px'}}/>
+                        <StorageImage
+                            className="img-fluid rounded" 
+                            alt="Go to secutity on google Account"  
+                            title="Security" 
+                            maxWidth={300}
+                            path={images[1]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
                     </div>
                 <h3>Access Google Account Settings:</h3>
                     <p>Sign in to your Google account and navigate to the Security section.</p>
                 <h3>Enable 2-Step Verification:</h3>
                     <div className="text-center text-lg-start">
-                        <img 
-                        src={img2} 
-                        className="img-fluid rounded" 
-                        alt="2_step_verification"  
-                        title="Security"
-                        style={{maxHeight:'300px'}}/>
+                        <StorageImage
+                            className="img-fluid rounded" 
+                            alt="2_step_verification"  
+                            title="Security" 
+                            maxHeight={300}
+                            path={images[2]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
                     </div>
                     <p>Locate the 2-Step Verification option and click on it.</p>
                     <div className="text-center text-lg-start">
                     <div className="d-md-flex justify-content-center justify-content-lg-start">
-                        <img 
-                            src={img3} 
+                        <StorageImage
                             className="img-fluid rounded mx-1 my-2" 
                             alt="Turn_ON"  
                             title="Security" 
-                            style={{maxWidth:'300px'}}
-                            />
-                        <img 
-                            src={img4} 
+                            maxWidth={300}
+                            path={images[3]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
+                        <StorageImage
                             className="img-fluid rounded mx-1 my-2" 
                             alt="Turn_OFF"  
                             title="Security" 
-                            style={{maxWidth:'300px'}}
-                            />
+                            maxWidth={300}
+                            path={images[4]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'                
+                        />
                     </div>    
                     </div>  
                     <p>Follow the on-screen instructions to turn on 2-Step Verification if it’s not already enabled.</p>          
                     <div className="text-center text-lg-start">
-                        <img 
-                        src={img5} 
-                        className="img-fluid" 
-                        alt="Turn_ON_2_step_verification"  
-                        title="Security"
-                        style={{maxHeight:'300px'}} />
+                        <StorageImage
+                            className="img-fluid" 
+                            alt="Turn_ON_2_step_verification"  
+                            title="Security" 
+                            maxHeight={300}
+                            path={images[5]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
                     </div>
                 <h3>Generate an App Password:</h3>
                     <div className="text-center text-lg-start">
-                        <img 
-                        src={img6}
-                        className="img-fluid" 
-                        alt="search_bar"  
-                        title="Security"
-                        style={{maxHeight:'300px'}}/>
+                        <StorageImage
+                            className="img-fluid" 
+                            alt="search_bar"  
+                            title="Security" 
+                            maxHeight={300}
+                            path={images[6]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
                     </div>
                     <p>In the Security section, use the search bar at the top left corner and type "App Passwords".</p>
                     <div className="text-center text-lg-start">
-                        <img 
-                        src={img7} 
-                        className="img-fluid" 
-                        alt="Search_app_password"  
-                        title="Security" 
-                        style={{maxHeight:'300px'}}/>
+                        <StorageImage
+                            className="img-fluid" 
+                            alt="Search_app_password"  
+                            title="Security" 
+                            maxHeight={300}
+                            path={images[7]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
                     </div>
                     <p>Select the App Passwords option from the search results.</p>
                     <div className="text-center text-lg-start">
-                        <img 
-                        src={img8} 
-                        className="img-fluid" 
-                        alt="app_password"  
-                        title="Security" 
-                        style={{maxHeight:'300px'}}/>
+                        <StorageImage
+                            className="img-fluid" 
+                            alt="app_password"  
+                            title="Security" 
+                            maxHeight={300}
+                            path={images[8]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
                     </div>
                     <p>Create a custom app name (e.g., ESP_mail) and click Create.</p>
                     <div className="text-center text-lg-start">
-                        <img 
-                        src={img9} 
-                        className="img-fluid" 
-                        alt="Generate_app_password"  
-                        title="Security" 
-                        style={{maxHeight:'300px'}}/> 
+                        <StorageImage
+                            className="img-fluid" 
+                            alt="Generate_app_password"  
+                            title="Security" 
+                            maxHeight={300}
+                            path={images[9]}
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
+                        />
                     </div>
                 <h3>Receive Your App Password:</h3>
                     <p>A 16-character app password will be generated. Copy this password for use in your project.</p>

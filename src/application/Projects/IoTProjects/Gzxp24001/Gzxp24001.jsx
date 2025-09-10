@@ -1,19 +1,20 @@
 import { StorageImage } from '@aws-amplify/ui-react-storage';
 
 const Gzxp24001 = () => {
+    const defaultImage='/images/defaultImage.webp'
     const images =[
-        `public/Projects/iot/assets/Connection_diagram.webp`,
-        `public/Projects/iot/assets/1.webp`,
-        `public/Projects/iot/assets/2.webp`,
-        `public/Projects/iot/assets/3.webp`,
-        `public/Projects/iot/assets/4.webp`,
-        `public/Projects/iot/assets/5.webp`,
-        `public/Projects/iot/assets/6.webp`,
-        `public/Projects/iot/assets/7.webp`,
-        `public/Projects/iot/assets/8.webp`,
-        `public/Projects/iot/assets/9.webp`,
-        `public/Projects/iot/assets/10.webp`,
-        `public/Projects/iot/assets/11.webp`
+        `public/Projects/iot/gzxp24001/assets/Connection_diagram.webp`,
+        `public/Projects/iot/gzxp24001/assets/1.webp`,
+        `public/Projects/iot/gzxp24001/assets/2.webp`,
+        `public/Projects/iot/gzxp24001/assets/3.webp`,
+        `public/Projects/iot/gzxp24001/assets/4.webp`,
+        `public/Projects/iot/gzxp24001/assets/5.webp`,
+        `public/Projects/iot/gzxp24001/assets/6.webp`,
+        `public/Projects/iot/gzxp24001/assets/7.webp`,
+        `public/Projects/iot/gzxp24001/assets/8.webp`,
+        `public/Projects/iot/gzxp24001/assets/9.webp`,
+        `public/Projects/iot/gzxp24001/assets/10.webp`,
+        `public/Projects/iot/gzxp24001/assets/11.webp`
     ]
     const codeString = `
         /*
@@ -136,7 +137,8 @@ const Gzxp24001 = () => {
             title="Connection_diagram" 
             maxHeight={400}
             path={images[0]}
-            fallbackSrc="images\defaultImage.webp"
+            fallbackSrc={defaultImage}
+            loading='lazy'
         />
     </div>
     <hr />
@@ -166,7 +168,8 @@ const Gzxp24001 = () => {
                         className="img-fluid rounded" 
                         maxHeight={250}
                         path={images[1]}
-                        fallbackSrc="images\defaultImage.webp"
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
                     />
                 
                 </div>
@@ -180,7 +183,8 @@ const Gzxp24001 = () => {
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-4 my-2" 
                             maxWidth={250}
                             path={images[2]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                     </div>
                 <h4>Launch the Serial Bluetooth Terminal App:</h4>
@@ -198,35 +202,40 @@ const Gzxp24001 = () => {
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" 
                             maxWidth={250}
                             path={images[3]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                         <StorageImage
                             alt="ON_setup" 
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" 
                             maxWidth={250}
                             path={images[4]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                         <StorageImage
                             alt="RED_setup" 
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" 
                             maxWidth={250}
                             path={images[5]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                         <StorageImage
                             alt="GREEN_setup" 
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" 
                             maxWidth={250}
                             path={images[6]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                         <StorageImage
                             alt="BLUE_setup" 
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-2 mx-2 my-2" 
                             maxWidth={250}
                             path={images[7]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                     </div>
                     <p>Customize the buttons for LED control:</p>
@@ -244,14 +253,16 @@ const Gzxp24001 = () => {
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 mx-4 my-2" 
                             maxWidth={250}
                             path={images[8]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                         <StorageImage
                             alt="Selection_Bluetooth" 
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 mx-4 my-2" 
                             maxWidth={250}
                             path={images[9]}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                     </div>
                     <ul>
@@ -269,15 +280,16 @@ const Gzxp24001 = () => {
                             path={images[10]}
                             alt={'Bluetooth_connected'}
                             maxWidth={250}
-                            fallbackSrc="/images/defaultImage.webp" 
-                            
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                         <StorageImage
                             className="img-fluid rounded col-8 col-sm-7 col-lg-4 col-md-3 col-xl-3 mx-4 my-2"
                             path={images[11]}
                             alt={'test_image'}
                             maxWidth={250}
-                            fallbackSrc="images\defaultImage.webp"
+                            fallbackSrc={defaultImage}
+                            loading='lazy'
                         />
                     </div>
     </div>

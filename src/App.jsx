@@ -26,6 +26,7 @@ import Missing from './Missing.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router';
 import PrivacyPolicy from './application/Supportpages/PrivacyPolicy.jsx';
 import Terms from './application/Supportpages/Terms.jsx';
+import Dairy from './dairy/Dairy.jsx';
 
 function App() {
    //define app routing
@@ -59,6 +60,8 @@ function App() {
       <Route path='/terms&Conditions' element={<Terms/>}/>
       <Route path='/Auth' element={<Auth />}/>
       <Route path='/profileUpdate' element={<ProfileUpdate />}/>
+
+      <Route path='/dairy' element={<Dairy/>}/>
       <Route path='*' element={<Missing/>}/>
     </Route>
     )) 

@@ -16,6 +16,9 @@ body{
   font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
 }
+.f-cursive{
+  font-family : cursive
+}
 
 /* Removed invalid selector: $nav-link-hover-color::after */
 @media screen and (max-width: 576px) {

@@ -1,16 +1,20 @@
-import React from 'react'
-import ConnectDiagram from './assets/Connection_diagram.png'
-import img1 from './assets/1.png'
-import img2 from './assets/2.png'
-import img3 from './assets/3.png'
-import img4 from './assets/4.png'
-import img5 from './assets/5.png'
-import img6 from './assets/6.png'
-import img7 from './assets/7.png'
-import img8 from './assets/8.png'
-import img9 from './assets/9.png'
+import { StorageImage } from '@aws-amplify/ui-react-storage';
+
 
 const Gzxp24002 = () => {
+    const defaultImage='/images/defaultImage.webp'
+    const images =[
+        `public/Projects/iot/gzxp24002/assets/Connection_diagram.webp`,
+        `public/Projects/iot/gzxp24002/assets/1.webp`,
+        `public/Projects/iot/gzxp24002/assets/2.webp`,
+        `public/Projects/iot/gzxp24002/assets/3.webp`,
+        `public/Projects/iot/gzxp24002/assets/4.webp`,
+        `public/Projects/iot/gzxp24002/assets/5.webp`,
+        `public/Projects/iot/gzxp24002/assets/6.webp`,
+        `public/Projects/iot/gzxp24002/assets/7.webp`,
+        `public/Projects/iot/gzxp24002/assets/8.webp`,
+        `public/Projects/iot/gzxp24002/assets/9.webp`,
+    ]
   const codeString=`
         #include <WiFi.h>
         #include <ESP_Mail_Client.h>
@@ -165,100 +169,127 @@ const Gzxp24002 = () => {
                 <li>GND: Connect the GND pin of the ultrasonic sensor to the ground (GND) of the power supply</li>
             </ul>
         <h3>Connection setup:</h3>
-            <img 
-                src={ConnectDiagram} 
-                className="img-fluid" 
+            <StorageImage
+                className="img-fluid " 
                 alt="Connection_diagram"  
                 title="Connection_diagram" 
-                style={{maxHeight: "400px"}}
+                maxHeight={400}
+                path={images[0]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
             />
     </div><hr />
     <div className="docs pb-2">
         <h2>Software Setup:</h2>
             <h3>Steps to Generate a Google App Password [sender gmail]:</h3>
                 <div className="text-center text-lg-start">
-                    <img 
-                      src={img1} 
-                      className="img-fluid rounded" 
-                      alt="Go to secutity on google Account"  
-                      title="Security"
-                      style={{maxWidth:'300'}}/>
+                <StorageImage
+                    className="img-fluid rounded" 
+                    alt="Go to secutity on google Account"  
+                    title="Security" 
+                    maxHeight={300}
+                    path={images[1]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
                 </div>
             <h3>Access Google Account Settings:</h3>
-                <p>Sign in to your Google account and navigate to the Security section.</p>
+            <p>Sign in to your Google account and navigate to the Security section.</p>
             <h3>Enable 2-Step Verification:</h3>
-                <div className="text-center text-lg-start">
-                    <img src={img2} 
+            <div className="text-center text-lg-start">
+                <StorageImage
                     className="img-fluid rounded" 
-                    alt="2_step_verification"  
-                    title="Security"
-                    style={{maxHeight:'300'}}/>
-                </div>
+                    alt="2_step_verification"
+                    title="Security" 
+                    maxHeight={300}
+                    path={images[2]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+            </div>
                 <p>Locate the 2-Step Verification option and click on it.</p>
                 <div className="text-center text-lg-start">
                     <div className="d-md-flex justify-content-center justify-content-lg-start">
-                    <img 
-                      src={img3} 
-                      className="img-fluid rounded mx-1 my-2" 
-                      alt="Turn_ON"  
-                      title="Security" 
-                      style={{maxWidth:'300px'}}
-                      />
-                    <img 
-                      src={img4} 
-                      className="img-fluid rounded mx-1 my-2" 
-                      alt="Turn_OFF"  
-                      title="Security" 
-                      style={{maxWidth:'300px'}}
-                      />
+                    <StorageImage
+                        className="img-fluid rounded mx-1 my-2" 
+                        alt="Turn_ON"
+                        title="Security" 
+                        maxHeight={300}
+                        path={images[3]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />
+                    <StorageImage
+                        className="img-fluid rounded mx-1 my-2" 
+                        alt="Turn_OFF"
+                        title="Security" 
+                        maxHeight={300}
+                        path={images[4]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />
                     </div>
                 </div>  
                 <p>Follow the on-screen instructions to turn on 2-Step Verification if it’s not already enabled.</p>          
                 <div className="text-center text-lg-start">
-                    <img 
-                      src={img5} 
-                      className="img-fluid" 
-                      alt="Turn_ON_2_step_verification"  
-                      title="Security"
-                      style={{maxHeight:'300px'}}
-                      />
+                    <StorageImage
+                        className="img-fluid" 
+                        alt="Turn_ON_2_step_verification"
+                        title="Security" 
+                        maxHeight={300}
+                        path={images[5]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />
+                      
                 </div>
             <h3>Generate an App Password:</h3>
                 <div className="text-center text-lg-start">
-                    <img 
-                      src={img6} 
-                      className="img-fluid" 
-                      alt="search_bar"  
-                      title="Security"/>
+                    <StorageImage
+                        className="img-fluid" 
+                        alt="search_bar"
+                        title="Security" 
+                        maxHeight={300}
+                        path={images[6]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />
                 </div>
                 <p>In the Security section, use the search bar at the top left corner and type "App Passwords".</p>
                 <div className="text-center text-lg-start">
-                    <img 
-                      src={img7} 
-                      className="img-fluid" 
-                      alt="Search_app_password"  
-                      title="Security"
-                      style={{maxHeight:'300px'}}
-                      />
+                    <StorageImage
+                        className="img-fluid" 
+                        alt="Search_app_password"
+                        title="Security" 
+                        maxHeight={300}
+                        path={images[7]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />
                 </div>
                 <p>Select the App Passwords option from the search results.</p>
                 <div className="text-center text-lg-start">
-                    <img 
-                      src={img8}
-                      className="img-fluid" 
-                      alt="app_password"  
-                      title="Security"
-                      style={{maxHeight:'300px'}}
-                      />
+                    <StorageImage
+                        className="img-fluid" 
+                        alt="app_password"
+                        title="Security" 
+                        maxHeight={300}
+                        path={images[8]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />
                 </div>
                 <p>Create a custom app name (e.g., ESP_mail) and click Create.</p>
                 <div className="text-center text-lg-start">
-                    <img 
-                      src={img9} 
-                      className="img-fluid" 
-                      alt="Generate_app_password"  
-                      title="Security"
-                      style={{maxHeight:'300px'}}/>
+                    <StorageImage
+                        className="img-fluid" 
+                        alt="Generate_app_password"
+                        title="Security" 
+                        maxHeight={300}
+                        path={images[9]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />
                 </div>
             <h3>Receive Your App Password:</h3>
                 <p>A 16-character app password will be generated. Copy this password for use in your project.</p>

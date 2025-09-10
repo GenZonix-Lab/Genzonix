@@ -9,6 +9,7 @@ import { NavLink , useNavigate, useOutletContext} from 'react-router';
 import { CgMaximize } from 'react-icons/cg';
 import { fetchAuthSession } from 'aws-amplify/auth';
 import Loading from '../../Components/Loading';
+import { LuNotebookPen } from "react-icons/lu";
 const Profile = () => {
     const navigate = useNavigate();
     const { userLoading} = useOutletContext();
@@ -55,6 +56,14 @@ const Profile = () => {
                         <ScrollToTop />
                         <NavLink to="/subscriptiondetails" className="nav-link nav-icon fs-5 d-flex" title='Subscription'>
                             <BsCloudPlus size={icon_size}/><div className='fs-xs-6 ps-3'>Subscription</div>
+                        </NavLink>
+                    </div><hr />
+                </div>
+                <div className="col-lg-6">
+                    <div className="mt-3 px-md-5">
+                        <ScrollToTop />
+                        <NavLink to="/dairy" className="nav-link nav-icon fs-5 d-flex" title='DigitalDairy'>
+                            <LuNotebookPen size={icon_size}/><div className='fs-xs-6 ps-3'>My Digital Dairy</div>
                         </NavLink>
                     </div><hr />
                 </div>

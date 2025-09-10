@@ -1,0 +1,27 @@
+/* Entries background with lines */
+.entries-container {
+  background-image: linear-gradient(transparent 29px, #00d9ff 30px);
+  background-size: 100% 30px;
+  background-attachment: local;
+  min-height: 360px;
+  overflow-y: auto;
+  line-height: 30px;
+}
+
+/* Indent paragraphs */
+.text-indent {
+  text-indent: 20px;
+}
+
+/* Back to Today button */
+.back-today-btn {
+  background-color: #17138b12;
+  color: white;
+  border: 2px solid #37bad4ff;
+  font-family: cursive;
+}
+
+/* Cursor pointer utility */
+.pointer {
+  cursor: pointer;
+}
