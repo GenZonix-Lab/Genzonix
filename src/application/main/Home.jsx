@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link, useNavigate } from 'react-router-dom';
 import ScrollToTop from '../../Components/ScrollToTop'
-
+import Particles from './Particles';
 import boxCloud from '../../assets/pic2.webp';
 import child_pic from '../../assets/child_pic.webp'
 import ai from '../../assets/AI_pic.webp'
@@ -108,6 +108,18 @@ const Home = () => {
   }
   return (
     <>
+    <div style={{position: 'absolute',zIndex: 1 }} className="vh-100 w-100">
+      <Particles
+        particleColors={['#ffffff', '#ffffff']}
+        particleCount={1000}
+        particleSpread={30}
+        speed={1}
+        particleBaseSize={250}
+        moveParticlesOnHover={true}
+        alphaParticles={true}
+        disableRotation={false}
+      />
+    </div>
     {contents.map((element)=>(
         <motion.div 
           key={element.id}
@@ -124,6 +136,7 @@ const Home = () => {
               <div className="title mt-5 py-3">{element.id==="Explore" ? <h1>{element?.title}</h1> : <h2>{element?.title}</h2> }</div>
               <button 
                 type="button" 
+                style={{ zIndex: 2, position: 'relative' }}
                 className={element.button?'Explore_btn rounded p-3 m-1':'d-none'}
                 onClick={() => document.getElementById('innovation')?.scrollIntoView({ behavior: 'smooth' })}
               >
