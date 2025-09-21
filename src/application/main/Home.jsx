@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Link, useNavigate } from 'react-router-dom';
-import ScrollToTop from '../../Components/ScrollToTop'
+import { useNavigate } from 'react-router-dom';
 import Particles from './Particles';
 import boxCloud from '../../assets/pic2.webp';
 import child_pic from '../../assets/child_pic.webp'
@@ -98,6 +97,7 @@ const Home = () => {
       state:false
     }
   ]
+
 
   const handleKit=(data)=>{
     if(data==="iot" || data ==="robotics" || data ==="ai"){

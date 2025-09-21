@@ -1,4 +1,5 @@
 import { StorageImage } from '@aws-amplify/ui-react-storage';
+
 const Gzxp24004 = () => {
     const defaultImage='/images/defaultImage.webp'
     const images =[

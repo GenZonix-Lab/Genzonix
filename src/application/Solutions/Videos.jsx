@@ -1,28 +1,36 @@
-import { vh } from 'framer-motion';
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { FaCaretLeft, FaCaretRight  } from "react-icons/fa";
 const Videos = () => {
-    const dimension = 312;
-    const DemoVideos=[
-        {
-            title: "Create a own server using AWS Lambda serverless function",
-            url: "https://www.youtube-nocookie.com/embed/P4nEt09lzU8?si=EyCguiq-V66JzYcI"
+  const dimension = 312;
+  const [videos,setVideos] = useState([]);
+  useEffect(() => {
+      const fetchVideos = async () => {
+        try {
+          const response = await fetch('https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/videos');
+          const data = await response.json();
+          console.log(data);
+          setVideos(data);
+        } catch (error) {
+          console.error('Error fetching videos:', error);
         }
-    ];
-    
-    const scrollLeft = () => {
+      }
+      fetchVideos();
+      }, []);
+
+
+  const scrollLeft = () => {
     document.getElementById('scrollContainer').scrollBy({
         left: -300,
         behavior: 'smooth',
     });
-    };
+  };
 
-    const scrollRight = () => {
+  const scrollRight = () => {
     document.getElementById('scrollContainer').scrollBy({
         left: 300,
         behavior: 'smooth',
     });
-    };
+  };
   return (
     <>
     <div className='title mt-2'><h4>Demo Videos</h4></div>
@@ -52,7 +60,7 @@ const Videos = () => {
     style={{ scrollBehavior: 'smooth', gap: '1rem', maxWidth:'100%'}}
   >
     {/* Example Items */}
-    {DemoVideos.map((element, index) => (
+    {videos.map((element, index) => (
       <div key={index}>
         <iframe 
           height={dimension*0.5625} 

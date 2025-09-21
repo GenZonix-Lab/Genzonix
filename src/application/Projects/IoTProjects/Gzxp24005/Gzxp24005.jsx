@@ -1,35 +1,37 @@
-import React from 'react'
-import ConnectDiagram from './assets/Connection_diagram.png'
-import img1 from './assets/1.png'
-import img2 from './assets/2.png'
-import img3 from './assets/3.png'
-import img4 from './assets/4.png'
-import img5 from './assets/5.png'
-import img6 from './assets/6.png'
-import img7 from './assets/7.png'
-import img8 from './assets/8.png'
-import img9 from './assets/9.png'
-import img10 from './assets/10.png'
-import img11 from './assets/11.png'
-import img12 from './assets/12.png'
-import img13 from './assets/13.png'
-import img14 from './assets/14.png'
-import img15 from './assets/15.png'
-import img16 from './assets/16.png'
-import img17 from './assets/17.png'
-import img18 from './assets/18.png'
-import img19 from './assets/19.png'
-import img20 from './assets/20.png'
-import img21 from './assets/21.png'
-import img22 from './assets/22.jpg'
-import img23 from './assets/23.jpg'
-import img24 from './assets/24.jpg'
-import img25 from './assets/25.jpg'
-import img26 from './assets/26.jpg'
-import img27 from './assets/27.jpg'
-
+import { StorageImage } from '@aws-amplify/ui-react-storage';
 
 const Gzxp24005 = () => {
+    const defaultImage='/images/defaultImage.webp'
+    const images =[
+        `public/Projects/iot/gzxp24005/assets/Connection_diagram.webp`,
+        `public/Projects/iot/gzxp24005/assets/1.webp`,
+        `public/Projects/iot/gzxp24005/assets/2.webp`,
+        `public/Projects/iot/gzxp24005/assets/3.webp`,
+        `public/Projects/iot/gzxp24005/assets/4.webp`,
+        `public/Projects/iot/gzxp24005/assets/5.webp`,
+        `public/Projects/iot/gzxp24005/assets/6.webp`,
+        `public/Projects/iot/gzxp24005/assets/7.webp`,
+        `public/Projects/iot/gzxp24005/assets/8.webp`,
+        `public/Projects/iot/gzxp24005/assets/9.webp`,
+        `public/Projects/iot/gzxp24005/assets/10.webp`,
+        `public/Projects/iot/gzxp24005/assets/11.webp`,
+        `public/Projects/iot/gzxp24005/assets/12.webp`,
+        `public/Projects/iot/gzxp24005/assets/13.webp`,
+        `public/Projects/iot/gzxp24005/assets/14.webp`,
+        `public/Projects/iot/gzxp24005/assets/15.webp`,
+        `public/Projects/iot/gzxp24005/assets/16.webp`,
+        `public/Projects/iot/gzxp24005/assets/17.webp`,
+        `public/Projects/iot/gzxp24005/assets/18.webp`,
+        `public/Projects/iot/gzxp24005/assets/19.webp`,
+        `public/Projects/iot/gzxp24005/assets/20.webp`,
+        `public/Projects/iot/gzxp24005/assets/21.webp`,
+        `public/Projects/iot/gzxp24005/assets/22.webp`,
+        `public/Projects/iot/gzxp24005/assets/23.webp`,
+        `public/Projects/iot/gzxp24005/assets/24.webp`,
+        `public/Projects/iot/gzxp24005/assets/25.webp`,
+        `public/Projects/iot/gzxp24005/assets/26.webp`,
+        `public/Projects/iot/gzxp24005/assets/27.webp`,
+    ]
   const codeString = `
               
 #include "arduino_secrets.h"
@@ -210,12 +212,15 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
         </ul>
         <p>Ensure that the relay is connected properly to the respective appliances for controlling their power state.</p>
         <h3>Connection setup:</h3>
-            <img 
-            src={ConnectDiagram} 
-            className="img-fluid rounded" 
-            alt="Connection_diagram"  
-            title="Connection_diagram" 
-            style={{maxHeight: "400px" }}/>
+            <StorageImage
+                className="img-fluid rounded" 
+                alt="Connection_diagram"  
+                title="Connection_diagram" 
+                maxHeight={400}
+                path={images[0]}
+                fallbackSrc={defaultImage}
+                loading='lazy'
+            />
     </div><hr />
     <div className="docs pb-2">
     <h2>Software Setup:</h2>
@@ -225,37 +230,163 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
                     <li>Go to Arduino Cloud and sign up for an account.</li>
                     <li>Click the get started button.</li>
                 </ul>
-                <img src={img1} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8" alt="On Started"  title="voice-control"  style={{maxWidth: "600px"}}/>
-
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8" 
+                    alt="On Started"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[1]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             <h4>Set up the ESP32 device in Arduino Cloud:</h4>
                 <ul>
                     <li>Add a new device in Arduino Cloud by selecting the Third party device &gt; ESP32.</li>
                 </ul>
-                    <img src={img2} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                    <img src={img3} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[2]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[3]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
                 <ul>
                     <li>Follow the instructions to register the device. The cloud will generate a Device ID and Secret Key. </li>
                 </ul>
-                <img src={img4} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                <img src={img5} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                <img src={img6} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[4]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[5]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[6]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
 
             <h4>Goto things add new things.</h4>
-                <img src={img7} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                <img src={img8} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[7]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[8]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             <h4>Configure the setting.</h4>
-                <img src={img9} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                <img src={img10} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[9]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[10]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             <h4>Choose Alexa for Voice Access Control.</h4>
-                <img src={img11} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[11]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             <h4>Click the Add button to add two cloud variables.</h4>
-                <img src={img12} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                <img src={img13} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                <img src={img14} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-                <img src={img15} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[12]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[13]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[14]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[15]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             <h4>Open sketch and paste the below code.</h4>
-                <img src={img16} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[16]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
         <h3>Code Implementation:</h3>
         <h4>Arduino code:</h4>
         <pre>{codeString}</pre>
@@ -264,19 +395,58 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
     <h2>Uploading the Code:</h2>
         <h3>Install the cloud Agent: </h3>
             <p>Click it: <a href="https://cloud.arduino.cc/download-agent/">Install the Arduino Cloud Agent.</a></p>
-            <img src={img17} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-            <img src={img18} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[17]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[18]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             <ul>
                 <li>Open the Arduino cloud Agent.</li>
                 <li>if it is open the cross mark on connection has been removed.</li>
             </ul>
-            <img src={img19} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[19]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
         
         
         <h3>Verify and upload:</h3>
-        <img src={img20} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
-        <img src={img21} className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" alt="Device_setup"  title="voice-control" style={{maxWidth: "600px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[20]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
+                <StorageImage
+                    className="img-fluid rounded col-12 col-sm-12 col-lg-8 col-xl-8 p-1" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={600}
+                    path={images[21]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
     </div><hr />
     <div className="docs pb-2">
     <h2>Configure Voice Control:</h2>
@@ -288,24 +458,56 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
             <div className="col text-center">
                 <h4>Install the Alexa App:</h4>
                 <p><b>Download the Alexa app from the App Store (iOS) or Google Play Store (Android), and sign in or create an Amazon account.</b></p>
-                <img src={img22} className="img-fluid rounded col" alt="Device_setup"  title="voice-control" style={{maxWidth: "300px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col" 
+                    alt="Device_setup"  
+                    title="voice-control" 
+                    maxWidth={300}
+                    path={images[22]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             </div>
             <div className="col text-center">
                 <h4>Open Skills and Games:</h4>
                 <p><b> Tap on “More” at the bottom of the app, then select “Skills & Games.”</b></p>
-                <img src={img23} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col" 
+                    alt="template"  
+                    title="Automation" 
+                    maxWidth={300}
+                    path={images[23]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             </div>
         </div>
         <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
             <div className="col text-center">
                 <h4>Search for Arduino IoT Cloud Skill: </h4>
                 <p><b>In the search bar, type “Arduino IoT Cloud” and find the official Arduino skill. Tap on it.</b></p>
-                <img src={img24} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col" 
+                    alt="template"  
+                    title="Automation" 
+                    maxWidth={300}
+                    path={images[24]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             </div>
             <div className="col text-center">
                 <h4>Enable the Skill: </h4>
                 <p><b> Tap “Enable to Use.” </b></p>
-                <img src={img25} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
+                <StorageImage
+                    className="img-fluid rounded col" 
+                    alt="template"  
+                    title="Automation" 
+                    maxWidth={300}
+                    path={images[25]}
+                    fallbackSrc={defaultImage}
+                    loading='lazy'
+                />
             </div>
 
         </div>
@@ -317,11 +519,27 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
             <li>Be sure this is the same account you use for your Arduino Cloud.</li>
         </ul>
             <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
-                <div className="col text-center p-2">                    
-                    <img src={img26} className="img-fluid rounded col text-center" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
+                <div className="col text-center p-2">  
+                    <StorageImage
+                        className="img-fluid rounded col text-center" 
+                        alt="template"  
+                        title="Automation" 
+                        maxWidth={300}
+                        path={images[26]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    />                  
                 </div>
                 <div className="col text-center p-2">
-                    <img src={img27} className="img-fluid rounded col" alt="template"  title="Automation" style={{maxWidth: "300px"}}/>
+                    <StorageImage
+                        className="img-fluid rounded col" 
+                        alt="template"  
+                        title="Automation" 
+                        maxWidth={300}
+                        path={images[27]}
+                        fallbackSrc={defaultImage}
+                        loading='lazy'
+                    /> 
                 </div>
             </div>
             <div>
