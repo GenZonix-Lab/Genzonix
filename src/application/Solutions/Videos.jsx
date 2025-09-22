@@ -71,7 +71,7 @@ const Videos = () => {
           referrerPolicy="strict-origin-when-cross-origin" 
           allowFullScreen>
         </iframe>        
-        <h5 style={{color:'#1022e8ff', maxWidth:`${dimension}px`}}>{element.title}</h5>    
+        <h5 style={{maxWidth:`${dimension}px`}}>{element.title}</h5>    
       </div>
     ))}
       </div>
