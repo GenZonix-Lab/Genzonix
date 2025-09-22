@@ -11,7 +11,7 @@ const Dairy = () => {
   //navigate hook
   const navigate = useNavigate()
   //API Gateway endpoint
-  const api = 'https://xblzcud2vd.execute-api.ap-south-1.amazonaws.com/prod/'
+  const api = 'https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/dairy'
   //get token
   const getToken = async () => {
     const session = await fetchAuthSession()

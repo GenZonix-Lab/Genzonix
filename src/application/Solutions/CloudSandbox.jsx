@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { fetchAuthSession } from 'aws-amplify/auth';
-
-import PaymentGateway from '../Payment/PaymentGateway';
 import Subscription from './Subscription';
 import Videos from './Videos';
 import Vendor from './Vendor';
 import Services from './Services';
-
 import ShowAlert from "../../Components/ShowAlert";
 import Duration from './Duration';
 import Paymentbutton from './Paymentbutton';
@@ -14,7 +11,7 @@ import Loading from '../../Components/Loading';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 
 const subscriptionApi = `https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/subscription`
-const awsApi='https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/aws'
+const servicesApi='https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/cloudServices'
 
 const CloudSandbox = () => {
     const [alert,setAlert]=useState('');
@@ -23,26 +20,85 @@ const CloudSandbox = () => {
     const [selectedServices, setSelectedServices] = useState([]);
     const [duration,setDuration] = useState(0)
     const [status, setStatus]=useState(false)
-    const [serviceList, setServiceList] = useState([]);
-    
-    const [servicesLoading, setServicesLoading] = useState(true);
-    const [awsServiceList,setAwsServiceList] = useState([]);
-    const gcpServiceList = [];
-    const azureServiceList = [];
-    const { userLoading} = useOutletContext();
 
+    const { userLoading} = useOutletContext();
     const navigate = useNavigate();
+    //check user auth
+    const userLoadingRef = useRef(userLoading);
+
+    useEffect(() => {
+        userLoadingRef.current = userLoading;
+    }, [userLoading]);
+    useEffect(() => {
+        setTimeout(() => {
+        if (userLoadingRef.current) {
+        navigate("/Auth");
+        }
+    }, 3000);
+    }, [navigate]);
     //fetch services
+    const [serviceList, setServiceList] = useState([]);
+    const [servicesLoading, setServicesLoading] = useState(true);
+    //fetch aws services
+    const [awsServiceList,setAwsServiceList] = useState([]);
     useEffect(() => {
         if(userLoading) return;
         const fetchData = async () => {
             try{
-                const res = await fetch(awsApi);
+                const res = await fetch(servicesApi);
+                if (!res.ok) throw new Error("Failed to fetch AWS services");
                 const data = await res.json();
-                setAwsServiceList(data);
-                setServiceList(data);
-            } finally {
+                data.map( element => {
+                    if(element?.vendor === "aws"){
+                        setAwsServiceList(element.aws)
+                        setServiceList(element.aws)
+                    }
+                })
+            } catch (err){
+                console.log("Error fetching AWS services:", err);
+            }
+            finally {
                 setServicesLoading(false);
+            }
+        };
+        fetchData();
+    }, [userLoading]);
+    //fetch azure services
+    const [azureServiceList,setAzureServiceList] = useState([]); 
+    useEffect(() => {
+        if(userLoading) return;
+        const fetchData = async () => {
+            try{
+                const res = await fetch(servicesApi);
+                if (!res.ok) throw new Error("Failed to fetch Azure services");
+                const data = await res.json();
+                data.map( element => {
+                    if(element?.vendor === "azure"){
+                        setAzureServiceList(element.azure)
+                    }
+                })
+            } catch (err){
+                console.log("Error fetching Azure services:", err);
+            } 
+        };
+        fetchData();
+    }, [userLoading]);
+    //fetch gcp services
+    const [gcpServiceList,setGcpServiceList] = useState([]);
+    useEffect(() => {
+        if(userLoading) return;
+        const fetchData = async () => {
+            try{
+                const res = await fetch(servicesApi);
+                if (!res.ok) throw new Error("Failed to fetch GCP services");
+                const data = await res.json();
+                data.map( element => {
+                    if(element?.vendor === "gcp"){
+                        setGcpServiceList(element.gcp)
+                    }
+                })
+            } catch (err){
+                console.log("Error fetching GCP services:", err);
             }
         };
         fetchData();
@@ -59,15 +115,13 @@ const CloudSandbox = () => {
         return token;
         }catch(err){
         console.error("Error getting token:", err);
-        navigate("/Auth");
         }
     };
-
     //Actived subscription details
     const [subscriptionStatus,setSubscriptionStatus] = useState(false);
     useEffect(() => {
         const fetchSubscription = async () => {
-            if(userLoading) return navigate("/Auth");
+            if(userLoading) return;
             try{
                 const token=await getToken();
                 const response = await fetch(subscriptionApi,{
@@ -91,7 +145,8 @@ const CloudSandbox = () => {
             
         }
         fetchSubscription()
-        },[])
+        },[]);
+    //handle services selection
     const handleServices = (event) => {
         const { value, checked } = event.target;
         let updatedServices = checked
@@ -105,7 +160,7 @@ const CloudSandbox = () => {
     
 
     const serviceCost=serviceList
-    .filter(service => selectedServices.includes(service.services.toLowerCase()))
+    .filter(service => selectedServices.includes(service.service.toLowerCase()))
     .reduce((sum, service) => sum + parseFloat(service.cost), 0)
     .toFixed(2) 
 
@@ -120,7 +175,7 @@ const CloudSandbox = () => {
         redirectText=''
         redirectPath=''
     />
-    {servicesLoading || userLoading ? <Loading/> :
+    {servicesLoading ? <Loading/> :
         <div className='container'>
             {!subscriptionStatus ?
             <div>

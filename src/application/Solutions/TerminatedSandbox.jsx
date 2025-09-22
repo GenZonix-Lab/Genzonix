@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { fetchAuthSession } from 'aws-amplify/auth';
-import { useNavigate } from 'react-router-dom';
 const subscriptionApi = `https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/subscription`
 const TerminatedSandbox = () => {
-    const navigate = useNavigate();
     //get Token
     const getToken = async () => {
             try{
@@ -16,7 +14,6 @@ const TerminatedSandbox = () => {
                 return token;
             }catch(err){
             console.error("Error getting token:", err);
-            navigate("/Auth")
             }
         };
     //get termination data

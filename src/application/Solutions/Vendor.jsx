@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react'
-
 const Vendor = ({ setVendor,setSelectedServices,setServiceList ,awsServiceList, gcpServiceList , azureServiceList}) => {
-
     const handleVendor = (e) => {
         const selectedVendor = e.target.value
         setVendor(selectedVendor)

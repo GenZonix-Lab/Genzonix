@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useOutletContext } from 'react-router-dom'
-import { fetchAuthSession } from 'aws-amplify/auth';
-import { ThreeDot } from 'react-loading-indicators';
 import Loading from '../../Components/Loading';
+import { useEffect, useRef } from 'react';
 const ProjectPages = () => {
-    const [loading,setLoading] = useState(true);
-    const navigate = useNavigate()
     const {userLoading} = useOutletContext();
-    useEffect(()=>{
-        const fetchLoad = async () => {
-            if (userLoading) return navigate("/Auth")
-            setLoading(false)
-        }
-        fetchLoad();
-    },[userLoading])
+    const navigate = useNavigate();
+        //check user auth
+        const userLoadingRef = useRef(userLoading);
+    
+        useEffect(() => {
+            userLoadingRef.current = userLoading;
+        }, [userLoading]);
+        useEffect(() => {
+            setTimeout(() => {
+            if (userLoadingRef.current) {
+            navigate("/Auth");
+            }
+        }, 3000);
+        }, [navigate]);
+
     //IoT Project list
     const iot_array=()=>[
         {
@@ -45,14 +49,18 @@ const ProjectPages = () => {
   return (
     <>
     <div className="container">
-        {loading ? <Loading/>:
+        {userLoading ? <Loading/>:
             <div>
                 <div className="title"><h4 className="f-lora fs-3 p-3">Internet of Things</h4></div>
                 <ul className="list-group">
                     {
                     iot_array().map((iot_project)=>{
                     return( 
-                        <li className='list-group-item' key={iot_project.id}><NavLink to={iot_project.url}><p>{iot_project.project}</p></NavLink><hr /></li>
+                        <li className='list-group-item' key={iot_project.id}>
+                            <NavLink to={iot_project.url}>
+                                <p>{iot_project.project}</p>
+                            </NavLink><hr />
+                        </li>
                     )})
                     }
                 </ul>

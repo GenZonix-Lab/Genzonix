@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 const subscriptionApi = `https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/services/subscription`
 const Subscription = () => {
-    const navigate = useNavigate()
     //reload details
     const [reload, setReload] = useState(0);
     const handleReload=()=>{
@@ -26,7 +25,6 @@ const Subscription = () => {
         return token;
         }catch(err){
         console.error("Error getting token:", err);
-        navigate("/Auth");
         }
     };
     //fetch subscription details

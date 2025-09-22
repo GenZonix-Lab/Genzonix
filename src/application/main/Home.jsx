@@ -111,10 +111,10 @@ const Home = () => {
     <div style={{position: 'absolute',zIndex: 1 }} className="vh-100 w-100">
       <Particles
         particleColors={['#ffffff', '#ffffff']}
-        particleCount={1000}
-        particleSpread={30}
-        speed={1}
-        particleBaseSize={250}
+        particleCount={500}
+        particleSpread={15}
+        speed={0.05}
+        particleBaseSize={150}
         moveParticlesOnHover={true}
         alphaParticles={true}
         disableRotation={false}

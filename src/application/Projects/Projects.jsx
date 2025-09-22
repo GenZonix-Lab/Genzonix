@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import Gzxp24001 from './IoTProjects/Gzxp24001/Gzxp24001'
 import Gzxp24002 from './IoTProjects/Gzxp24002/Gzxp24002'

@@ -15,7 +15,6 @@ const Paymentbutton = ({price,selectedServices,status,setTrig,setAlert,duration,
         return idToken;
     } catch (err) {
         console.error("Error getting token:", err);
-        navigate("/Auth");
     }
     };
     //post services

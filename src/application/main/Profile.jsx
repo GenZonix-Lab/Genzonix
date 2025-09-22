@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import  { useEffect, useRef, useState } from 'react'
 import { FaShoppingCart } from "react-icons/fa";
 import { PiPackageDuotone } from "react-icons/pi";
 import { RiRobot3Fill } from "react-icons/ri";
@@ -13,19 +13,24 @@ import { LuNotebookPen } from "react-icons/lu";
 const Profile = () => {
     const navigate = useNavigate();
     const { userLoading} = useOutletContext();
-    const [loading, setLoading] = useState(true);
     const icon_size = 30;
-    useEffect(()=>{
-        const fetchLoad = async () => {
-            if (userLoading) return navigate("/Auth")
-            setLoading(false)
+
+    //check user auth
+    const userLoadingRef = useRef(userLoading);
+    useEffect(() => {
+        userLoadingRef.current = userLoading;
+    }, [userLoading]);
+    useEffect(() => {
+        setTimeout(() => {
+        if (userLoadingRef.current) {
+        navigate("/Auth");
         }
-        fetchLoad();
-    },[userLoading])
+    }, 3000);
+    }, [navigate]);
   return (
     <>
         <div className="container mt-2">
-            {loading ? <Loading/> :
+            {userLoading ? <Loading/> :
             <div className='bg-transparent border-md-left w-md-fit m-md-auto p-4 row'>
                 <div className="col-lg-6">
                     <div className="mt-3 px-md-5">

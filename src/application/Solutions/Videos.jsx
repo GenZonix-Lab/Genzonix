@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import { FaCaretLeft, FaCaretRight  } from "react-icons/fa";
 const Videos = () => {
-  const dimension = 312;
+  const dimension = 320;
   const [videos,setVideos] = useState([]);
   useEffect(() => {
       const fetchVideos = async () => {
         try {
           const response = await fetch('https://yn5xuarjc7.execute-api.ap-south-1.amazonaws.com/3alim/videos');
           const data = await response.json();
-          console.log(data);
           setVideos(data);
         } catch (error) {
           console.error('Error fetching videos:', error);
@@ -72,7 +71,7 @@ const Videos = () => {
           referrerPolicy="strict-origin-when-cross-origin" 
           allowFullScreen>
         </iframe>        
-        <h5>{element.title}</h5>    
+        <h5 style={{color:'#1022e8ff', maxWidth:`${dimension}px`}}>{element.title}</h5>    
       </div>
     ))}
       </div>
