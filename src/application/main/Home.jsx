@@ -34,11 +34,6 @@ const Home = () => {
     {
       id:"formation",
       title:"Idea to Reality: Genzonix Formation Process",
-      form:{
-        method:"POST",
-        action:"https://forms.gle/XYZ12345",
-        target:"_blank"
-      },
       state:false
     },
     {

@@ -13,7 +13,7 @@ const InitialProgress = () => {
 
     return (
         <div>
-            <h5 className='text-start mb-3 ms-2'>Workflow:</h5>
+            <h3 className='text-start mb-3 ms-2'>Workflow:</h3>
             <div className="position-relative m-4">
                 <div className="progress position-relative" style={{height:"6px", top:"-3px"}}>
                     <div
@@ -27,7 +27,7 @@ const InitialProgress = () => {
                     </div>
                 </div>
                 <button 
-                    onClick={()=>handleProgress(0,'Form Submitted')}
+                    onClick={()=>handleProgress(0,'Form Submission')}
                     type="button" 
                     className={`position-absolute top-0 translate-middle btn btn-sm rounded-pill ${timing>=0?'btn-primary':'btn-secondary'}`} 
                     style={{width: '2rem', height:'2rem', left: '0%'}}
@@ -35,7 +35,7 @@ const InitialProgress = () => {
                     1
                 </button>
                 <button 
-                    onClick={()=>handleProgress(20,'Cost Estimation')}
+                    onClick={()=>handleProgress(20,'Requirement Review')}
                     type="button" 
                     className={`position-absolute top-0 translate-middle btn btn-sm rounded-pill ${timing >= 20 ?'btn-primary':'btn-secondary'}`} 
                     style={{width: '2rem', height:'2rem', left: '20%'}}
@@ -43,7 +43,7 @@ const InitialProgress = () => {
                     2
                 </button>
                 <button 
-                    onClick={()=>handleProgress(40,'Order Confirmation')}
+                    onClick={()=>handleProgress(40,'Feasibility & Pricing Analysis')}
                     type="button" 
                     className={`position-absolute top-0 translate-middle btn btn-sm rounded-pill ${timing>=40?'btn-primary':'btn-secondary'}`} 
                     style={{width: '2rem', height:'2rem', left: '40%'}}
@@ -51,7 +51,7 @@ const InitialProgress = () => {
                     3
                 </button>
                 <button 
-                    onClick={()=>handleProgress(60,'Production Started')}
+                    onClick={()=>handleProgress(60,'Proposal & Confirmation')}
                     type="button" 
                     className={`position-absolute top-0 translate-middle btn btn-sm rounded-pill ${timing>=60?'btn-primary':'btn-secondary'}`} 
                     style={{width: '2rem', height:'2rem', left: '60%'}}
@@ -59,7 +59,7 @@ const InitialProgress = () => {
                     4
                 </button>
                 <button 
-                    onClick={()=>handleProgress(80,'Order Delivery')}
+                    onClick={()=>handleProgress(80,'Project Onboarding')}
                     type="button" 
                     className={`position-absolute top-0 translate-middle btn btn-sm rounded-pill ${timing>=80?'btn-primary':'btn-secondary'}`} 
                     style={{width: '2rem', height:'2rem', left: '80%'}}
@@ -67,7 +67,7 @@ const InitialProgress = () => {
                     5
                 </button>
                 <button 
-                    onClick={()=>handleProgress(100,'Doubt Clarification')}
+                    onClick={()=>handleProgress(100,'Doubt Clarification & Support')}
                     type="button" 
                     className={`position-absolute top-0 translate-middle btn btn-sm rounded-pill ${timing>=100?'btn-primary':'btn-secondary'}`} 
                     style={{width: '2rem', height:'2rem', left: '100%'}}
@@ -75,7 +75,7 @@ const InitialProgress = () => {
                     6
                 </button>
             </div>
-            <div className='text-start fs-6 mb-3 ms-2'>
+            <div className='text-start fs-5 mb-3 ms-2 f-cursive' style={{color:'#b92da7ff'}}>
                 {msg}
             </div>
         </div>
