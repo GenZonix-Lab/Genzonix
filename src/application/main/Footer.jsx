@@ -18,7 +18,7 @@ const Footer = () => {
                             <ul >
                                 <div className="title ms-lg-3"><b><h3>Contact</h3></b></div>
                                 <li className="list-group-item"><ScrollToTop /><NavLink to={"tel:+91 9487048924"}><GrPhone className='me-2'/><em className="hover-underline-animation left">+91 9487048924</em></NavLink></li>
-                                <li className="list-group-item"><ScrollToTop /><NavLink to={"mailto:info@genzonix.in"}><TbMailFilled className='me-2'/><em className="hover-underline-animation left">info@genzonix.in</em></NavLink></li>
+                                <li className="list-group-item"><ScrollToTop /><NavLink to={"mailto:hellogenzonix@gmail.com"}><TbMailFilled className='me-2'/><em className="hover-underline-animation left">hellogenzonix@gmail.com</em></NavLink></li>
                                 <li className="list-group-item"><ScrollToTop /><NavLink to={"/"}><GrLocation className='me-2'/><em className="hover-underline-animation left">Mayiladuthurai</em></NavLink></li>
                             </ul>
                         </div>

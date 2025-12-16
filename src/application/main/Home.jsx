@@ -10,6 +10,9 @@ import robotics from '../../assets/roboticsKit.webp'
 import handson from '../../assets/handsonLearning.webp'
 import expert from '../../assets/expert.webp'
 import quality from '../../assets/kit_demo.webp'
+import InitialProgress from './InitialProgress';
+import NotifyForm from './NotifyForm'
+import NotifyWA from "./NotifyWA";
 
 
 // Animation variants
@@ -29,6 +32,16 @@ const Home = () => {
       state:true
     },
     {
+      id:"formation",
+      title:"Idea to Reality: Genzonix Formation Process",
+      form:{
+        method:"POST",
+        action:"https://forms.gle/XYZ12345",
+        target:"_blank"
+      },
+      state:false
+    },
+    {
       id:"story",
       title:"Empowering Innovators:The Genzonix Story",
       image:child_pic,
@@ -38,7 +51,7 @@ const Home = () => {
         "We focus on fostering creativity and problem-solving through experiential learning, equipping users with the tools to bring their ideas to life.",
         "Genzonix is dedicated to shaping future thinkers by promoting education, innovation, and exploration in a technology-driven world."
       ],
-      state:false
+      state:true 
     },
     {
       id:'innovation',
@@ -46,7 +59,7 @@ const Home = () => {
       specification:[
         {
           id:"iot",
-          title:"Smart Maker Lab",
+          title:"Smart Connectivity Kit",
           description:"Build smart, connected devices using sensors, microcontrollers, and wireless communication to explore Internet of Things innovations practically.",
           image:iot
         },
@@ -69,7 +82,7 @@ const Home = () => {
           image:cloud
         }
       ],
-      state:true
+      state:false
     },
     {
       id:'exploration',
@@ -94,18 +107,20 @@ const Home = () => {
           image:quality
         }
       ],
-      state:false
+      state:true
     }
   ]
 
 
   const handleKit=(data)=>{
     if(data==="iot" || data ==="robotics" || data ==="ai"){
-      navigate("/products")
+      navigate("/")
     }else if(data === "cloud"){
-      navigate("/sandbox")
+      navigate("/")
     }
   }
+
+
   return (
     <>
     <div style={{position: 'absolute',zIndex: 1 }} className="vh-100 w-100">
@@ -134,11 +149,13 @@ const Home = () => {
           <div className={`text-center ${element.state ?'bg-default color-default' :'bg-negative color-negative'}`} title={element.title} aria-label={element.title} id={`#${element.id}`}>
             <div className="container-lg py-3">
               <div className="title mt-5 py-3">{element.id==="Explore" ? <h1>{element?.title}</h1> : <h2>{element?.title}</h2> }</div>
+              <div>
+                {element.id==="formation" ?<div><InitialProgress/><NotifyForm/></div>:null}</div>
               <button 
                 type="button" 
                 style={{ zIndex: 2, position: 'relative' }}
                 className={element.button?'Explore_btn rounded p-3 m-1':'d-none'}
-                onClick={() => document.getElementById('innovation')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('formation')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {element?.button}
               </button>
@@ -157,7 +174,7 @@ const Home = () => {
                       {element?.description &&
                       <ul className="list-group d-flex align-items-lg-end py-md-4 py-lg-2 py-xl-0">
                       {element.description.map((data, idx) => (
-                        <li key={idx} className="list-group-item color-negative fs-lg-3 fs-6 ">{data}</li>
+                        <li key={idx} className="list-group-item fs-lg-3 fs-6 ">{data}</li>
                       ))}
                     </ul>}
                   </div>

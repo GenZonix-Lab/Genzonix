@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import logo from '../../assets/Genzonix.webp';
+import logo from '/favicon.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import ScrollToTop from '../../Components/ScrollToTop'
 import { ImMenu3,ImMenu4  } from "react-icons/im";
@@ -75,30 +75,22 @@ const Header = ({cartTrig, userLoading}) => {
   <header>
     <nav className="navbar navbar-expand-xl navbar-dark main-bg">
       <div className="container-fluid row">
-        {(location.pathname === "/products" || location.pathname === "/profile")?
-        <div className={`col-10 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-md-center`}>
+        
+        <div className={`col-10 col-md-3 col-xl-2 order-2 order-xl-1 d-flex justify-content-md-center`}>
             <ScrollToTop />
-            <NavLink to={"/"}>
+            <NavLink to={"/"} className='align-middle'>
+            <div className="align-middle">
             <img
                 src={logo}
-                className="img"
+                className="logo-img"
                 alt="Logo"
-                title="Website_logo"   
+                title="Website_logo" 
             />
+              <div className='d-inline fs-4 ms-2 align-middle fw-bold f-graduate color-default'>Genzonix</div>
+            </div>
           </NavLink>
-        </div >:
-        <div className={`col-12 col-md-6 col-xl-2 order-2 order-xl-1 d-flex justify-content-center`}>
-            <ScrollToTop />
-            <NavLink to={"/"}>
-            <img
-                src={logo}
-                className="img"
-                alt="Logo"
-                title="Website_logo"   
-            />
-          </NavLink>
-        </div >}
-        <div className="col-2 col-md-3 col-xl-8 order-1 order-xl-2 d-none d-md-block">
+        </div >
+        {/* <div className="col-2 col-md-3 col-xl-8 order-1 order-xl-2 d-none d-md-block">
           <button 
             type="button"  
             className="navbar-toggler"
@@ -115,14 +107,14 @@ const Header = ({cartTrig, userLoading}) => {
                 <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}><h4>Home</h4></button>
                 </NavLink>
               </li>
-              <li className="nav-item py-2 py-xl-0">
+               <li className="nav-item py-2 py-xl-0">
                 <ScrollToTop />
                 <NavLink to="/sandbox" className="nav-link">
                   <button data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onClick={()=>handletoggle()}>
                     <h4>Cloud</h4>
                   </button>
                 </NavLink>
-              </li>
+              </li> 
               <li className="nav-item py-2 py-xl-0">
                 <ScrollToTop />
                 <NavLink to="/projects" className="nav-link">
@@ -138,7 +130,7 @@ const Header = ({cartTrig, userLoading}) => {
                     <h4>Products</h4>
                   </button>
                 </NavLink>
-              </li>
+              </li> 
               <li className="nav-item py-2 py-xl-0">
                 <ScrollToTop />
                 <NavLink to="/support" className="nav-link" aria-current="page">
@@ -149,7 +141,7 @@ const Header = ({cartTrig, userLoading}) => {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */} 
          <div className="col-2 col-md-3 col-xl-2 order-3">
             <div className="d-flex flex-row text-end navbar-nav">
               <div className="col navbar-item">
@@ -165,13 +157,15 @@ const Header = ({cartTrig, userLoading}) => {
                       }
                     </NavLink>                 
                   </>)}
-                  <NavLink to="/profile" className="nav-link nav-icon d-none d-md-inline" id='auth' title='profile info'>
-                      <CgProfile size={30}/>
-                  </NavLink>
-                  {location.pathname === "/profile" && (
+                  
+                  {location.pathname === "/profile" ? (
                   <NavLink to="/support" className="nav-link nav-icon d-block d-md-none" id='auth' title='profile info'>
                       <MdSupportAgent size={30}/>
-                  </NavLink>)}
+                  </NavLink>): (
+                    <NavLink to="/profile" className="nav-link nav-icon d-md-inline" id='auth' title='profile info'>
+                      <CgProfile size={30}/>
+                    </NavLink>
+                  )}
               </div>
             </div>
           </div>        

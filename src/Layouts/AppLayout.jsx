@@ -30,7 +30,7 @@ const AppLayout = () => {
         <Header cartTrig={cartTrig} userLoading={userLoading}/>
         <Outlet context={{ setCartTrig ,userLoading}}/>
         <Footer />
-        <Bottombar />
+        {/* <Bottombar /> */}
     </>
   )
 }

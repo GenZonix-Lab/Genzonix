@@ -81,8 +81,8 @@ a:hover{
 .container-fluid{
   align-items: baseline !important;
 }
-.img {
-  max-width: calc(2.5*(3vh + 2vw));
+.logo-img{
+  max-width: calc(2*(1.2vh + 1.2vw));
   height: auto;
 }
 button:hover{

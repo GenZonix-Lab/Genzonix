@@ -32,7 +32,7 @@ const Profile = () => {
         <div className="container mt-2">
             {userLoading ? <Loading/> :
             <div className='bg-transparent border-md-left w-md-fit m-md-auto p-4 row'>
-                <div className="col-lg-6">
+                <div className="col-12">
                     <div className="mt-3 px-md-5">
                         <ScrollToTop />
                         <NavLink to="/Auth" className="nav-link nav-icon d-flex fs-5" id='auth' title='profile info'>
@@ -40,7 +40,7 @@ const Profile = () => {
                         </NavLink>
                     </div><hr />
                 </div>
-                <div className="col-lg-6">
+                {/* <div className="col-lg-6">
                     <div className="mt-3 px-md-5">
                         <ScrollToTop />
                         <NavLink to="/order" className="nav-link nav-icon fs-5 d-flex" title='order'>
@@ -63,8 +63,8 @@ const Profile = () => {
                             <BsCloudPlus size={icon_size}/><div className='fs-xs-6 ps-3'>Subscription</div>
                         </NavLink>
                     </div><hr />
-                </div>
-                <div className="col-lg-6">
+                </div> */}
+                <div className="col-12">
                     <div className="mt-3 px-md-5">
                         <ScrollToTop />
                         <NavLink to="/dairy" className="nav-link nav-icon fs-5 d-flex" title='DigitalDairy'>
