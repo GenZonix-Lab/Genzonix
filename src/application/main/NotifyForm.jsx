@@ -231,7 +231,7 @@ const NotifyForm = () => {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Enter your full name"
-              className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+              className={`form-msg-control ${errors.name ? 'is-invalid' : ''}`}
             />
             {errors.name && <div className="invalid-feedback d-block">{errors.name}</div>}
           </div>
@@ -353,7 +353,7 @@ const NotifyForm = () => {
                       value={formData.otherDegree}
                       onChange={handleInputChange}
                       placeholder="e.g., B.Sc in Physics, Diploma in IT"
-                      className={`form-control ${errors.otherDegree ? 'is-invalid' : ''}`}
+                      className={`form-msg-control ${errors.otherDegree ? 'is-invalid' : ''}`}
                     />
                     {errors.otherDegree && <div className="invalid-feedback d-block">{errors.otherDegree}</div>}
                   </div>
@@ -369,7 +369,7 @@ const NotifyForm = () => {
                       value={formData.otherCourse}
                       onChange={handleInputChange}
                       placeholder="e.g., Computer Science, Mechanical Engineering"
-                      className={`form-control ${errors.otherCourse ? 'is-invalid' : ''}`}
+                      className={`form-msg-control ${errors.otherCourse ? 'is-invalid' : ''}`}
                     />
                     {errors.otherCourse && <div className="invalid-feedback d-block">{errors.otherCourse}</div>}
                   </div>
@@ -407,7 +407,7 @@ const NotifyForm = () => {
                   value={formData.collegeName}
                   onChange={handleInputChange}
                   placeholder="Enter your college name"
-                  className={`form-control ${errors.collegeName ? 'is-invalid' : ''}`}
+                  className={`form-msg-control ${errors.collegeName ? 'is-invalid' : ''}`}
                 />
                 {errors.collegeName && <div className="invalid-feedback d-block">{errors.collegeName}</div>}
               </div>
@@ -454,7 +454,7 @@ const NotifyForm = () => {
                   value={formData.schoolName}
                   onChange={handleInputChange}
                   placeholder="Enter your school name"
-                  className={`form-control ${errors.schoolName ? 'is-invalid' : ''}`}
+                  className={`form-msg-control ${errors.schoolName ? 'is-invalid' : ''}`}
                 />
                 {errors.schoolName && <div className="invalid-feedback d-block">{errors.schoolName}</div>}
               </div>
@@ -473,7 +473,7 @@ const NotifyForm = () => {
               value={formData.whatsappNumber}
               onChange={handleInputChange}
               placeholder="Enter 10-digit WhatsApp number"
-              className={`form-control ${errors.whatsappNumber ? 'is-invalid' : ''}`}
+              className={`form-msg-control ${errors.whatsappNumber ? 'is-invalid' : ''}`}
             />
             {errors.whatsappNumber && <div className="invalid-feedback d-block">{errors.whatsappNumber}</div>}
           </div>
@@ -490,7 +490,7 @@ const NotifyForm = () => {
               onChange={handleInputChange}
               placeholder="Describe your project idea in detail..."
               rows="5"
-              className={`form-control ${errors.projectIdea ? 'is-invalid' : ''}`}
+              className={`form-msg-control ${errors.projectIdea ? 'is-invalid' : ''}`}
             />
             {errors.projectIdea && <div className="invalid-feedback d-block">{errors.projectIdea}</div>}
           </div>
@@ -507,7 +507,7 @@ const NotifyForm = () => {
               value={formData.referenceVideoLink}
               onChange={handleInputChange}
               placeholder="https://example.com/video (optional)"
-              className={`form-control ${errors.referenceVideoLink ? 'is-invalid' : ''}`}
+              className={`form-msg-control ${errors.referenceVideoLink ? 'is-invalid' : ''}`}
             />
             {errors.referenceVideoLink && <div className="invalid-feedback d-block">{errors.referenceVideoLink}</div>}
           </div>

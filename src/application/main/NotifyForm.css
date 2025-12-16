@@ -38,7 +38,7 @@
 }
 
 /* Form control enhancement */
-.form-control,
+.form-msg-control,
 .form-select {
   border: 2px solid #e9ecef !important;
   border-radius: 8px !important;
@@ -48,7 +48,7 @@
   background-color: #f8f9fa !important;
 }
 
-.form-control:focus,
+.form-msg-control:focus,
 .form-select:focus {
   border-color: #667eea !important;
   box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15) !important;
@@ -56,13 +56,13 @@
   transform: translateY(-2px);
 }
 
-.form-control::placeholder {
+.form-msg-control::placeholder {
   color: #95a5a6;
   font-style: italic;
 }
 
 /* Error state styling */
-.form-control.is-invalid,
+.form-msg-control.is-invalid,
 .form-select.is-invalid {
   border-color: #dc3545 !important;
   background-image: none !important;
@@ -103,7 +103,7 @@
 }
 
 /* Textarea specific */
-.form-control[rows] {
+.form-msg-control[rows] {
   resize: vertical;
   min-height: 130px;
   line-height: 1.6;
@@ -166,7 +166,7 @@
     font-size: 14px !important;
   }
 
-  .form-control,
+  .form-msg-control,
   .form-select {
     padding: 10px 12px !important;
     font-size: 14px !important;
@@ -193,14 +193,14 @@
     margin-bottom: 8px !important;
   }
 
-  .form-control,
+  .form-msg-control,
   .form-select {
     padding: 10px 12px !important;
     font-size: 13px !important;
     border-radius: 6px !important;
   }
 
-  .form-control[rows] {
+  .form-msg-control[rows] {
     min-height: 100px;
   }
 
